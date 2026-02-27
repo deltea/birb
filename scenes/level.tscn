@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bkhrrt45shegv"]
+
+[ext_resource type="Script" uid="uid://xkr1lw04irae" path="res://scripts/room.gd" id="1_2q6dc"]
+[ext_resource type="Texture2D" uid="uid://c8vebnkhtxxr6" path="res://assets/generic/circle.png" id="2_w7c3h"]
+[ext_resource type="Texture2D" uid="uid://b5l7cik55j6lo" path="res://color-palettes/forest.png" id="2_w8frs"]
+
+[node name="Level" type="Node2D" unique_id=2129457560]
+script = ExtResource("1_2q6dc")
+palette = ExtResource("2_w8frs")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1362836076]
+texture = ExtResource("2_w7c3h")

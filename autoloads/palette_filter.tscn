@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dcacxemdtpf06"]
+
+[ext_resource type="Script" uid="uid://cue3byhg2kdhe" path="res://autoloads/palette_filter.gd" id="1_adh26"]
+[ext_resource type="Shader" uid="uid://bqsviir6g074p" path="res://shaders/palette_filter.gdshader" id="2_2kqrj"]
+[ext_resource type="Texture2D" uid="uid://rewyjfctxt7t" path="res://color-palettes/cherry.png" id="2_lvugl"]
+[ext_resource type="Texture2D" uid="uid://bm5w1x2hdngqi" path="res://assets/palette-in.png" id="4_li5on"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_05rop"]
+shader = ExtResource("2_2kqrj")
+shader_parameter/num_colors = 7
+shader_parameter/palette_in = ExtResource("4_li5on")
+shader_parameter/precision = 0.1
+
+[node name="PaletteFilter" type="CanvasLayer" unique_id=1361322869]
+layer = 100
+script = ExtResource("1_adh26")
+default_palette = ExtResource("2_lvugl")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=474192000]
+material = SubResource("ShaderMaterial_05rop")
+offset_right = 320.0
+offset_bottom = 240.0
+mouse_filter = 1
