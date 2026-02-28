@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://cqedlma3fml7b"]
 
 [ext_resource type="Script" uid="uid://0i5u8l5c0vba" path="res://scenes/player/player.gd" id="1_8afob"]
+[ext_resource type="Texture2D" uid="uid://7qru5twwl775" path="res://assets/generic/square.png" id="2_dovo2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8afob"]
 size = Vector2(11, 16)
@@ -31,6 +32,15 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="Curve" id="Curve_gmlin"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0.006116271), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_dovo2"]
+_data = [Vector2(0, 0.16144145), 0.0, 0.0, 0, 0, Vector2(0.34042552, 0.30900902), 0.0, 0.0, 0, 0, Vector2(1, 0.10992187), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [node name="Player" type="CharacterBody2D" unique_id=249500363]
 script = ExtResource("1_8afob")
 
@@ -38,7 +48,7 @@ script = ExtResource("1_8afob")
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_8afob")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=833951022]
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="." unique_id=833951022]
 texture_filter = 1
 position = Vector2(0, 8)
 sprite_frames = SubResource("SpriteFrames_lvxji")
@@ -64,3 +74,16 @@ metadata/_aseprite_wizard_config_ = {
 "source_uid": 2513588182964405636
 }
 metadata/_aseprite_wizard_source_file_hash_ = "4ef06d8524f44118cbf724fc0e252fb2"
+
+[node name="WalkParticles" type="CPUParticles2D" parent="." unique_id=1097503433]
+position = Vector2(-3, 8)
+amount = 6
+texture = ExtResource("2_dovo2")
+lifetime = 0.25
+randomness = 1.0
+lifetime_randomness = 0.57
+gravity = Vector2(0, 0)
+angle_min = -180.0
+angle_max = 180.0
+angle_curve = SubResource("Curve_gmlin")
+scale_amount_curve = SubResource("Curve_dovo2")

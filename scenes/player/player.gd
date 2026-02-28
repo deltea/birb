@@ -18,7 +18,8 @@ class_name Player extends CharacterBody2D
 @export var squash = 0.4
 @export var stretch = 0.4
 
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite
+@onready var walk_particles: CPUParticles2D = $WalkParticles
 
 var jumped = false
 var coyote_timer = 0.0
@@ -27,12 +28,16 @@ var can_move = true
 var target_scale = Vector2.ONE;
 var target_rot = 0.0;
 var is_dashing = false
+var original_particles_x
 
 @onready var scale_dynamics: DynamicsSolverVector = Dynamics.create_dynamics_vector(2.0, 0.5, 2.0);
 @onready var rot_dynamics: DynamicsSolver = Dynamics.create_dynamics(10.0, 0.8, 10.0);
 
 func _enter_tree() -> void:
 	RoomManager.current_room.player = self
+
+func _ready() -> void:
+	original_particles_x = walk_particles.position.x
 
 func _process(_dt: float) -> void:
 	sprite.scale = scale_dynamics.update(target_scale);
@@ -44,7 +49,7 @@ func _physics_process(delta: float) -> void:
 
 	var x_input := Input.get_axis("left", "right")
 
-	if not is_on_floor():
+	if not is_on_floor() and not is_dashing:
 		if velocity.y > 0:
 			if is_on_wall() and x_input:
 				velocity.y = wall_fall_velocity
@@ -53,22 +58,23 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.y += gravity * delta
 
-	if can_move:
+	if can_move and not is_dashing:
 		if x_input:
 			velocity.x = move_toward(velocity.x, x_input * max_speed, acceleration)
 			sprite.flip_h = x_input < 0
 		else:
 			velocity.x = move_toward(velocity.x, 0.0, deceleration)
-	else:
-		velocity.x = 0
 
 	if not is_dashing:
 		if can_move and x_input and is_on_floor():
 			target_rot = sin(Clock.time * 20.0) * 15.0
 			sprite.stop()
+			walk_particles.emitting = true
+			walk_particles.position.x = original_particles_x * x_input
 		else:
 			sprite.play("default")
 			target_rot = 0.0
+			walk_particles.emitting = false
 
 	if (Input.is_action_just_pressed("jump") or buffer_timer < buffer_time) and not jumped and can_move:
 		if is_on_floor() or coyote_timer < coyote_time:
