@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://larngg3noo16"]
+
+[ext_resource type="Texture2D" uid="uid://c8vebnkhtxxr6" path="res://assets/generic/circle.png" id="1_m7a2r"]
+
+[sub_resource type="Curve" id="Curve_m7a2r"]
+_data = [Vector2(0, 0.6822469), 0.0, 0.0, 0, 0, Vector2(0.7072649, 0.32547164), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="BounceParticles" type="CPUParticles2D" unique_id=961948646]
+emitting = false
+amount = 5
+texture = ExtResource("1_m7a2r")
+lifetime = 0.2
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(16, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+tangential_accel_min = 100.0
+tangential_accel_max = 100.0
+scale_amount_curve = SubResource("Curve_m7a2r")
