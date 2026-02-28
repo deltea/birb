@@ -11,7 +11,8 @@ class_name Player extends CharacterBody2D
 @export var coyote_time = 0.15
 @export var buffer_time = 0.15
 @export var jump_cut_multiplier = 0.5
-@export var push_force = 1000.0
+@export var bounce_velocity = 400.0
+@export var dash_velocity = 320.0
 
 @export_category("Animation")
 @export var squash = 0.4
@@ -25,9 +26,10 @@ var buffer_timer = buffer_time
 var can_move = true
 var target_scale = Vector2.ONE;
 var target_rot = 0.0;
+var is_dashing = false
 
 @onready var scale_dynamics: DynamicsSolverVector = Dynamics.create_dynamics_vector(2.0, 0.5, 2.0);
-@onready var rot_dynamics: DynamicsSolver = Dynamics.create_dynamics(10.0, 0.5, 10.0);
+@onready var rot_dynamics: DynamicsSolver = Dynamics.create_dynamics(10.0, 0.8, 10.0);
 
 func _enter_tree() -> void:
 	RoomManager.current_room.player = self
@@ -60,12 +62,13 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = 0
 
-	if can_move and x_input and is_on_floor():
-		target_rot = sin(Clock.time * 20.0) * 15.0
-		sprite.stop()
-	else:
-		sprite.play("default")
-		target_rot = 0.0
+	if not is_dashing:
+		if can_move and x_input and is_on_floor():
+			target_rot = sin(Clock.time * 20.0) * 15.0
+			sprite.stop()
+		else:
+			sprite.play("default")
+			target_rot = 0.0
 
 	if (Input.is_action_just_pressed("jump") or buffer_timer < buffer_time) and not jumped and can_move:
 		if is_on_floor() or coyote_timer < coyote_time:
@@ -80,8 +83,10 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and not is_on_floor():
 		buffer_timer = 0.0
 
-	# if Input.is_action_just_pressed("down"):
-	# 	position.y += 2
+	if Input.is_action_just_pressed("dash") and not is_on_floor() and not is_dashing and can_move:
+		is_dashing = true
+		velocity.y = dash_velocity
+		scale_dynamics.set_value(Vector2.ONE + Vector2(-stretch, stretch))
 
 	var was_on_floor = is_on_floor()
 	move_and_slide()
@@ -92,11 +97,8 @@ func _physics_process(delta: float) -> void:
 	elif was_on_floor and not is_on_floor() and not jumped:
 		coyote_timer = 0.0
 
-	if get_slide_collision_count() > 0:
-		var collision = get_slide_collision(0)
-		var collider = collision.get_collider()
-		if collider is RigidBody2D and position.y > collider.position.y:
-			(collider as RigidBody2D).apply_force(-collision.get_normal() * push_force)
-
-func trampolined(force: float):
-	velocity.y = -force
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		if is_dashing:
+			velocity.y = -bounce_velocity
+			is_dashing = false
