@@ -7,7 +7,7 @@
 size = Vector2(11, 16)
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_dovo2"]
-_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAACcAAAAUklGRpQAAABXRUJQVlA4TIgAAAAvH8AHEBcgEEii3N9kDYFAEuX+JgsEkij3N3n+A/4VMI5tq8k3hz0UQRWUYAK1MFmz1DblGkqI6L/atm0YZYqd+oYsmSBcJcmyTsGyl4Zld01rDz2tYGC5wyQrOiXxts4b6P637iroUmYf+uvfwDpFLk12gL+ZBMOSA8RH2/nE/4Z/pV/JIAkB")
+_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAACcAAAAUklGRpQAAABXRUJQVlA4TIcAAAAvH8AHEBcgEEii3N9kDYFAEuX+JgsEkij3N3n+A/4VMIptq81PL3sQgQokpNGEwZplsMl/KRIi+m+0bZsMLUF9g66G4MxAnLQRkHSRkHSQmEJaMSUFyUTFKRtBuaa7At7+9mYAT33z4V/ueiQzANoIpEgkILwZn6SYbCIDmwH7G9zztnUjhgAA")
 size_override = Vector2(32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gmlin"]
@@ -89,7 +89,7 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://assets/player.ase",
 "source_uid": 2513588182964405636
 }
-metadata/_aseprite_wizard_source_file_hash_ = "fab7c4829a1fc1d592fc0e4c8cfa71f8"
+metadata/_aseprite_wizard_source_file_hash_ = "5b6b6a073a1e8fbfc9f81ca1beb73a88"
 
 [node name="WalkParticles" type="CPUParticles2D" parent="." unique_id=1097503433]
 position = Vector2(-3, 8)
