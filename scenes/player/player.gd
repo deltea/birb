@@ -17,7 +17,7 @@ class_name Player extends CharacterBody2D
 @export var squash = 0.4
 @export var stretch = 0.4
 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var jumped = false
 var coyote_timer = 0.0
@@ -62,6 +62,10 @@ func _physics_process(delta: float) -> void:
 
 	if can_move and x_input and is_on_floor():
 		target_rot = sin(Clock.time * 20.0) * 15.0
+		sprite.stop()
+	else:
+		sprite.play("default")
+		target_rot = 0.0
 
 	if (Input.is_action_just_pressed("jump") or buffer_timer < buffer_time) and not jumped and can_move:
 		if is_on_floor() or coyote_timer < coyote_time:
