@@ -12,7 +12,7 @@ class_name Player extends CharacterBody2D
 @export var buffer_time = 0.15
 @export var jump_cut_multiplier = 0.5
 @export var bounce_velocity = 400.0
-@export var dash_velocity = 320.0
+@export var dash_velocity = 420.0
 
 @export_category("Animation")
 @export var squash = 0.4
@@ -110,7 +110,10 @@ func _physics_process(delta: float) -> void:
 		coyote_timer = 0.0
 
 	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
+		var collision := get_slide_collision(i)
 		if is_dashing:
-			velocity.y = -bounce_velocity
 			is_dashing = false
+			if collision.get_collider() is Bouncepad:
+				collision.get_collider().emit_signal("bounce")
+				# can_dash = true
+				velocity.y = -bounce_velocity
