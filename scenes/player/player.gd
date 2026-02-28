@@ -66,13 +66,19 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0.0, deceleration)
 
 	if not is_dashing:
-		if can_move and x_input and is_on_floor():
-			target_rot = sin(Clock.time * 20.0) * 15.0
-			sprite.stop()
-			walk_particles.emitting = true
-			walk_particles.position.x = original_particles_x * x_input
+		if can_move and x_input:
+			if is_on_floor():
+				# target_rot = sin(Clock.time * 20.0) * 15.0
+				target_rot = velocity.x / max_speed * 15.0
+				sprite.play("walk")
+				walk_particles.emitting = true
+				walk_particles.position.x = original_particles_x * x_input
+			else:
+				target_rot = velocity.x / max_speed * 15.0
+				walk_particles.emitting = false
+				sprite.play("idle")
 		else:
-			sprite.play("default")
+			sprite.play("idle")
 			target_rot = 0.0
 			walk_particles.emitting = false
 

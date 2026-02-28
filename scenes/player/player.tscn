@@ -6,30 +6,45 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8afob"]
 size = Vector2(11, 16)
 
-[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_8afob"]
-_data = PackedByteArray("AAADAAUAAAABAAAAIAAAABAAAAB6AAAAUklGRnIAAABXRUJQVlA4TGYAAAAvH8ADEBcgEEii3N9kDYFAEuX+JgsEkij3N3n+A/4VMI5tq8kDzPtPEVTxi5BUmKxZapsSS4jov9gkoS0/wS1QZVcUYksV8acr4qhriumqKZmK7GMKZUvIP72WUH03/e1afSyi/wE=")
-size_override = Vector2(32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dovo2"]
-atlas = SubResource("PortableCompressedTexture2D_8afob")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_dovo2"]
+_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAACcAAAAUklGRpQAAABXRUJQVlA4TIgAAAAvH8AHEBcgEEii3N9kDYFAEuX+JgsEkij3N3n+A/4VMI5tq8k3hz0UQRWUYAK1MFmz1DblGkqI6L/atm0YZYqd+oYsmSBcJcmyTsGyl4Zld01rDz2tYGC5wyQrOiXxts4b6P637iroUmYf+uvfwDpFLk12gL+ZBMOSA8RH2/nE/4Z/pV/JIAkB")
+size_override = Vector2(32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gmlin"]
-atlas = SubResource("PortableCompressedTexture2D_8afob")
+atlas = SubResource("PortableCompressedTexture2D_dovo2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvxji"]
+atlas = SubResource("PortableCompressedTexture2D_dovo2")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_lvxji"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_p47bc"]
+atlas = SubResource("PortableCompressedTexture2D_dovo2")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_75vfm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dovo2")
+"texture": SubResource("AtlasTexture_gmlin")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gmlin")
+"texture": SubResource("AtlasTexture_lvxji")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmlin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p47bc")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
 }]
 
 [sub_resource type="Curve" id="Curve_gmlin"]
@@ -51,7 +66,8 @@ shape = SubResource("RectangleShape2D_8afob")
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="." unique_id=833951022]
 texture_filter = 1
 position = Vector2(0, 8)
-sprite_frames = SubResource("SpriteFrames_lvxji")
+sprite_frames = SubResource("SpriteFrames_75vfm")
+animation = &"idle"
 offset = Vector2(0, -8)
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": false,
@@ -73,7 +89,7 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://assets/player.ase",
 "source_uid": 2513588182964405636
 }
-metadata/_aseprite_wizard_source_file_hash_ = "4ef06d8524f44118cbf724fc0e252fb2"
+metadata/_aseprite_wizard_source_file_hash_ = "fab7c4829a1fc1d592fc0e4c8cfa71f8"
 
 [node name="WalkParticles" type="CPUParticles2D" parent="." unique_id=1097503433]
 position = Vector2(-3, 8)
