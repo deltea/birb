@@ -166,23 +166,35 @@ sources/0 = SubResource("TileSetAtlasSource_klq6b")
 [node name="Level" type="Node2D" unique_id=2129457560]
 script = ExtResource("1_2q6dc")
 palette = ExtResource("2_2r41h")
+metadata/_edit_vertical_guides_ = [-160.0, 160.0]
+metadata/_edit_horizontal_guides_ = [-120.0, 120.0]
 
-[node name="Camera" type="Camera2D" parent="." unique_id=1163662813]
+[node name="Camera" type="Camera2D" parent="." unique_id=1163662813 node_paths=PackedStringArray("follow")]
 script = ExtResource("3_klq6b")
+follow = NodePath("../Player")
 
 [node name="Player" parent="." unique_id=249500363 instance=ExtResource("4_mx8sn")]
 
 [node name="TileMap" parent="." unique_id=537930431 instance=ExtResource("4_ppgk2")]
+self_modulate = Color(0, 0, 0, 1)
+z_index = 10
 tile_map_data = PackedByteArray("AAD8/wIAAAABAAAAAAD8/wMAAAABAAAAAAD9/wIAAAABAAAAAAD9/wMAAAABAAAAAAD+/wIAAAABAAAAAAD+/wMAAAABAAAAAAD//wIAAAABAAAAAAD//wMAAAABAAAAAAAAAAIAAAABAAAAAAAAAAMAAAABAAAAAAABAAIAAAABAAAAAAABAAMAAAABAAAAAAACAAIAAAABAAAAAAACAAMAAAABAAAAAAADAAIAAAABAAAAAAADAAMAAAABAAAAAAAEAAIAAAABAAAAAAAEAAMAAAABAAAAAAD5//7/AAABAAAAAAD5////AAABAAAAAAD5/wAAAAABAAAAAAD5/wEAAAABAAAAAAD5/wIAAAABAAAAAAD5/wMAAAABAAAAAAD6//7/AAABAAAAAAD6////AAABAAAAAAD6/wAAAAABAAAAAAD6/wEAAAABAAAAAAD6/wIAAAABAAAAAAD6/wMAAAABAAAAAAD7/wIAAAABAAAAAAD7/wMAAAABAAAAAAAFAAIAAAABAAAAAAAFAAMAAAABAAAAAAAGAPn/AAABAAAAAAAGAPr/AAABAAAAAAAGAPv/AAABAAAAAAAGAPz/AAABAAAAAAAGAP3/AAABAAAAAAAGAP7/AAABAAAAAAAGAP//AAABAAAAAAAGAAAAAAABAAAAAAAGAAEAAAABAAAAAAAGAAIAAAABAAAAAAAGAAMAAAABAAAAAAAHAPn/AAABAAAAAAAHAPr/AAABAAAAAAAHAPv/AAABAAAAAAAHAPz/AAABAAAAAAAHAP3/AAABAAAAAAAHAP7/AAABAAAAAAAHAP//AAABAAAAAAAHAAAAAAABAAAAAAAHAAEAAAABAAAAAAAHAAIAAAABAAAAAAAHAAMAAAABAAAAAAD5//n/AAABAAAAAAD5//r/AAABAAAAAAD5//v/AAABAAAAAAD5//z/AAABAAAAAAD5//3/AAABAAAAAAD6//n/AAABAAAAAAD6//r/AAABAAAAAAD6//v/AAABAAAAAAD6//z/AAABAAAAAAD6//3/AAABAAAAAAA=")
 tile_set = SubResource("TileSet_b121j")
 
-[node name="Parallax" type="Parallax2D" parent="." unique_id=1864692733]
-z_index = -10
+[node name="ParallaxForeground" type="Parallax2D" parent="." unique_id=1530922735]
 
-[node name="Background" type="TextureRect" parent="Parallax" unique_id=2016263398]
-offset_left = -160.0
-offset_top = -120.0
-offset_right = 160.0
-offset_bottom = 120.0
+[node name="TileMap2" parent="ParallaxForeground" unique_id=845067415 instance=ExtResource("4_ppgk2")]
+modulate = Color(0.33333334, 0.33333334, 0.33333334, 1)
+tile_map_data = PackedByteArray("AAD6/wEAAAACAAIAAAD6/wIAAAACAAMAAAD7/wEAAAADAAIAAAD7/wIAAAADAAMAAAD8//v/AAACAAIAAAD8//z/AAACAAMAAAD9//v/AAADAAIAAAD9//z/AAADAAMAAAACAPv/AAACAAIAAAACAPz/AAACAAMAAAADAPv/AAADAAIAAAADAPz/AAADAAMAAAAFAP7/AAACAAIAAAAFAP//AAACAAMAAAAGAP7/AAADAAIAAAAGAP//AAADAAMAAAA=")
+tile_set = SubResource("TileSet_b121j")
+
+[node name="ParallaxBackground" type="Parallax2D" parent="." unique_id=1864692733]
+z_index = -10
+scroll_offset = Vector2(128, 56)
+repeat_size = Vector2(32, 32)
+autoscroll = Vector2(10, 5)
+repeat_times = 12
+
+[node name="Background" type="Sprite2D" parent="ParallaxBackground" unique_id=1144006412]
+position = Vector2(160, 120)
 texture = ExtResource("5_ppgk2")
-stretch_mode = 1
