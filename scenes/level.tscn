@@ -160,11 +160,51 @@ text = "[wave]02:32[/wave]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CountdownLabel" type="Label" parent="CanvasLayer" unique_id=263784142]
-offset_left = 136.0
-offset_top = 96.0
-offset_right = 184.0
-offset_bottom = 144.0
+[node name="Countdown" type="Control" parent="CanvasLayer" unique_id=1377884548]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 20)
+size_flags_horizontal = 4
+
+[node name="CountdownBackground" type="ColorRect" parent="CanvasLayer/Countdown" unique_id=1617247382]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(16, 16)
+color = Color(0.73333335, 0.73333335, 0.73333335, 1)
+
+[node name="CountdownLabel" type="Label" parent="CanvasLayer/Countdown" unique_id=263784142]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(24, 24)
 text = "3"
 label_settings = SubResource("LabelSettings_8iemx")
