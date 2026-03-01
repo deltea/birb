@@ -107,7 +107,10 @@ func _physics_process(delta: float) -> void:
 		buffer_timer = 0.0
 
 	if Input.is_action_just_pressed("dash") and not is_dashing and can_move:
-		dash(x_input)
+		if Input.is_action_pressed("down") and not is_on_floor():
+			dash_down()
+		elif x_input:
+			dash_horizontal(x_input)
 
 	var was_on_floor = is_on_floor()
 	move_and_slide()
@@ -129,19 +132,19 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.y = -100.0
 
-func dash(x_input: float):
-	if Input.is_action_pressed("down"):
-		is_dashing = true
-		velocity.y = dash_velocity
-		scale_dynamics.set_value(Vector2.ONE + Vector2(-stretch, stretch))
-		RoomManager.current_room.camera.shake(0.1, 1.5)
-	elif x_input:
-		dash_timer.start()
-		is_dashing = true
-		velocity.x = x_input * dash_velocity * 1.5
-		velocity.y = 0.0
-		scale_dynamics.set_value(Vector2.ONE + Vector2(stretch, -stretch))
-		RoomManager.current_room.camera.shake(0.1, 1.5)
+func dash_horizontal(x_input: float):
+	dash_timer.start()
+	is_dashing = true
+	velocity.x = x_input * dash_velocity * 1.5
+	velocity.y = 0.0
+	scale_dynamics.set_value(Vector2.ONE + Vector2(stretch, -stretch))
+	RoomManager.current_room.camera.shake(0.1, 1.5)
+
+func dash_down():
+	is_dashing = true
+	velocity.y = dash_velocity
+	scale_dynamics.set_value(Vector2.ONE + Vector2(-stretch, stretch))
+	RoomManager.current_room.camera.shake(0.1, 1.5)
 
 func _on_dash_timer_timeout() -> void:
 	is_dashing = false
