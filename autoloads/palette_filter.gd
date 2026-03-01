@@ -2,6 +2,8 @@ extends CanvasLayer
 
 @export var default_palette: Texture2D
 
+@onready var color_rect: ColorRect = $ColorRect
+
 var palette: Texture2D
 
 func set_color_palette(new_palette: Texture2D = null):

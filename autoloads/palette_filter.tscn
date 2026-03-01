@@ -10,8 +10,10 @@ shader = ExtResource("2_2kqrj")
 shader_parameter/num_colors = 8
 shader_parameter/palette_in = ExtResource("4_li5on")
 shader_parameter/precision = 0.1
+shader_parameter/brightness = 0.5000000074506
 
 [node name="PaletteFilter" type="CanvasLayer" unique_id=1361322869]
+process_mode = 3
 layer = 100
 script = ExtResource("1_adh26")
 default_palette = ExtResource("2_lvugl")
