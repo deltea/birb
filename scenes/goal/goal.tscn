@@ -6,7 +6,7 @@
 [ext_resource type="Shader" uid="uid://dwbxq8e8fq1m0" path="res://shaders/flag.gdshader" id="3_ruxej"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c37cn"]
-size = Vector2(32, 4)
+size = Vector2(9, 32)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ivff"]
 shader = ExtResource("3_ruxej")
@@ -14,13 +14,12 @@ shader_parameter/speed = 2.0
 shader_parameter/frequency_y = 5.0
 shader_parameter/amplitude_y = 10.0
 
-[node name="Goal" type="StaticBody2D" unique_id=89322286]
+[node name="Goal" type="Area2D" unique_id=1681194359]
 script = ExtResource("1_r84s2")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=1115594199]
-position = Vector2(0, -2)
+position = Vector2(0.5, -16)
 shape = SubResource("RectangleShape2D_c37cn")
-one_way_collision = true
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1363767434]
 position = Vector2(0, -16)
@@ -30,7 +29,9 @@ texture = ExtResource("1_c37cn")
 self_modulate = Color(0, 0, 1, 1)
 material = SubResource("ShaderMaterial_0ivff")
 position = Vector2(-1, -27)
-rotation = 3.1415927
+rotation = -3.1415925
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_0ivff")
 offset = Vector2(24, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

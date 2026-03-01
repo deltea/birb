@@ -54,7 +54,7 @@ func _physics_process(delta: float) -> void:
 
 	var x_input := Input.get_axis("left", "right")
 
-	if not is_on_floor() and not is_dashing:
+	if not is_on_floor() and not is_dashing and can_move:
 		if velocity.y > 0:
 			if is_on_wall() and x_input:
 				velocity.y = wall_fall_velocity
@@ -95,7 +95,7 @@ func _physics_process(delta: float) -> void:
 			rot_dynamics.set_value(sprite.rotation_degrees)
 			jumped = true
 
-	if Input.is_action_just_pressed("jump") and is_on_wall() and not is_on_floor() and can_move:
+	if Input.is_action_just_pressed("jump") and is_on_wall() and not is_on_floor() and can_move and x_input:
 		velocity.y = -jump_velocity
 		velocity.x = -x_input * max_speed * 1.5
 		scale_dynamics.set_value(Vector2.ONE + Vector2(-stretch, stretch))
@@ -130,8 +130,6 @@ func _physics_process(delta: float) -> void:
 			if collision.get_collider() is Bouncepad:
 				collision.get_collider().bounce()
 				velocity.y = -bounce_velocity
-			elif collision.get_collider() is Goal:
-				win()
 			else:
 				velocity.y = -100.0
 

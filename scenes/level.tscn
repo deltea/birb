@@ -194,10 +194,10 @@ position = Vector2(160, 120)
 texture = ExtResource("5_ppgk2")
 
 [node name="Bouncepad" parent="." unique_id=389278605 instance=ExtResource("8_b121j")]
-position = Vector2(48, 32)
+position = Vector2(56, 32)
 
 [node name="Bouncepad2" parent="." unique_id=1231044896 instance=ExtResource("8_b121j")]
-position = Vector2(-8, -32)
+position = Vector2(0, -32)
 
 [node name="Goal" parent="." unique_id=89322286 instance=ExtResource("9_8c41q")]
 position = Vector2(128, -112)
