@@ -9,4 +9,4 @@ func _enter_tree() -> void:
 	RoomManager.current_room = self
 
 func complete():
-	pass
+	PaletteFilter.set_brightness(0.25)

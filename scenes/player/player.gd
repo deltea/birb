@@ -160,6 +160,8 @@ func win():
 	win_star.position = position
 	RoomManager.current_room.add_child(win_star)
 	get_tree().paused = true
+
+	await Clock.wait(1.0)
 	RoomManager.current_room.complete()
 
 func _on_dash_timer_timeout() -> void:
