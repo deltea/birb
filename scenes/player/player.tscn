@@ -62,7 +62,7 @@ _data = [Vector2(0, 0.006116271), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_dovo2"]
-_data = [Vector2(0, 0.16144145), 0.0, 0.0, 0, 0, Vector2(0.34042552, 0.30900902), 0.0, 0.0, 0, 0, Vector2(1, 0.10992187), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.21910119), 0.0, 0.0, 0, 0, Vector2(0.34829062, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.25280905), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_lvxji"]
@@ -109,7 +109,7 @@ metadata/_aseprite_wizard_source_file_hash_ = "c9dc1b567f0700cef3267607d38fc4f0"
 self_modulate = Color(0.33333334, 0.33333334, 0.33333334, 1)
 position = Vector2(-3, 8)
 emitting = false
-amount = 6
+amount = 5
 texture = ExtResource("2_dovo2")
 lifetime = 0.25
 randomness = 1.0
@@ -118,6 +118,8 @@ gravity = Vector2(0, 0)
 angle_min = -90.0
 angle_max = 90.0
 angle_curve = SubResource("Curve_gmlin")
+scale_amount_min = 0.4
+scale_amount_max = 0.45
 scale_amount_curve = SubResource("Curve_dovo2")
 
 [node name="DashParticles" type="CPUParticles2D" parent="." unique_id=706280888]
