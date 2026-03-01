@@ -130,13 +130,13 @@ func _physics_process(delta: float) -> void:
 				velocity.y = -100.0
 
 func dash(x_input: float):
-	dash_timer.start()
 	if Input.is_action_pressed("down"):
 		is_dashing = true
 		velocity.y = dash_velocity
 		scale_dynamics.set_value(Vector2.ONE + Vector2(-stretch, stretch))
 		RoomManager.current_room.camera.shake(0.1, 1.5)
 	elif x_input:
+		dash_timer.start()
 		is_dashing = true
 		velocity.x = x_input * dash_velocity * 1.5
 		velocity.y = 0.0
