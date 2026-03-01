@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://0i5u8l5c0vba" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Texture2D" uid="uid://7qru5twwl775" path="res://assets/generic/square.png" id="2_dovo2"]
+[ext_resource type="Texture2D" uid="uid://c8vebnkhtxxr6" path="res://assets/generic/circle.png" id="3_gmlin"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8afob"]
 size = Vector2(11, 16)
@@ -56,7 +57,12 @@ point_count = 2
 _data = [Vector2(0, 0.16144145), 0.0, 0.0, 0, 0, Vector2(0.34042552, 0.30900902), 0.0, 0.0, 0, 0, Vector2(1, 0.10992187), 0.0, 0.0, 0, 0]
 point_count = 3
 
+[sub_resource type="Curve" id="Curve_lvxji"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.89102566, 0.5898877), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [node name="Player" type="CharacterBody2D" unique_id=249500363]
+z_index = 10
 script = ExtResource("1_8afob")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=1428469450]
@@ -92,14 +98,31 @@ metadata/_aseprite_wizard_config_ = {
 metadata/_aseprite_wizard_source_file_hash_ = "5b6b6a073a1e8fbfc9f81ca1beb73a88"
 
 [node name="WalkParticles" type="CPUParticles2D" parent="." unique_id=1097503433]
+self_modulate = Color(0.33333334, 0.33333334, 0.33333334, 1)
 position = Vector2(-3, 8)
+emitting = false
 amount = 6
 texture = ExtResource("2_dovo2")
 lifetime = 0.25
 randomness = 1.0
 lifetime_randomness = 0.57
 gravity = Vector2(0, 0)
-angle_min = -180.0
-angle_max = 180.0
+angle_min = -90.0
+angle_max = 90.0
 angle_curve = SubResource("Curve_gmlin")
 scale_amount_curve = SubResource("Curve_dovo2")
+
+[node name="DashParticles" type="CPUParticles2D" parent="." unique_id=706280888]
+self_modulate = Color(0.2, 0.2, 0.2, 1)
+z_index = -5
+emitting = false
+amount = 100
+texture = ExtResource("3_gmlin")
+lifetime = 0.2
+randomness = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(5, 5)
+gravity = Vector2(0, 0)
+scale_amount_min = 0.6
+scale_amount_max = 0.7
+scale_amount_curve = SubResource("Curve_lvxji")

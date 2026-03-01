@@ -20,6 +20,7 @@ class_name Player extends CharacterBody2D
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite
 @onready var walk_particles: CPUParticles2D = $WalkParticles
+@onready var dash_particles: CPUParticles2D = $DashParticles
 
 var jumped = false
 var coyote_timer = 0.0
@@ -42,6 +43,7 @@ func _ready() -> void:
 func _process(_dt: float) -> void:
 	sprite.scale = scale_dynamics.update(target_scale);
 	sprite.rotation_degrees = rot_dynamics.update(target_rot)
+	dash_particles.emitting = is_dashing
 
 func _physics_process(delta: float) -> void:
 	coyote_timer += delta
@@ -99,6 +101,7 @@ func _physics_process(delta: float) -> void:
 		is_dashing = true
 		velocity.y = dash_velocity
 		scale_dynamics.set_value(Vector2.ONE + Vector2(-stretch, stretch))
+		RoomManager.current_room.camera.shake(0.1, 1.5)
 
 	var was_on_floor = is_on_floor()
 	move_and_slide()
@@ -117,3 +120,5 @@ func _physics_process(delta: float) -> void:
 				collision.get_collider().emit_signal("bounce")
 				# can_dash = true
 				velocity.y = -bounce_velocity
+			else:
+				velocity.y = -100.0
