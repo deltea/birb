@@ -21,6 +21,7 @@ class_name Player extends CharacterBody2D
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite
 @onready var walk_particles: CPUParticles2D = $WalkParticles
 @onready var dash_particles: CPUParticles2D = $DashParticles
+@onready var dash_timer: Timer = $DashTimer
 
 var jumped = false
 var coyote_timer = 0.0
@@ -60,12 +61,13 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.y += gravity * delta
 
-	if can_move and not is_dashing:
+	if can_move:
 		if x_input:
 			velocity.x = move_toward(velocity.x, x_input * max_speed, acceleration)
 			sprite.flip_h = x_input < 0
 		else:
-			velocity.x = move_toward(velocity.x, 0.0, deceleration)
+			if not is_dashing:
+				velocity.x = move_toward(velocity.x, 0.0, deceleration)
 
 	if not is_dashing:
 		if can_move and x_input:
@@ -91,17 +93,21 @@ func _physics_process(delta: float) -> void:
 			rot_dynamics.set_value(sprite.rotation_degrees)
 			jumped = true
 
+	if Input.is_action_just_pressed("jump") and is_on_wall() and not is_on_floor() and can_move:
+		velocity.y = -jump_velocity
+		velocity.x = -x_input * max_speed * 1.5
+		scale_dynamics.set_value(Vector2.ONE + Vector2(-stretch, stretch))
+		rot_dynamics.set_value(sprite.rotation_degrees)
+		jumped = true
+
 	if Input.is_action_just_released("jump") and velocity.y < 0.0:
 		velocity.y *= jump_cut_multiplier
 
 	if Input.is_action_just_pressed("jump") and not is_on_floor():
 		buffer_timer = 0.0
 
-	if Input.is_action_just_pressed("dash") and not is_on_floor() and not is_dashing and can_move:
-		is_dashing = true
-		velocity.y = dash_velocity
-		scale_dynamics.set_value(Vector2.ONE + Vector2(-stretch, stretch))
-		RoomManager.current_room.camera.shake(0.1, 1.5)
+	if Input.is_action_just_pressed("dash") and not is_dashing and can_move:
+		dash(x_input)
 
 	var was_on_floor = is_on_floor()
 	move_and_slide()
@@ -122,3 +128,20 @@ func _physics_process(delta: float) -> void:
 				velocity.y = -bounce_velocity
 			else:
 				velocity.y = -100.0
+
+func dash(x_input: float):
+	dash_timer.start()
+	if Input.is_action_pressed("down"):
+		is_dashing = true
+		velocity.y = dash_velocity
+		scale_dynamics.set_value(Vector2.ONE + Vector2(-stretch, stretch))
+		RoomManager.current_room.camera.shake(0.1, 1.5)
+	elif x_input:
+		is_dashing = true
+		velocity.x = x_input * dash_velocity * 1.5
+		velocity.y = 0.0
+		scale_dynamics.set_value(Vector2.ONE + Vector2(stretch, -stretch))
+		RoomManager.current_room.camera.shake(0.1, 1.5)
+
+func _on_dash_timer_timeout() -> void:
+	is_dashing = false
