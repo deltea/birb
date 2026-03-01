@@ -6,7 +6,7 @@
 [ext_resource type="Shader" uid="uid://dwbxq8e8fq1m0" path="res://shaders/flag.gdshader" id="3_ruxej"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c37cn"]
-size = Vector2(9, 32)
+size = Vector2(15, 32)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ivff"]
 shader = ExtResource("3_ruxej")
@@ -26,7 +26,6 @@ position = Vector2(0, -16)
 texture = ExtResource("1_c37cn")
 
 [node name="Flag" type="Sprite2D" parent="." unique_id=1806601061]
-self_modulate = Color(0, 0, 1, 1)
 material = SubResource("ShaderMaterial_0ivff")
 position = Vector2(-1, -27)
 rotation = -3.1415925

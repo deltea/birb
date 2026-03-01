@@ -121,7 +121,7 @@ angle_curve = SubResource("Curve_gmlin")
 scale_amount_curve = SubResource("Curve_dovo2")
 
 [node name="DashParticles" type="CPUParticles2D" parent="." unique_id=706280888]
-self_modulate = Color(0.2, 0.2, 0.2, 1)
+self_modulate = Color(0.26666668, 0.26666668, 0.26666668, 1)
 z_index = -5
 emitting = false
 amount = 50

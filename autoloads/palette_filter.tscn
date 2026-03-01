@@ -7,10 +7,9 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_05rop"]
 shader = ExtResource("2_2kqrj")
-shader_parameter/num_colors = 7
+shader_parameter/num_colors = 8
 shader_parameter/palette_in = ExtResource("4_li5on")
 shader_parameter/precision = 0.1
-shader_parameter/brightness = 1.0000000149012
 
 [node name="PaletteFilter" type="CanvasLayer" unique_id=1361322869]
 layer = 100

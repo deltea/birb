@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://bkhrrt45shegv"]
 
 [ext_resource type="Script" uid="uid://xkr1lw04irae" path="res://scripts/room.gd" id="1_2q6dc"]
-[ext_resource type="Texture2D" uid="uid://yx1r5ejhw3p8" path="res://color-palettes/calm.png" id="2_2r41h"]
 [ext_resource type="PackedScene" uid="uid://cykuanfl3n1rh" path="res://scenes/camera/camera.tscn" id="3_8c41q"]
 [ext_resource type="Texture2D" uid="uid://clxssb1ell7x" path="res://assets/tileset.png" id="4_2r41h"]
 [ext_resource type="PackedScene" uid="uid://cqedlma3fml7b" path="res://scenes/player/player.tscn" id="4_mx8sn"]
@@ -167,7 +166,6 @@ sources/0 = SubResource("TileSetAtlasSource_klq6b")
 
 [node name="Level" type="Node2D" unique_id=2129457560]
 script = ExtResource("1_2q6dc")
-palette = ExtResource("2_2r41h")
 metadata/_edit_vertical_guides_ = [-160.0, 160.0]
 metadata/_edit_horizontal_guides_ = [-120.0, 120.0]
 

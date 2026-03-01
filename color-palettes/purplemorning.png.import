@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oyw24r446gq6"
-path="res://.godot/imported/silver.png-9bac5937608f282e4a95d205308481d3.ctex"
+uid="uid://b0lisw2c0es6a"
+path="res://.godot/imported/purplemorning.png-76834598208d7976624cf324ac9af399.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://color-palettes/silver.png"
-dest_files=["res://.godot/imported/silver.png-9bac5937608f282e4a95d205308481d3.ctex"]
+source_file="res://color-palettes/purplemorning.png"
+dest_files=["res://.godot/imported/purplemorning.png-76834598208d7976624cf324ac9af399.ctex"]
 
 [params]
 
