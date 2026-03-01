@@ -8,6 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://ckhjag8ppe6sk" path="res://assets/background-solid.png" id="6_olg7q"]
 [ext_resource type="PackedScene" uid="uid://lvqju5v40hdm" path="res://scenes/bouncepad/bouncepad.tscn" id="8_b121j"]
 [ext_resource type="PackedScene" uid="uid://dtjbn58747xj5" path="res://scenes/goal/goal.tscn" id="9_8c41q"]
+[ext_resource type="Texture2D" uid="uid://7qru5twwl775" path="res://assets/generic/square.png" id="9_olg7q"]
+
+[sub_resource type="Curve" id="Curve_8c41q"]
+_data = [Vector2(0, 0), 0.0, 6.0847516, 0, 0, Vector2(0.50213677, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.745327, 0.0, 0, 0]
+point_count = 3
 
 [node name="Level" type="Node2D" unique_id=2129457560]
 script = ExtResource("1_2q6dc")
@@ -62,3 +67,24 @@ position = Vector2(0, -32)
 
 [node name="Goal" parent="." unique_id=89322286 instance=ExtResource("9_8c41q")]
 position = Vector2(128, -112)
+
+[node name="WindParticles" type="CPUParticles2D" parent="." unique_id=2112140125]
+process_mode = 3
+z_index = -10
+amount = 80
+texture = ExtResource("9_olg7q")
+lifetime = 5.0
+preprocess = 5.0
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(320, 240)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+scale_amount_min = 0.2
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_8c41q")
+color = Color(0.26666668, 0.26666668, 0.26666668, 1)
