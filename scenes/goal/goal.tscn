@@ -2,9 +2,17 @@
 
 [ext_resource type="Texture2D" uid="uid://dhcmykuvphibn" path="res://assets/goal.png" id="1_c37cn"]
 [ext_resource type="Script" uid="uid://cs2b1cxln04x2" path="res://scenes/goal/goal.gd" id="1_r84s2"]
+[ext_resource type="Texture2D" uid="uid://c5yivupwbnghf" path="res://assets/flag.png" id="3_0ivff"]
+[ext_resource type="Shader" uid="uid://dwbxq8e8fq1m0" path="res://shaders/flag.gdshader" id="3_ruxej"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c37cn"]
 size = Vector2(32, 4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ivff"]
+shader = ExtResource("3_ruxej")
+shader_parameter/speed = 2.0
+shader_parameter/frequency_y = 5.0
+shader_parameter/amplitude_y = 10.0
 
 [node name="Goal" type="StaticBody2D" unique_id=89322286]
 script = ExtResource("1_r84s2")
@@ -15,5 +23,14 @@ shape = SubResource("RectangleShape2D_c37cn")
 one_way_collision = true
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1363767434]
-position = Vector2(0, -8)
+position = Vector2(0, -16)
 texture = ExtResource("1_c37cn")
+
+[node name="Flag" type="Sprite2D" parent="." unique_id=1806601061]
+self_modulate = Color(0, 0, 1, 1)
+material = SubResource("ShaderMaterial_0ivff")
+position = Vector2(-1, -27)
+rotation = 3.1415927
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_0ivff")
+offset = Vector2(24, 0)

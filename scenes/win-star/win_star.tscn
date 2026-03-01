@@ -5,7 +5,7 @@
 
 [node name="WinStar" type="Node2D" unique_id=278782173]
 process_mode = 3
-z_index = 10
+z_index = -10
 script = ExtResource("1_n5c1s")
 
 [node name="BackStar" parent="." unique_id=545693755 instance=ExtResource("2_17m11")]

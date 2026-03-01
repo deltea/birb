@@ -154,6 +154,8 @@ func win():
 	can_move = false
 	velocity = Vector2.ZERO
 	z_index = 20
+	walk_particles.visible = false
+	dash_particles.visible = false
 	RoomManager.current_room.camera.shake(0.25, 4.0)
 	var win_star := win_star_scene.instantiate() as WinStar
 	win_star.position = position
