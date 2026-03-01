@@ -1,8 +1,9 @@
 [gd_scene format=4 uid="uid://bkhrrt45shegv"]
 
 [ext_resource type="Script" uid="uid://xkr1lw04irae" path="res://scripts/room.gd" id="1_2q6dc"]
-[ext_resource type="Texture2D" uid="uid://dckj2gcfbempt" path="res://color-palettes/coffee.png" id="2_8c41q"]
+[ext_resource type="Texture2D" uid="uid://ddf31i08smuri" path="res://color-palettes/mono.png" id="2_8c41q"]
 [ext_resource type="PackedScene" uid="uid://cykuanfl3n1rh" path="res://scenes/camera/camera.tscn" id="3_8c41q"]
+[ext_resource type="FontFile" uid="uid://caxxxt6gfouhf" path="res://assets/fonts/cubecavern.ttf" id="3_olg7q"]
 [ext_resource type="PackedScene" uid="uid://cqedlma3fml7b" path="res://scenes/player/player.tscn" id="4_mx8sn"]
 [ext_resource type="TileSet" uid="uid://bf6kvyb2ip0wp" path="res://tileset.tres" id="6_8c41q"]
 [ext_resource type="Texture2D" uid="uid://ckhjag8ppe6sk" path="res://assets/background-solid.png" id="6_olg7q"]
@@ -19,6 +20,20 @@ script = ExtResource("1_2q6dc")
 palette = ExtResource("2_8c41q")
 metadata/_edit_vertical_guides_ = [-160.0, 160.0]
 metadata/_edit_horizontal_guides_ = [-120.0, 120.0]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1731603233]
+process_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=1455717981]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=1122141412]
+offset_right = 320.0
+offset_bottom = 32.0
+theme_override_fonts/normal_font = ExtResource("3_olg7q")
+bbcode_enabled = true
+text = "[wave]02:32[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Camera" parent="." unique_id=1304390175 node_paths=PackedStringArray("follow") instance=ExtResource("3_8c41q")]
 ignore_rotation = false

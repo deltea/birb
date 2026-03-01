@@ -17,7 +17,7 @@ const win_star_scene = preload("res://scenes/win-star/win_star.tscn")
 @export var dash_velocity = 420.0
 
 @export_category("Animation")
-@export var squash = 0.4
+@export var squash = 0.6
 @export var stretch = 0.4
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite
@@ -131,8 +131,8 @@ func _physics_process(delta: float) -> void:
 				collision.get_collider().bounce()
 				velocity.y = -bounce_velocity
 				RoomManager.current_room.camera.impact()
-			else:
-				velocity.y = -100.0
+			# else:
+			# 	velocity.y = -100.0
 
 func dash_horizontal(x_input: float):
 	dash_timer.start()

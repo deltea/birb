@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @export var default_palette: Texture2D
-@export var brightness_change_speed = 15.0
+@export var brightness_change_speed = 20.0
 
 @onready var color_rect: ColorRect = $ColorRect
 
@@ -26,4 +26,4 @@ func set_brightness(value: float):
 
 func _process(dt: float) -> void:
 	brightness = lerp(brightness, target_brightness, dt * brightness_change_speed)
-	$ColorRect.material.set_shader_parameter("brightness", brightness)
+	color_rect.material.set_shader_parameter("brightness", brightness)
