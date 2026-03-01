@@ -20,5 +20,3 @@ shape = SubResource("RectangleShape2D_5i2p4")
 one_way_collision = true
 
 [node name="BounceParticles" parent="." unique_id=961948646 instance=ExtResource("3_ql6kn")]
-
-[connection signal="bounce" from="." to="." method="_on_bounce"]

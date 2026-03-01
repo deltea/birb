@@ -1,7 +1,6 @@
 class_name Camera extends Camera2D
 
 @export var follow: Node2D
-@export var follow_speed = 5.0
 @export var rotation_speed = 5.0
 @export var impact_rotation = 5.0
 @export var shake_damping_speed = 2.0

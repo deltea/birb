@@ -69,8 +69,8 @@ func _physics_process(delta: float) -> void:
 			if not is_dashing:
 				velocity.x = move_toward(velocity.x, 0.0, deceleration)
 
-	if not is_dashing:
-		if can_move and x_input:
+	if not is_dashing and can_move:
+		if x_input:
 			if is_on_floor():
 				# target_rot = sin(Clock.time * 20.0) * 15.0
 				target_rot = velocity.x / max_speed * 15.0
@@ -126,9 +126,10 @@ func _physics_process(delta: float) -> void:
 		if is_dashing:
 			is_dashing = false
 			if collision.get_collider() is Bouncepad:
-				collision.get_collider().emit_signal("bounce")
-				# can_dash = true
+				collision.get_collider().bounce()
 				velocity.y = -bounce_velocity
+			elif collision.get_collider() is Goal:
+				win()
 			else:
 				velocity.y = -100.0
 
@@ -145,6 +146,13 @@ func dash_down():
 	velocity.y = dash_velocity
 	scale_dynamics.set_value(Vector2.ONE + Vector2(-stretch, stretch))
 	RoomManager.current_room.camera.shake(0.1, 1.5)
+
+func win():
+	sprite.play("win")
+	can_move = false
+	velocity = Vector2.ZERO
+	get_tree().paused = true
+	RoomManager.current_room.complete()
 
 func _on_dash_timer_timeout() -> void:
 	is_dashing = false

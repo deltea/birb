@@ -7,30 +7,34 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmlin"]
 size = Vector2(8, 16)
 
-[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_dovo2"]
-_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAACcAAAAUklGRpQAAABXRUJQVlA4TIcAAAAvH8AHEBcgEEii3N9kDYFAEuX+JgsEkij3N3n+A/4VMIptq81PL3sQgQokpNGEwZplsMl/KRIi+m+0bZsMLUF9g66G4MxAnLQRkHSRkHSQmEJaMSUFyUTFKRtBuaa7At7+9mYAT33z4V/ueiQzANoIpEgkILwZn6SYbCIDmwH7G9zztnUjhgAA")
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_gmlin"]
+_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAACgAAAAUklGRpgAAABXRUJQVlA4TIsAAAAvH8AHEBcgEEii3N9kDYFAEuX+JgsEkij3N3n+A/4VOI4kSXH6WE/+631WyATsOfifH2uKGMZN9YosiOg/0bQNc6naG1gXkO0XkERquvaahk7T0NVRckmkv1IwIhj9YIR4/7XbQhzj/IPL1oX6fqFOql/7+HPstfi1d3EyDUYPxlH0e/nH36sEyMcAAA==")
 size_override = Vector2(32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gmlin"]
-atlas = SubResource("PortableCompressedTexture2D_dovo2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvxji"]
+atlas = SubResource("PortableCompressedTexture2D_gmlin")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lvxji"]
-atlas = SubResource("PortableCompressedTexture2D_dovo2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_p47bc"]
+atlas = SubResource("PortableCompressedTexture2D_gmlin")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p47bc"]
-atlas = SubResource("PortableCompressedTexture2D_dovo2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_75vfm"]
+atlas = SubResource("PortableCompressedTexture2D_gmlin")
 region = Rect2(0, 16, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_75vfm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0owmy"]
+atlas = SubResource("PortableCompressedTexture2D_gmlin")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qek5x"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gmlin")
+"texture": SubResource("AtlasTexture_lvxji")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lvxji")
+"texture": SubResource("AtlasTexture_p47bc")
 }],
 "loop": true,
 "name": &"idle",
@@ -38,13 +42,21 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gmlin")
+"texture": SubResource("AtlasTexture_lvxji")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p47bc")
+"texture": SubResource("AtlasTexture_75vfm")
 }],
 "loop": true,
 "name": &"walk",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0owmy")
+}],
+"loop": true,
+"name": &"win",
 "speed": 10.0
 }]
 
@@ -62,17 +74,17 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.89102566, 0.5898877), 0.0, 0.0
 point_count = 3
 
 [node name="Player" type="CharacterBody2D" unique_id=249500363]
+process_mode = 3
 z_index = 10
 script = ExtResource("1_8afob")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=1428469450]
-position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_gmlin")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="." unique_id=833951022]
 texture_filter = 1
 position = Vector2(0, 8)
-sprite_frames = SubResource("SpriteFrames_75vfm")
+sprite_frames = SubResource("SpriteFrames_qek5x")
 animation = &"idle"
 offset = Vector2(0, -8)
 metadata/_aseprite_wizard_interface_config_ = {
@@ -95,7 +107,7 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://assets/player.ase",
 "source_uid": 2513588182964405636
 }
-metadata/_aseprite_wizard_source_file_hash_ = "5b6b6a073a1e8fbfc9f81ca1beb73a88"
+metadata/_aseprite_wizard_source_file_hash_ = "f1684c6a9daaa36bbb43cccd95db4b3c"
 
 [node name="WalkParticles" type="CPUParticles2D" parent="." unique_id=1097503433]
 self_modulate = Color(0.33333334, 0.33333334, 0.33333334, 1)

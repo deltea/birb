@@ -7,3 +7,6 @@ var camera: Camera
 
 func _enter_tree() -> void:
 	RoomManager.current_room = self
+
+func complete():
+	pass
