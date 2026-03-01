@@ -15,6 +15,8 @@ const win_star_scene = preload("res://scenes/win-star/win_star.tscn")
 @export var jump_cut_multiplier = 0.5
 @export var bounce_velocity = 400.0
 @export var dash_velocity = 420.0
+@export var wall_jump_x_multiplier = 1.2
+@export var wall_jump_control_lock_time = 0.08
 
 @export_category("Animation")
 @export var squash = 0.6
@@ -33,6 +35,8 @@ var target_scale = Vector2.ONE;
 var target_rot = 0.0;
 var is_dashing = false
 var original_particles_x
+var wall_jump_lock_timer = 0.0
+var wall_jump_target_velocity_x = 0.0
 
 @onready var scale_dynamics: DynamicsSolverVector = Dynamics.create_dynamics_vector(2.0, 0.5, 2.0);
 @onready var rot_dynamics: DynamicsSolver = Dynamics.create_dynamics(10.0, 0.8, 10.0);
@@ -51,6 +55,8 @@ func _process(_dt: float) -> void:
 func _physics_process(delta: float) -> void:
 	coyote_timer += delta
 	buffer_timer += delta
+	if wall_jump_lock_timer > 0.0:
+		wall_jump_lock_timer = max(0.0, wall_jump_lock_timer - delta)
 
 	var x_input := Input.get_axis("left", "right")
 
@@ -65,11 +71,17 @@ func _physics_process(delta: float) -> void:
 
 	if can_move:
 		if x_input:
-			velocity.x = move_toward(velocity.x, x_input * max_speed, acceleration)
+			if wall_jump_lock_timer > 0.0:
+				velocity.x = move_toward(velocity.x, wall_jump_target_velocity_x, acceleration * 0.5)
+			else:
+				velocity.x = move_toward(velocity.x, x_input * max_speed, acceleration)
 			sprite.flip_h = x_input < 0
 		else:
 			if not is_dashing:
-				velocity.x = move_toward(velocity.x, 0.0, deceleration)
+				if wall_jump_lock_timer > 0.0:
+					velocity.x = move_toward(velocity.x, wall_jump_target_velocity_x, deceleration * 0.5)
+				else:
+					velocity.x = move_toward(velocity.x, 0.0, deceleration)
 
 	if not is_dashing and can_move:
 		if x_input:
@@ -100,7 +112,9 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("jump") and is_on_wall() and not is_on_floor() and can_move and x_input:
 		velocity.y = -jump_velocity
-		velocity.x = -x_input * max_speed * 1.5
+		velocity.x = -x_input * max_speed * wall_jump_x_multiplier
+		wall_jump_target_velocity_x = velocity.x
+		wall_jump_lock_timer = wall_jump_control_lock_time
 		scale_dynamics.set_value(Vector2.ONE + Vector2(-stretch, stretch))
 		rot_dynamics.set_value(sprite.rotation_degrees)
 		jumped = true

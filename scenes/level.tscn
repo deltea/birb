@@ -13,6 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://dtjbn58747xj5" path="res://scenes/goal/goal.tscn" id="9_8c41q"]
 [ext_resource type="Texture2D" uid="uid://7qru5twwl775" path="res://assets/generic/square.png" id="9_olg7q"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_8iemx"]
+font = ExtResource("3_olg7q")
+font_size = 32
+
 [sub_resource type="Animation" id="Animation_ijbq7"]
 length = 0.001
 tracks/0/type = "value"
@@ -156,6 +160,17 @@ text = "[wave]02:32[/wave]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="CountdownLabel" type="Label" parent="CanvasLayer" unique_id=263784142]
+offset_left = 136.0
+offset_top = 96.0
+offset_right = 184.0
+offset_bottom = 144.0
+pivot_offset = Vector2(24, 24)
+text = "3"
+label_settings = SubResource("LabelSettings_8iemx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CompleteCanvas" type="CanvasLayer" parent="." unique_id=229946939]
 layer = 20
 visible = false
@@ -253,11 +268,18 @@ offset_bottom = 240.0
 
 [node name="Camera" parent="." unique_id=1304390175 node_paths=PackedStringArray("follow") instance=ExtResource("3_8c41q")]
 ignore_rotation = false
+limit_left = -112
+limit_top = -256
+limit_right = 192
+limit_bottom = 64
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 follow = NodePath("../Player")
 impact_rotation = 2.0
 
 [node name="Player" parent="." unique_id=249500363 instance=ExtResource("4_mx8sn")]
-position = Vector2(0, 16)
+position = Vector2(0, 24)
 
 [node name="TileMapForeground" type="TileMapLayer" parent="." unique_id=537930431]
 self_modulate = Color(0, 0, 0, 1)
@@ -267,7 +289,7 @@ tile_set = ExtResource("6_8c41q")
 
 [node name="ParallaxMidground" type="Parallax2D" parent="." unique_id=1976364911]
 z_index = -10
-scroll_scale = Vector2(0.9, 0.9)
+scroll_scale = Vector2(0.8, 0.8)
 
 [node name="TileMapMidground" type="TileMapLayer" parent="ParallaxMidground" unique_id=1438112172]
 self_modulate = Color(0.13333334, 0.13333334, 0.13333334, 1)
@@ -277,8 +299,7 @@ collision_enabled = false
 
 [node name="ParallaxBackground" type="Parallax2D" parent="." unique_id=1864692733]
 z_index = -20
-scroll_scale = Vector2(0.8, 0.8)
-scroll_offset = Vector2(128, 56)
+scroll_scale = Vector2(0.7, 0.7)
 repeat_size = Vector2(32, 32)
 repeat_times = 12
 

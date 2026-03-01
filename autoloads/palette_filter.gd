@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @export var default_palette: Texture2D
-@export var brightness_change_speed = 16.0
+@export var brightness_change_speed = 12.0
 
 @onready var color_rect: ColorRect = $ColorRect
 

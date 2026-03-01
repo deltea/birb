@@ -19,11 +19,6 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	original_pos = offset
 
-	# limit_top = -RoomManager.current_room.limit_y
-	# limit_bottom = RoomManager.current_room.limit_y
-	# limit_left = -RoomManager.current_room.limit_x
-	# limit_right = RoomManager.current_room.limit_x
-
 	reset_smoothing()
 
 func _process(delta: float) -> void:
@@ -31,8 +26,8 @@ func _process(delta: float) -> void:
 
 	if follow:
 		var target_pos = follow.global_position
-		global_position = pos_dynamics.update(target_pos)
-
+		# global_position = pos_dynamics.update(target_pos)
+		global_position = target_pos
 	if shake_duration > 0:
 		offset = original_pos + Vector2.from_angle(randf_range(0, PI*2)) * shake_magnitude
 		shake_duration -= delta * shake_damping_speed
