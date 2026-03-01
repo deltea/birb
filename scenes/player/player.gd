@@ -1,5 +1,7 @@
 class_name Player extends CharacterBody2D
 
+const win_star_scene = preload("res://scenes/win-star/win_star.tscn")
+
 @export_category("Movement")
 @export var max_speed = 150.0
 @export var jump_velocity = 280.0
@@ -151,6 +153,11 @@ func win():
 	sprite.play("win")
 	can_move = false
 	velocity = Vector2.ZERO
+	z_index = 20
+	RoomManager.current_room.camera.shake(0.25, 4.0)
+	var win_star := win_star_scene.instantiate() as WinStar
+	win_star.position = position
+	RoomManager.current_room.add_child(win_star)
 	get_tree().paused = true
 	RoomManager.current_room.complete()
 

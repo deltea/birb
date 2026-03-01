@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cgc0rc063gbvf"]
+
+[ext_resource type="Script" uid="uid://fevtxq7yw4sn" path="res://scenes/win-star/win_star.gd" id="1_n5c1s"]
+[ext_resource type="PackedScene" uid="uid://cl6b04m0wameb" path="res://scenes/star2d/star_2d.tscn" id="2_17m11"]
+
+[node name="WinStar" type="Node2D" unique_id=278782173]
+process_mode = 3
+z_index = 10
+script = ExtResource("1_n5c1s")
+
+[node name="BackStar" parent="." unique_id=545693755 instance=ExtResource("2_17m11")]
+color = Color(0.33333334, 0.33333334, 0.33333334, 1)
+polygon = PackedVector2Array(49.316433, 12.432229, 39.03748, -2.6278071, 48.904533, -19.610985, 26.740875, -22.320055, 27.156378, -43.20893, 7.9523525, -31.545563, -3.7553806, -55.788185, -14.119395, -35.209984, -32.424103, -38.846188, -30.86506, -19.398376, -54.560745, -13.754278, -35.1853, 2.3684993, -52.476288, 21.043274, -29.494366, 24.618343, -27.423958, 43.634705, -9.616456, 38.14674, 3.6581752, 54.344173, 14.673245, 36.59113, 34.425743, 41.244255, 32.66803, 20.53153)
+peak_randomness = 0
+high_radius = 30.0
+star_scale = 1.8
+
+[node name="FrontStar" parent="." unique_id=856709757 instance=ExtResource("2_17m11")]
+color = Color(0, 0, 1, 1)
+polygon = PackedVector2Array(35.042503, -8.989144, 15.325936, -11.501751, 18.46929, -31.21414, 3.0969434, -21.72589, -8.39019, -32.707592, -12.045182, -16.050049, -29.131428, -17.236956, -18.543386, -2.6432912, -32.00343, 8.209559, -14.580538, 10.942348, -18.42035, 31.13144, -2.7422116, 19.237328, 9.1637125, 35.723026, 11.046701, 14.7195835, 31.290733, 18.514614, 21.21962, 3.0247765)
+peaks = 8
+peak_randomness = 0
+high_radius = 35.0
