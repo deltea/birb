@@ -88,12 +88,15 @@ func _physics_process(delta: float) -> void:
 			target_rot = 0.0
 			walk_particles.emitting = false
 
-	if (Input.is_action_just_pressed("jump") or buffer_timer < buffer_time) and not jumped and can_move:
-		if is_on_floor() or coyote_timer < coyote_time:
-			velocity.y = -jump_velocity
-			scale_dynamics.set_value(Vector2.ONE + Vector2(-stretch, stretch))
-			rot_dynamics.set_value(sprite.rotation_degrees)
-			jumped = true
+	if not jumped and can_move:
+		# buffer jump check
+		if Input.is_action_just_pressed("jump") or buffer_timer < buffer_time:
+			# coyote jump check
+			if is_on_floor() or coyote_timer < coyote_time:
+				velocity.y = -jump_velocity
+				scale_dynamics.set_value(Vector2.ONE + Vector2(-stretch, stretch))
+				rot_dynamics.set_value(sprite.rotation_degrees)
+				jumped = true
 
 	if Input.is_action_just_pressed("jump") and is_on_wall() and not is_on_floor() and can_move and x_input:
 		velocity.y = -jump_velocity
@@ -160,8 +163,6 @@ func win():
 	win_star.position = position
 	RoomManager.current_room.add_child(win_star)
 	get_tree().paused = true
-
-	await Clock.wait(1.0)
 	RoomManager.current_room.complete()
 
 func _on_dash_timer_timeout() -> void:

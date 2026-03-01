@@ -12,8 +12,11 @@ func _enter_tree() -> void:
 	RoomManager.current_room = self
 
 func complete():
-	PaletteFilter.set_brightness(0.25)
 	is_completed = true
+	await Clock.wait(1.0)
+	PaletteFilter.set_brightness(0.25)
+	$CompleteCanvas.visible = true
+	$CompleteCanvas/SubViewportContainer/SubViewport/AnimationPlayer.play("complete")
 
 func _process(dt: float) -> void:
 	if not is_completed:

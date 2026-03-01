@@ -5,12 +5,134 @@
 [ext_resource type="PackedScene" uid="uid://cykuanfl3n1rh" path="res://scenes/camera/camera.tscn" id="3_8c41q"]
 [ext_resource type="FontFile" uid="uid://caxxxt6gfouhf" path="res://assets/fonts/cubecavern.ttf" id="3_olg7q"]
 [ext_resource type="PackedScene" uid="uid://cqedlma3fml7b" path="res://scenes/player/player.tscn" id="4_mx8sn"]
-[ext_resource type="PackedScene" uid="uid://bcdqvbgmsq873" path="res://scenes/ui/complete-canvas/complete_canvas.tscn" id="4_t1rx8"]
+[ext_resource type="Shader" uid="uid://bqsviir6g074p" path="res://shaders/palette_filter.gdshader" id="4_t1rx8"]
+[ext_resource type="Texture2D" uid="uid://bm5w1x2hdngqi" path="res://assets/palette-in.png" id="5_8iemx"]
 [ext_resource type="TileSet" uid="uid://bf6kvyb2ip0wp" path="res://tileset.tres" id="6_8c41q"]
 [ext_resource type="PackedScene" uid="uid://lvqju5v40hdm" path="res://scenes/bouncepad/bouncepad.tscn" id="8_b121j"]
 [ext_resource type="Texture2D" uid="uid://c8ke4gok4cnd0" path="res://assets/generic/square-big.png" id="8_t1rx8"]
 [ext_resource type="PackedScene" uid="uid://dtjbn58747xj5" path="res://scenes/goal/goal.tscn" id="9_8c41q"]
 [ext_resource type="Texture2D" uid="uid://7qru5twwl775" path="res://assets/generic/square.png" id="9_olg7q"]
+
+[sub_resource type="Animation" id="Animation_ijbq7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorStripeTop:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(240, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorStripeTopInner:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(240, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorStripeBottomInner:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(311.99835, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorStripeBottom:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(200.00002, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lsceb"]
+resource_name = "complete"
+length = 1.2333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorStripeTop:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.40000004),
+"transitions": PackedFloat32Array(0.2, 0.2, 0.2),
+"update": 0,
+"values": [Vector2(240, 0), Vector2(240, 0), Vector2(240, 40)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorStripeTopInner:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.40000004, 0.6, 0.8),
+"transitions": PackedFloat32Array(0.2, 0.2, 0.2, 0.2, 0.2),
+"update": 0,
+"values": [Vector2(240, 0), Vector2(240, 0), Vector2(240, 40), Vector2(240, 40), Vector2(240, 56)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorStripeBottomInner:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.8000001),
+"transitions": PackedFloat32Array(0.2, 0.2, 0.2, 0.2),
+"update": 0,
+"values": [Vector2(311.99835, 0), Vector2(311.99835, 0), Vector2(311.99835, 39.94287), Vector2(311.99835, 56.18152)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorStripeBottom:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.20000002, 0.40000004, 0.6),
+"transitions": PackedFloat32Array(0.2, 0.2, 0.2, 0.2),
+"update": 0,
+"values": [Vector2(200.00002, 0), Vector2(200.00002, 0), Vector2(200.00002, 40.219513), Vector2(200.00002, 40.219513)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ijbq7"]
+_data = {
+&"RESET": SubResource("Animation_ijbq7"),
+&"complete": SubResource("Animation_lsceb")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_lsceb"]
+font = ExtResource("3_olg7q")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8iemx"]
+shader = ExtResource("4_t1rx8")
+shader_parameter/num_colors = 8
+shader_parameter/palette_in = ExtResource("5_8iemx")
+shader_parameter/palette_out = ExtResource("2_8c41q")
+shader_parameter/precision = 0.1
+shader_parameter/brightness = 2.0
+shader_parameter/transparent_bg = true
 
 [sub_resource type="Curve" id="Curve_8c41q"]
 _data = [Vector2(0, 0), 0.0, 6.0847516, 0, 0, Vector2(0.50213677, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.745327, 0.0, 0, 0]
@@ -34,8 +156,100 @@ text = "[wave]02:32[/wave]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CompleteCanvas" parent="." unique_id=229946939 instance=ExtResource("4_t1rx8")]
+[node name="CompleteCanvas" type="CanvasLayer" parent="." unique_id=229946939]
+layer = 20
 visible = false
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CompleteCanvas" unique_id=1373178145]
+offset_right = 320.0
+offset_bottom = 240.0
+
+[node name="SubViewport" type="SubViewport" parent="CompleteCanvas/SubViewportContainer" unique_id=1480397239]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(320, 240)
+render_target_update_mode = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CompleteCanvas/SubViewportContainer/SubViewport" unique_id=542877002]
+libraries/ = SubResource("AnimationLibrary_ijbq7")
+autoplay = &"complete"
+
+[node name="ColorStripeTopInner" type="ColorRect" parent="CompleteCanvas/SubViewportContainer/SubViewport" unique_id=265641619]
+offset_left = -32.0
+offset_right = 208.0
+rotation = -0.2617994
+pivot_offset = Vector2(32, 0)
+color = Color(0.33333334, 0.33333334, 0.33333334, 1)
+
+[node name="Label" type="Label" parent="CompleteCanvas/SubViewportContainer/SubViewport/ColorStripeTopInner" unique_id=960924771]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -265.1646
+offset_top = -16.119446
+grow_horizontal = 0
+grow_vertical = 0
+text = "HELLO THERE!  HELLO THERE!  HELLO THERE!"
+label_settings = SubResource("LabelSettings_lsceb")
+vertical_alignment = 1
+clip_text = true
+
+[node name="ColorStripeTop" type="ColorRect" parent="CompleteCanvas/SubViewportContainer/SubViewport" unique_id=1592019829]
+offset_left = -32.0
+offset_right = 208.0
+rotation = -0.2617994
+pivot_offset = Vector2(32, 0)
+
+[node name="ColorStripeBottomInner" type="ColorRect" parent="CompleteCanvas/SubViewportContainer/SubViewport" unique_id=889184578]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -239.93344
+offset_top = -56.072464
+offset_right = 72.06491
+offset_bottom = -56.072464
+grow_horizontal = 0
+grow_vertical = 0
+rotation = -0.2617994
+pivot_offset = Vector2(239.55183, 56.373505)
+color = Color(0.33333334, 0.33333334, 0.33333334, 1)
+
+[node name="Label" type="Label" parent="CompleteCanvas/SubViewportContainer/SubViewport/ColorStripeBottomInner" unique_id=1128971183]
+layout_mode = 1
+offset_right = 265.1646
+offset_bottom = 16.119446
+text = "HELLO THERE!  HELLO THERE!  HELLO THERE!"
+label_settings = SubResource("LabelSettings_lsceb")
+vertical_alignment = 1
+clip_text = true
+
+[node name="ColorStripeBottom" type="ColorRect" parent="CompleteCanvas/SubViewportContainer/SubViewport" unique_id=493543090]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -168.05681
+offset_top = -40.212036
+offset_right = 31.943207
+offset_bottom = -40.212036
+grow_horizontal = 0
+grow_vertical = 0
+rotation = -0.2617994
+pivot_offset = Vector2(168, 40)
+
+[node name="PaletteFilter" type="ColorRect" parent="CompleteCanvas/SubViewportContainer/SubViewport" unique_id=1062036932]
+material = SubResource("ShaderMaterial_8iemx")
+offset_right = 320.0
+offset_bottom = 240.0
 
 [node name="Camera" parent="." unique_id=1304390175 node_paths=PackedStringArray("follow") instance=ExtResource("3_8c41q")]
 ignore_rotation = false
