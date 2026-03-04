@@ -21,29 +21,41 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.89102566, 0.5898877), 0.0, 0.0
 point_count = 3
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_gmlin"]
-_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAACcAAAAUklGRpQAAABXRUJQVlA4TIgAAAAvH8AHEBcgEEii3N9kDYFAEuX+JgsEkij3N3n+A/4VOKpt22kebd5NoAIJLfdR5vj4UtLLl5l3f4KEiP4bbdvGQ2tR35A+E7pTI1QBXD02rvbVKtMGlacK8FY5hTiFP39Rvh3OtaFc8vRPHpxtZqeGAeyxsX0NtcHjjVMY2ky2w5T2/NraRUYA")
+_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAACmAAAAUklGRp4AAABXRUJQVlA4TJIAAAAvH8AHEBcgEEjyZ9ptDYFAkj/TbgsEkvyZdnv+A/4VuIok2W1O6T9zUAmFIDjtKfyLx4PiHI7m27MNIaL/RNM2m2tV35BdIfRTJ6QAVo+V1baw2pbBKSMFWFRBIUFhZ4UQX//m2hGXMv/B6buC+aljDjB/rL7Z8yHy/rFSswEWFGau2Vzj2y3QqIGbT1+7xyROAA==")
 size_override = Vector2(32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lvxji"]
 atlas = SubResource("PortableCompressedTexture2D_gmlin")
-region = Rect2(0, 0, 16, 16)
+region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p47bc"]
 atlas = SubResource("PortableCompressedTexture2D_gmlin")
-region = Rect2(16, 0, 16, 16)
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_75vfm"]
 atlas = SubResource("PortableCompressedTexture2D_gmlin")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0owmy"]
+atlas = SubResource("PortableCompressedTexture2D_gmlin")
 region = Rect2(0, 16, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_0owmy"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_qek5x"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lvxji")
+}],
+"loop": true,
+"name": &"dash_down",
+"speed": 10.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_p47bc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75vfm")
 }],
 "loop": true,
 "name": &"idle",
@@ -51,10 +63,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lvxji")
+"texture": SubResource("AtlasTexture_p47bc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_75vfm")
+"texture": SubResource("AtlasTexture_0owmy")
 }],
 "loop": true,
 "name": &"walk",
@@ -62,7 +74,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lvxji")
+"texture": SubResource("AtlasTexture_p47bc")
 }],
 "loop": true,
 "name": &"win",
@@ -112,7 +124,7 @@ scale_amount_curve = SubResource("Curve_lvxji")
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="." unique_id=833951022]
 texture_filter = 1
 position = Vector2(0, 8)
-sprite_frames = SubResource("SpriteFrames_0owmy")
+sprite_frames = SubResource("SpriteFrames_qek5x")
 animation = &"idle"
 offset = Vector2(0, -8)
 metadata/_aseprite_wizard_interface_config_ = {
@@ -135,7 +147,7 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://assets/player.ase",
 "source_uid": 2513588182964405636
 }
-metadata/_aseprite_wizard_source_file_hash_ = "c9dc1b567f0700cef3267607d38fc4f0"
+metadata/_aseprite_wizard_source_file_hash_ = "87f82eebd3dfc9dc5e5eda3a3575b52e"
 
 [node name="DashTimer" type="Timer" parent="." unique_id=1393713711]
 wait_time = 0.3

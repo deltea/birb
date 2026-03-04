@@ -1,13 +1,14 @@
 [gd_scene format=4 uid="uid://bkhrrt45shegv"]
 
-[ext_resource type="Script" uid="uid://xkr1lw04irae" path="res://scripts/room.gd" id="1_2q6dc"]
-[ext_resource type="Texture2D" uid="uid://b0lisw2c0es6a" path="res://color-palettes/purplemorning.png" id="2_8c41q"]
+[ext_resource type="Script" uid="uid://bjup6ntnjl6ln" path="res://scripts/level.gd" id="1_64w2a"]
+[ext_resource type="Texture2D" uid="uid://cksk5qojiqsdw" path="res://color-palettes/purple.png" id="2_8c41q"]
 [ext_resource type="PackedScene" uid="uid://cykuanfl3n1rh" path="res://scenes/camera/camera.tscn" id="3_8c41q"]
 [ext_resource type="FontFile" uid="uid://caxxxt6gfouhf" path="res://assets/fonts/cubecavern.ttf" id="3_olg7q"]
 [ext_resource type="PackedScene" uid="uid://cqedlma3fml7b" path="res://scenes/player/player.tscn" id="4_mx8sn"]
 [ext_resource type="Shader" uid="uid://bqsviir6g074p" path="res://shaders/palette_filter.gdshader" id="4_t1rx8"]
 [ext_resource type="Texture2D" uid="uid://bm5w1x2hdngqi" path="res://assets/palette-in.png" id="5_8iemx"]
 [ext_resource type="TileSet" uid="uid://bf6kvyb2ip0wp" path="res://tileset.tres" id="6_8c41q"]
+[ext_resource type="Texture2D" uid="uid://b0lisw2c0es6a" path="res://color-palettes/purplemorning.png" id="6_fpun6"]
 [ext_resource type="PackedScene" uid="uid://lvqju5v40hdm" path="res://scenes/bouncepad/bouncepad.tscn" id="8_b121j"]
 [ext_resource type="Texture2D" uid="uid://c8ke4gok4cnd0" path="res://assets/generic/square-big.png" id="8_t1rx8"]
 [ext_resource type="PackedScene" uid="uid://dtjbn58747xj5" path="res://scenes/goal/goal.tscn" id="9_8c41q"]
@@ -134,7 +135,7 @@ font = ExtResource("3_olg7q")
 shader = ExtResource("4_t1rx8")
 shader_parameter/num_colors = 8
 shader_parameter/palette_in = ExtResource("5_8iemx")
-shader_parameter/palette_out = ExtResource("2_8c41q")
+shader_parameter/palette_out = ExtResource("6_fpun6")
 shader_parameter/precision = 0.1
 shader_parameter/brightness = 2.0
 shader_parameter/transparent_bg = true
@@ -145,7 +146,7 @@ point_count = 3
 
 [node name="Level" type="Node2D" unique_id=2129457560]
 process_mode = 3
-script = ExtResource("1_2q6dc")
+script = ExtResource("1_64w2a")
 palette = ExtResource("2_8c41q")
 metadata/_edit_vertical_guides_ = [-160.0, 160.0]
 metadata/_edit_horizontal_guides_ = [-120.0, 120.0]
@@ -330,7 +331,7 @@ position = Vector2(0, 24)
 [node name="WindParticles" type="CPUParticles2D" parent="." unique_id=2112140125]
 process_mode = 3
 z_index = -10
-amount = 50
+amount = 70
 texture = ExtResource("9_olg7q")
 lifetime = 5.0
 preprocess = 5.0

@@ -144,6 +144,7 @@ func _physics_process(delta: float) -> void:
 		var collision := get_slide_collision(i)
 		if is_dashing:
 			is_dashing = false
+			sprite.stop()
 			if collision.get_collider() is Bouncepad:
 				collision.get_collider().bounce()
 				velocity.y = -bounce_velocity
@@ -160,6 +161,7 @@ func dash_horizontal(x_input: float):
 	RoomManager.current_room.camera.shake(0.15, 2.0)
 
 func dash_down():
+	sprite.play("dash_down")
 	is_dashing = true
 	velocity.y = dash_velocity
 	scale_dynamics.set_value(Vector2.ONE + Vector2(-stretch, stretch))
@@ -181,3 +183,4 @@ func win():
 
 func _on_dash_timer_timeout() -> void:
 	is_dashing = false
+	sprite.stop()

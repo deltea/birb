@@ -13,6 +13,7 @@ script = ExtResource("1_h1g3x")
 shape = SubResource("CircleShape2D_la71a")
 
 [node name="Star2D" parent="." unique_id=856709757 instance=ExtResource("2_la71a")]
+color = Color(0.73333335, 0.73333335, 0.73333335, 1)
 polygon = PackedVector2Array(7.064234, -1.3916168, 3.060696, -3.2988088, 0.8594623, -7.148519, -2.191547, -3.9302826, -6.5330567, -3.0264118, -4.4151464, 0.8697601, -4.897114, 5.278094, -0.5371641, 4.4678245, 3.5064757, 6.2884517, 4.083161, 1.8915069)
 peaks = 5
 peak_randomness = 0
