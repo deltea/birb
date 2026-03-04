@@ -8,7 +8,6 @@
 [ext_resource type="Shader" uid="uid://bqsviir6g074p" path="res://shaders/palette_filter.gdshader" id="4_t1rx8"]
 [ext_resource type="Texture2D" uid="uid://bm5w1x2hdngqi" path="res://assets/palette-in.png" id="5_8iemx"]
 [ext_resource type="TileSet" uid="uid://bf6kvyb2ip0wp" path="res://tileset.tres" id="6_8c41q"]
-[ext_resource type="Texture2D" uid="uid://b0lisw2c0es6a" path="res://color-palettes/purplemorning.png" id="6_fpun6"]
 [ext_resource type="PackedScene" uid="uid://lvqju5v40hdm" path="res://scenes/bouncepad/bouncepad.tscn" id="8_b121j"]
 [ext_resource type="Texture2D" uid="uid://c8ke4gok4cnd0" path="res://assets/generic/square-big.png" id="8_t1rx8"]
 [ext_resource type="PackedScene" uid="uid://dtjbn58747xj5" path="res://scenes/goal/goal.tscn" id="9_8c41q"]
@@ -135,7 +134,7 @@ font = ExtResource("3_olg7q")
 shader = ExtResource("4_t1rx8")
 shader_parameter/num_colors = 8
 shader_parameter/palette_in = ExtResource("5_8iemx")
-shader_parameter/palette_out = ExtResource("6_fpun6")
+shader_parameter/palette_out = ExtResource("2_8c41q")
 shader_parameter/precision = 0.1
 shader_parameter/brightness = 2.0
 shader_parameter/transparent_bg = true
