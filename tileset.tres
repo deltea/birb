@@ -2,6 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://clxssb1ell7x" path="res://assets/tileset.png" id="1_2urvg"]
 
+[sub_resource type="TileMapPattern" id="TileMapPattern_2urvg"]
+tile_data = PackedInt32Array(0, 524288, 1342177282, 65536, 0, 1, 131072, 0, 1, 196608, 0, 1)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_ej02t"]
+tile_data = PackedInt32Array(0, 524288, 1342177282, 65536, 0, 1, 131072, 0, 1, 196608, 0, 1, 262144, 0, 1)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_14fb3"]
+tile_data = PackedInt32Array(0, 0, 1342177282, 65536, 0, 1, 131072, 0, 1, 196608, 0, 1)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_olg7q"]
 texture = ExtResource("1_2urvg")
 margins = Vector2i(1, 1)
@@ -61,7 +70,14 @@ separation = Vector2i(2, 2)
 10:3/0 = 0
 10:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, 0, 0, -8, 8)
 3:0/0 = 0
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:1/0 = 0
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [resource]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_olg7q")
+pattern_0 = SubResource("TileMapPattern_2urvg")
+pattern_1 = SubResource("TileMapPattern_ej02t")
+pattern_2 = SubResource("TileMapPattern_14fb3")
