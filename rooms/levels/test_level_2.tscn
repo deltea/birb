@@ -8,15 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://b20u13j8p26iv" path="res://scenes/particles/environment-particles/environment_particles.tscn" id="5_pk6ao"]
 [ext_resource type="PackedScene" uid="uid://ds6uisrlvq6nk" path="res://scenes/breakable/breakable.tscn" id="6_pywsr"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pywsr"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2sy11"]
 resource_local_to_scene = true
 size = Vector2(176, 72)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2sy11"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvqya"]
 resource_local_to_scene = true
 size = Vector2(160, 48)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvqya"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5yrd"]
 resource_local_to_scene = true
 size = Vector2(48, 48)
 
@@ -94,7 +94,7 @@ tile_map_data = PackedByteArray("AAAHAAEAAAAAAAEAAAAHAAAAAAAAAAEAAAAHAP//AAAAAAE
 
 [node name="CollisionShape" parent="Elements/SecretArea" index="1" unique_id=687079757]
 position = Vector2(40, 4)
-shape = SubResource("RectangleShape2D_pywsr")
+shape = SubResource("RectangleShape2D_2sy11")
 
 [node name="SecretArea2" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="14" unique_id=1741221156 instance=ExtResource("3_3juqe")]
 position = Vector2(704, 208)
@@ -104,7 +104,7 @@ tile_map_data = PackedByteArray("AAAGAP7/AAAAAAEAAAD9////AAAAAAEAAAD9/wAAAAAAAAE
 
 [node name="CollisionShape" parent="Elements/SecretArea2" index="1" unique_id=687079757]
 position = Vector2(32, 8)
-shape = SubResource("RectangleShape2D_2sy11")
+shape = SubResource("RectangleShape2D_uvqya")
 
 [node name="SecretArea3" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="15" unique_id=2067864927 instance=ExtResource("3_3juqe")]
 position = Vector2(960, 32)
@@ -114,7 +114,7 @@ tile_map_data = PackedByteArray("AAD///7/AAAAAAEAAAD9/wAAAAAAAAEAAAD9/wEAAAAAAAE
 
 [node name="CollisionShape" parent="Elements/SecretArea3" index="1" unique_id=687079757]
 position = Vector2(-24, 24)
-shape = SubResource("RectangleShape2D_uvqya")
+shape = SubResource("RectangleShape2D_o5yrd")
 
 [node name="Breakable" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="16" unique_id=356732343 instance=ExtResource("6_pywsr")]
 position = Vector2(824, 128)
@@ -127,6 +127,27 @@ position = Vector2(856, 128)
 
 [node name="Breakable4" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="19" unique_id=2122638975 instance=ExtResource("6_pywsr")]
 position = Vector2(872, 128)
+
+[node name="Breakable5" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="20" unique_id=441530333 instance=ExtResource("6_pywsr")]
+position = Vector2(384, 152)
+
+[node name="Breakable6" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="21" unique_id=342010223 instance=ExtResource("6_pywsr")]
+position = Vector2(384, 136)
+
+[node name="Breakable7" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="22" unique_id=1629494215 instance=ExtResource("6_pywsr")]
+position = Vector2(760, 56)
+
+[node name="Breakable8" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="23" unique_id=1288421843 instance=ExtResource("6_pywsr")]
+position = Vector2(760, 40)
+
+[node name="Breakable9" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="24" unique_id=841440647 instance=ExtResource("6_pywsr")]
+position = Vector2(760, 24)
+
+[node name="Breakable10" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="25" unique_id=272316200 instance=ExtResource("6_pywsr")]
+position = Vector2(760, 8)
+
+[node name="Breakable11" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="26" unique_id=1862686244 instance=ExtResource("6_pywsr")]
+position = Vector2(760, -8)
 
 [editable path="Elements/SecretArea"]
 [editable path="Elements/SecretArea2"]
