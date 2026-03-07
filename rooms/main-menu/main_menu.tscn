@@ -47,7 +47,7 @@ high_radius_randomness = 0.0
 
 [node name="Parallax" type="Parallax2D" parent="." unique_id=1727888123]
 z_index = -20
-scroll_offset = Vector2(160, 120)
+scroll_offset = Vector2(160, 112)
 repeat_size = Vector2(48, 0)
 autoscroll = Vector2(-10, 0)
 repeat_times = 8
@@ -69,11 +69,23 @@ screen_offset = Vector2(160, 120)
 self_modulate = Color(0.26666668, 0.26666668, 0.26666668, 1)
 texture = ExtResource("3_4obiq")
 
+[node name="Parallax3" type="Parallax2D" parent="." unique_id=650260306]
+z_index = -5
+scroll_offset = Vector2(160, 176)
+repeat_size = Vector2(48, 0)
+autoscroll = Vector2(-30, 0)
+repeat_times = 8
+screen_offset = Vector2(160, 120)
+
+[node name="CloudBackground2" type="Sprite2D" parent="Parallax3" unique_id=1577229135]
+self_modulate = Color(0.33333334, 0.33333334, 0.33333334, 1)
+texture = ExtResource("3_4obiq")
+
 [node name="Background" type="Sprite2D" parent="." unique_id=1262125567]
-self_modulate = Color(0.26666668, 0.26666668, 0.26666668, 1)
-z_index = -10
-position = Vector2(159.75, 203.75)
-scale = Vector2(320.5, 72.5)
+self_modulate = Color(0.33333334, 0.33333334, 0.33333334, 1)
+z_index = -5
+position = Vector2(159.75, 220)
+scale = Vector2(320.5, 40.000004)
 texture = ExtResource("4_wwhgb")
 
 [node name="Title" type="Sprite2D" parent="." unique_id=719062530]
@@ -94,7 +106,8 @@ low_radius_randomness = 0.0
 high_radius_randomness = 0.0
 
 [node name="OptionSelector" type="NinePatchRect" parent="." unique_id=1185659649]
-self_modulate = Color(0.33333334, 0.33333334, 0.33333334, 1)
+self_modulate = Color(0.73333335, 0.73333335, 0.73333335, 1)
+z_index = 10
 offset_left = 192.0
 offset_top = 144.0
 offset_right = 340.0
@@ -104,7 +117,7 @@ texture = ExtResource("6_dxe2b")
 patch_margin_left = 16
 
 [node name="Background" type="NinePatchRect" parent="OptionSelector" unique_id=1432821034]
-self_modulate = Color(0.73333335, 0.73333335, 0.73333335, 1)
+self_modulate = Color(0.8666667, 0.8666667, 0.8666667, 1)
 z_index = -10
 layout_mode = 0
 offset_left = -16.0
@@ -119,6 +132,7 @@ wait_time = 0.5
 autostart = true
 
 [node name="Options" type="VBoxContainer" parent="." unique_id=1928371725]
+z_index = 10
 offset_left = 160.0
 offset_top = 120.0
 offset_right = 296.0
@@ -170,4 +184,10 @@ angle_max = 360.0
 scale_amount_curve = SubResource("Curve_dxe2b")
 color = Color(0.13333334, 0.13333334, 0.13333334, 1)
 
+[node name="ShootingStarTimer" type="Timer" parent="." unique_id=548507099]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
 [connection signal="timeout" from="SelectorPingTimer" to="." method="_on_selector_ping_timer_timeout"]
+[connection signal="timeout" from="ShootingStarTimer" to="." method="_on_shooting_star_timer_timeout"]

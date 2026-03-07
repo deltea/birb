@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dmur212ajike"]
+
+[ext_resource type="Script" uid="uid://ybnincw37un5" path="res://scenes/particles/shooting-star/shooting_star.gd" id="1_1l66s"]
+[ext_resource type="Texture2D" uid="uid://c8vebnkhtxxr6" path="res://assets/generic/circle.png" id="1_c80p6"]
+
+[sub_resource type="Curve" id="Curve_c80p6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="ShootingStar" type="Node2D" unique_id=680272982]
+z_index = -8
+script = ExtResource("1_1l66s")
+
+[node name="CPUParticles" type="CPUParticles2D" parent="." unique_id=938198928]
+self_modulate = Color(0.73333335, 0.73333335, 0.73333335, 1)
+amount = 40
+texture = ExtResource("1_c80p6")
+lifetime_randomness = 0.2
+gravity = Vector2(0, 0)
+initial_velocity_max = 2.0
+scale_amount_min = 0.2
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_c80p6")
