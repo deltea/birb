@@ -12,10 +12,22 @@ metadata/_edit_vertical_guides_ = [160.0, 320.0]
 metadata/_edit_horizontal_guides_ = [120.0, 240.0]
 
 [node name="Star2D" parent="." unique_id=856709757 instance=ExtResource("2_osspu")]
-position = Vector2(-3.8146973e-06, 144.00002)
+position = Vector2(3.8146973e-06, 144.00002)
 rotation = -0.7853982
-scale = Vector2(2.2, 2.2)
-color = Color(0.33333334, 0.33333334, 0.33333334, 1)
+scale = Vector2(2, 2)
+polygon = PackedVector2Array(16.573599, 36.404884, 21.75411, 12.319038, 39.74463, -4.5127015, 18.438488, -16.882599, 7.989931, -39.19389, -10.3585005, -22.753054, -34.80658, -19.710457, -24.840393, 2.820437, -29.501581, 27.012157, -4.993702, 24.496183)
+peaks = 5
+peak_randomness = 0
+low_radius = 25.0
+low_radius_randomness = 0.0
+high_radius_randomness = 0.0
+
+[node name="TrailingStar" parent="Star2D" unique_id=276850428 instance=ExtResource("2_osspu")]
+top_level = true
+z_index = -10
+position = Vector2(0, 144)
+scale = Vector2(2, 2)
+color = Color(1, 0, 0, 1)
 polygon = PackedVector2Array(16.573599, 36.404884, 21.75411, 12.319038, 39.74463, -4.5127015, 18.438488, -16.882599, 7.989931, -39.19389, -10.3585005, -22.753054, -34.80658, -19.710457, -24.840393, 2.820437, -29.501581, 27.012157, -4.993702, 24.496183)
 peaks = 5
 peak_randomness = 0
