@@ -1,5 +1,7 @@
 class_name MainMenu extends Room
 
+enum MenuState { MAIN, SETTINGS }
+
 const shooting_star_scene = preload("res://scenes/particles/shooting-star/shooting_star.tscn")
 
 @onready var star: Star2D = $Star2D
@@ -9,6 +11,7 @@ const shooting_star_scene = preload("res://scenes/particles/shooting-star/shooti
 @onready var selector_ping_timer: Timer = $SelectorPingTimer
 @onready var shooting_star_timer: Timer = $ShootingStarTimer
 @onready var options: VBoxContainer = $Options
+@onready var camera_target: Node2D = $CameraTarget
 
 @onready var star_rot_dynamics: DynamicsSolver = Dynamics.create_dynamics(4.0, 0.4, 2.0)
 
@@ -16,15 +19,11 @@ var target_rot = 0.0
 var select_index = 0
 var selector_target_y = 0.0
 var original_selector_width = 0.0
+var state = MenuState.MAIN
 
 func _ready() -> void:
 	selector_target_y = option_selector.position.y
 	original_selector_width = option_selector.size.x
-
-func change_index(delta: int):
-	select_index = wrapi(select_index + delta, 0, options.get_child_count())
-	target_rot += 45.0 * delta
-	selector_ping_timer.start()
 
 func _process(dt: float) -> void:
 	star.rotation_degrees = star_rot_dynamics.update(target_rot)
@@ -37,11 +36,24 @@ func _process(dt: float) -> void:
 		change_index(1)
 	if Input.is_action_just_pressed("left") or Input.is_action_just_pressed("up"):
 		change_index(-1)
-	if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("dash"):
+	if Input.is_action_just_pressed("jump"):
 		match select_index:
 			0: RoomManager.change_room("levels/test_level_2")
-			1: pass
+			1: camera_target.position += Vector2(0, 240)
 			2: get_tree().quit()
+
+func change_state(new_state: MenuState):
+	state = new_state
+	match state:
+		MenuState.MAIN:
+			selector_target_y = 0.0
+		MenuState.SETTINGS:
+			selector_target_y = 240.0
+
+func change_index(delta: int):
+	select_index = wrapi(select_index + delta, 0, options.get_child_count())
+	target_rot += 45.0 * delta
+	selector_ping_timer.start()
 
 func _on_selector_ping_timer_timeout() -> void:
 	option_selector.scale.x = 1.05
