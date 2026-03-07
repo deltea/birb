@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dfttrvweckwc7" path="res://rooms/main-menu/main_menu.gd" id="1_mewax"]
 [ext_resource type="PackedScene" uid="uid://cl6b04m0wameb" path="res://scenes/star2d/star_2d.tscn" id="2_osspu"]
-[ext_resource type="Texture2D" uid="uid://dk47hjt3kytwp" path="res://color-palettes/splashy.png" id="2_ys7ud"]
+[ext_resource type="Texture2D" uid="uid://b0lisw2c0es6a" path="res://color-palettes/purplemorning.png" id="2_ys7ud"]
 [ext_resource type="Texture2D" uid="uid://bo2okkjc6s4i3" path="res://assets/clouds-background.png" id="3_4obiq"]
 [ext_resource type="Texture2D" uid="uid://cdnunui18bx10" path="res://assets/generic/pixel.png" id="4_wwhgb"]
 [ext_resource type="Texture2D" uid="uid://213ukjov2oxq" path="res://assets/option-selector.png" id="6_dxe2b"]
@@ -168,6 +168,8 @@ text = "exit"
 horizontal_alignment = 2
 
 [node name="StarParticles" type="CPUParticles2D" parent="." unique_id=2038402822]
+visible = false
+z_index = -10
 position = Vector2(160, 56)
 texture = ExtResource("8_dxe2b")
 lifetime = 4.0
@@ -183,6 +185,24 @@ angle_min = -360.0
 angle_max = 360.0
 scale_amount_curve = SubResource("Curve_dxe2b")
 color = Color(0.13333334, 0.13333334, 0.13333334, 1)
+
+[node name="StarParticles2" type="CPUParticles2D" parent="." unique_id=1716315619]
+z_index = -10
+position = Vector2(160, 72)
+texture = ExtResource("8_dxe2b")
+lifetime = 4.0
+preprocess = 4.0
+randomness = 1.0
+lifetime_randomness = 0.2
+emission_shape = 3
+emission_rect_extents = Vector2(160, 75)
+gravity = Vector2(0, 0)
+angular_velocity_min = -120.0
+angular_velocity_max = 120.0
+angle_min = -360.0
+angle_max = 360.0
+scale_amount_curve = SubResource("Curve_dxe2b")
+color = Color(0.26666668, 0.26666668, 0.26666668, 1)
 
 [node name="ShootingStarTimer" type="Timer" parent="." unique_id=548507099]
 wait_time = 2.0

@@ -33,9 +33,9 @@ func _process(dt: float) -> void:
 	option_selector.position.y = lerp(option_selector.position.y, selector_target_y + select_index * 25.0, 25.0 * dt)
 	option_selector.scale.x = lerp(option_selector.scale.x, 1.0, 10.0 * dt)
 
-	if Input.is_action_just_pressed("left") or Input.is_action_just_pressed("down"):
+	if Input.is_action_just_pressed("right") or Input.is_action_just_pressed("down"):
 		change_index(1)
-	if Input.is_action_just_pressed("right") or Input.is_action_just_pressed("up"):
+	if Input.is_action_just_pressed("left") or Input.is_action_just_pressed("up"):
 		change_index(-1)
 	if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("dash"):
 		match select_index:
