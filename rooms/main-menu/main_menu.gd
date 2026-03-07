@@ -35,8 +35,13 @@ func _process(dt: float) -> void:
 
 	if Input.is_action_just_pressed("left") or Input.is_action_just_pressed("down"):
 		change_index(1)
-	elif Input.is_action_just_pressed("right") or Input.is_action_just_pressed("up"):
+	if Input.is_action_just_pressed("right") or Input.is_action_just_pressed("up"):
 		change_index(-1)
+	if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("dash"):
+		match select_index:
+			0: RoomManager.change_room("levels/test_level_2")
+			1: pass
+			2: get_tree().quit()
 
 func _on_selector_ping_timer_timeout() -> void:
 	option_selector.scale.x = 1.05

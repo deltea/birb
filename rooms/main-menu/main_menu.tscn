@@ -22,7 +22,7 @@ metadata/_edit_horizontal_guides_ = [120.0, 240.0]
 
 [node name="Star2D" parent="." unique_id=856709757 instance=ExtResource("2_osspu")]
 z_index = 10
-position = Vector2(3.8146973e-06, 144.00002)
+position = Vector2(15.999996, 144.00002)
 rotation = -0.7853982
 scale = Vector2(2, 2)
 polygon = PackedVector2Array(16.573599, 36.404884, 21.75411, 12.319038, 39.74463, -4.5127015, 18.438488, -16.882599, 7.989931, -39.19389, -10.3585005, -22.753054, -34.80658, -19.710457, -24.840393, 2.820437, -29.501581, 27.012157, -4.993702, 24.496183)
@@ -35,7 +35,7 @@ high_radius_randomness = 0.0
 [node name="TrailingStar" parent="Star2D" unique_id=276850428 instance=ExtResource("2_osspu")]
 top_level = true
 z_index = -10
-position = Vector2(0, 144)
+position = Vector2(16, 144)
 scale = Vector2(2, 2)
 color = Color(0.73333335, 0.73333335, 0.73333335, 1)
 polygon = PackedVector2Array(16.573599, 36.404884, 21.75411, 12.319038, 39.74463, -4.5127015, 18.438488, -16.882599, 7.989931, -39.19389, -10.3585005, -22.753054, -34.80658, -19.710457, -24.840393, 2.820437, -29.501581, 27.012157, -4.993702, 24.496183)
@@ -108,11 +108,11 @@ high_radius_randomness = 0.0
 [node name="OptionSelector" type="NinePatchRect" parent="." unique_id=1185659649]
 self_modulate = Color(0.73333335, 0.73333335, 0.73333335, 1)
 z_index = 10
-offset_left = 192.0
+offset_left = 160.0
 offset_top = 144.0
 offset_right = 340.0
 offset_bottom = 165.0
-pivot_offset = Vector2(148, 0)
+pivot_offset = Vector2(180, 0)
 texture = ExtResource("6_dxe2b")
 patch_margin_left = 16
 

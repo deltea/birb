@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bjup6ntnjl6ln" path="res://scripts/level.gd" id="1_wrbck"]
 [ext_resource type="Texture2D" uid="uid://cksk5qojiqsdw" path="res://color-palettes/purple.png" id="2_4r1re"]
-[ext_resource type="FontFile" uid="uid://caxxxt6gfouhf" path="res://assets/fonts/cubecavern.ttf" id="3_mlrue"]
+[ext_resource type="FontFile" uid="uid://ce3pxfpd38a3y" path="res://assets/fonts/monogram.ttf" id="3_mlrue"]
 [ext_resource type="Shader" uid="uid://bqsviir6g074p" path="res://shaders/palette_filter.gdshader" id="4_3r5wm"]
+[ext_resource type="FontFile" uid="uid://caxxxt6gfouhf" path="res://assets/fonts/cubecavern.ttf" id="4_at2w1"]
 [ext_resource type="Texture2D" uid="uid://bm5w1x2hdngqi" path="res://assets/palette-in.png" id="5_3qwok"]
 [ext_resource type="PackedScene" uid="uid://cykuanfl3n1rh" path="res://scenes/camera/camera.tscn" id="6_15qan"]
 [ext_resource type="PackedScene" uid="uid://cqedlma3fml7b" path="res://scenes/player/player.tscn" id="7_fei6a"]
@@ -13,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dv7cyw0jlnfe8" path="res://scenes/collectable/collectable.tscn" id="13_julpp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8iemx"]
-font = ExtResource("3_mlrue")
+font = ExtResource("4_at2w1")
 font_size = 32
 
 [sub_resource type="Animation" id="Animation_ijbq7"]
