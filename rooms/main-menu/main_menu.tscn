@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://mjmvkohey8gg"]
+
+[ext_resource type="Script" uid="uid://dfttrvweckwc7" path="res://rooms/main-menu/main_menu.gd" id="1_mewax"]
+
+[node name="MainMenu" type="Node2D" unique_id=1154304386]
+script = ExtResource("1_mewax")
