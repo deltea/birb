@@ -1,12 +1,12 @@
 class_name Camera extends Camera2D
 
 @export var follow: Node2D
-@export var rotation_speed = 10.0
+@export var rotation_speed = 5.0
 @export var impact_rotation = 5.0
 @export var shake_damping_speed = 2.0
 
 @onready var pos_dynamics: DynamicsSolverVector = Dynamics.create_dynamics_vector(2.0, 0.8, 2.0)
-@onready var rot_dynamics: DynamicsSolver = Dynamics.create_dynamics(5.0, 0.8, 10.0)
+@onready var rot_dynamics: DynamicsSolver = Dynamics.create_dynamics(rotation_speed, 0.8, 10.0)
 
 var shake_duration = 0;
 var shake_magnitude = 0;
@@ -39,5 +39,8 @@ func shake(duration: float, magnitude: float):
 	shake_duration = duration
 	shake_magnitude = magnitude
 
-func impact():
-	rot_dynamics.set_value((1 if randf() > 0.5 else -1) * impact_rotation)
+func impact(dir: int = 0):
+	if dir == 0:
+		rot_dynamics.set_value((1 if randf() > 0.5 else -1) * impact_rotation)
+	else:
+		rot_dynamics.set_value(impact_rotation * dir)

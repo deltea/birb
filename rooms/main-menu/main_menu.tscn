@@ -27,9 +27,12 @@ metadata/_edit_horizontal_guides_ = [120.0, 240.0, 480.0, 360.0]
 
 [node name="Camera" parent="." unique_id=1304390175 node_paths=PackedStringArray("follow") instance=ExtResource("10_glo86")]
 position = Vector2(160, 120)
+ignore_rotation = false
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 follow = NodePath("../CameraTarget")
+rotation_speed = 2.0
+impact_rotation = 4.0
 
 [node name="CameraTarget" type="Node2D" parent="." unique_id=2115468258]
 position = Vector2(160, 120)
@@ -61,8 +64,8 @@ high_radius_randomness = 0.0
 
 [node name="Parallax" type="Parallax2D" parent="." unique_id=1727888123]
 z_index = -20
-scroll_scale = Vector2(1, 0.8)
-scroll_offset = Vector2(160, 82)
+scroll_scale = Vector2(0.6, 0.6)
+scroll_offset = Vector2(128, 58)
 repeat_size = Vector2(48, 0)
 autoscroll = Vector2(-10, 0)
 repeat_times = 20
@@ -75,8 +78,8 @@ texture = ExtResource("3_4obiq")
 
 [node name="Parallax2" type="Parallax2D" parent="." unique_id=935785199]
 z_index = -10
-scroll_scale = Vector2(1, 0.9)
-scroll_offset = Vector2(152, 129)
+scroll_scale = Vector2(0.8, 0.8)
+scroll_offset = Vector2(152, 117)
 repeat_size = Vector2(48, 0)
 autoscroll = Vector2(20, 0)
 repeat_times = 20

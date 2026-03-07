@@ -52,8 +52,10 @@ func change_state(new_state: MenuState):
 	match state:
 		MenuState.MAIN:
 			camera_target.position = Vector2(160, 120)
+			RoomManager.current_room.camera.impact(-1)
 		MenuState.SETTINGS:
 			camera_target.position = Vector2(160 - 320, 120)
+			RoomManager.current_room.camera.impact(1)
 
 func main_state(dt: float):
 	option_selector.global_position.y = lerp(option_selector.global_position.y, selector_target_y, 25.0 * dt)
