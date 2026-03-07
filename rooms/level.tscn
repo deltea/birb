@@ -367,3 +367,5 @@ position = Vector2(-8, -200)
 
 [node name="Goal" parent="Elements" unique_id=1681194359 instance=ExtResource("12_t0xh4")]
 position = Vector2(128, -112)
+
+[node name="Decoration" type="Node" parent="." unique_id=238951789]

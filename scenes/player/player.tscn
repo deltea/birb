@@ -17,8 +17,8 @@ _data = [Vector2(0, 0.78781843), 0.0, 0.0, 0, 0, Vector2(0.34829062, 1), 0.0, 0.
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_lvxji"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.89102566, 0.5898877), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.06273764, 0.9844745), 0.0, 0.0, 0, 0, Vector2(0.77376425, 0.5497611), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_gmlin"]
 _data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAACmAAAAUklGRp4AAABXRUJQVlA4TJIAAAAvH8AHEBcgEEjyZ9ptDYFAkj/TbgsEkvyZdnv+A/4VuIok2W1O6T9zUAmFIDjtKfyLx4PiHI7m27MNIaL/RNM2m2tV35BdIfRTJ6QAVo+V1baw2pbBKSMFWFRBIUFhZ4UQX//m2hGXMv/B6buC+aljDjB/rL7Z8yHy/rFSswEWFGau2Vzj2y3QqIGbT1+7xyROAA==")
@@ -128,11 +128,11 @@ scale_amount_curve = SubResource("Curve_dovo2")
 [node name="DashParticles" type="CPUParticles2D" parent="." unique_id=706280888]
 self_modulate = Color(0.26666668, 0.26666668, 0.26666668, 1)
 z_index = -5
-emitting = false
 amount = 50
 texture = ExtResource("3_gmlin")
 lifetime = 0.2
 randomness = 0.5
+lifetime_randomness = 0.75
 emission_shape = 3
 emission_rect_extents = Vector2(2, 2)
 gravity = Vector2(0, 0)

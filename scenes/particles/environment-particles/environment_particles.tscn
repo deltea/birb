@@ -4,17 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://7qru5twwl775" path="res://assets/generic/square.png" id="2_teb47"]
 
 [sub_resource type="Curve" id="Curve_wdk42"]
-_data = [Vector2(0, 0), 0.0, 6.0847516, 0, 0, Vector2(0.50213677, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -5.745327, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 0), 0.0, 6.0847516, 0, 0, Vector2(0.35931557, 1), 0.0, 0.0, 0, 0, Vector2(0.50213677, 1), 0.0, 0.0, 0, 0, Vector2(0.6558935, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -6.0724444, 0.0, 0, 0]
+point_count = 5
 
 [node name="WindParticles" type="CPUParticles2D" unique_id=1669324104]
 process_mode = 3
 z_index = -10
-amount = 76
+amount = 57
 texture = ExtResource("2_teb47")
 lifetime = 5.0
 preprocess = 5.0
 randomness = 1.0
+lifetime_randomness = 0.5
 emission_shape = 3
 emission_rect_extents = Vector2(320, 240)
 spread = 180.0

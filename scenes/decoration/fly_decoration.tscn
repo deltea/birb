@@ -1,6 +1,61 @@
-[gd_scene format=3 uid="uid://ve5v6jngqdc6"]
+[gd_scene format=4 uid="uid://ve5v6jngqdc6"]
 
 [ext_resource type="Script" uid="uid://bnbqvnpk0tqht" path="res://scenes/decoration/fly_decoration.gd" id="1_q6dcw"]
 
-[node name="FlyDecoration" type="Sprite2D" unique_id=2080577092]
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_q6dcw"]
+_data = PackedByteArray("AAADAAUAAAABAAAAEAAAAAUAAAAyAAAAUklGRioAAABXRUJQVlA4TB0AAAAvDwABEA8wREM0RPMf8CAIBBkstuUGWyOi/7G0DgA=")
+size_override = Vector2(16, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlnpe"]
+atlas = SubResource("PortableCompressedTexture2D_q6dcw")
+region = Rect2(0, 0, 8, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sniml"]
+atlas = SubResource("PortableCompressedTexture2D_q6dcw")
+region = Rect2(8, 0, 8, 5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cec85"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlnpe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sniml")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q6dcw"]
+noise_type = 3
+frequency = 0.001
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q6dcw"]
+noise = SubResource("FastNoiseLite_q6dcw")
+
+[node name="FlyDecoration" type="AnimatedSprite2D" unique_id=493458872]
+z_index = -10
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_cec85")
 script = ExtResource("1_q6dcw")
+noise = SubResource("NoiseTexture2D_q6dcw")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://assets/fly.ase",
+"source_uid": 7227660658151337430
+}
+metadata/_aseprite_wizard_source_file_hash_ = "5dd0d5f5719ae1495a8547aa7cfdd68e"
