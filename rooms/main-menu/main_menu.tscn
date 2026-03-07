@@ -21,9 +21,10 @@ point_count = 3
 
 [node name="MainMenu" type="Node2D" unique_id=1154304386]
 script = ExtResource("1_mewax")
+disabled_color = Color(0.33333334, 0.33333334, 0.33333334, 1)
 palette = ExtResource("2_3id36")
 metadata/_edit_vertical_guides_ = [160.0, 320.0, -320.0, -160.0]
-metadata/_edit_horizontal_guides_ = [120.0, 240.0, 480.0, 360.0]
+metadata/_edit_horizontal_guides_ = [120.0, 240.0]
 
 [node name="Camera" parent="." unique_id=1304390175 node_paths=PackedStringArray("follow") instance=ExtResource("10_glo86")]
 position = Vector2(160, 120)
@@ -106,8 +107,8 @@ texture = ExtResource("3_4obiq")
 [node name="Background" type="Sprite2D" parent="." unique_id=1262125567]
 self_modulate = Color(0.33333334, 0.33333334, 0.33333334, 1)
 z_index = -5
-position = Vector2(1.5258789e-05, 340)
-scale = Vector2(640, 280)
+position = Vector2(-31.999992, 240)
+scale = Vector2(703.99994, 79.99999)
 texture = ExtResource("4_wwhgb")
 
 [node name="SelectorPingTimer" type="Timer" parent="." unique_id=766064796]
@@ -251,9 +252,9 @@ horizontal_alignment = 2
 self_modulate = Color(0.73333335, 0.73333335, 0.73333335, 1)
 z_index = 10
 offset_left = -553.0
-offset_top = 118.0
+offset_top = 131.0
 offset_right = -337.0
-offset_bottom = 139.0
+offset_bottom = 152.0
 rotation = 3.1415927
 pivot_offset = Vector2(216, 0)
 texture = ExtResource("6_dxe2b")
@@ -295,14 +296,6 @@ theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
 text = "music"
 
-[node name="OptionText3" type="RichTextLabel" parent="Settings/Options" unique_id=1698701232]
-custom_minimum_size = Vector2(0, 21)
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("6_e6kqp")
-theme_override_font_sizes/normal_font_size = 18
-bbcode_enabled = true
-text = "screen"
-
 [node name="Control" type="Control" parent="Settings/Options" unique_id=536229922]
 custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
@@ -330,7 +323,7 @@ centered = false
 [node name="OptionStars" type="Node" parent="Settings" unique_id=1393116125]
 
 [node name="OptionStarsRow" type="Node2D" parent="Settings/OptionStars" unique_id=1288679680]
-position = Vector2(-216, 102)
+position = Vector2(-216, 116)
 
 [node name="SettingsStar" parent="Settings/OptionStars/OptionStarsRow" unique_id=2112973306 instance=ExtResource("2_osspu")]
 z_index = 10
@@ -355,7 +348,6 @@ star_scale = 0.15
 [node name="SettingsStar3" parent="Settings/OptionStars/OptionStarsRow" unique_id=543902789 instance=ExtResource("2_osspu")]
 z_index = 10
 position = Vector2(36.599106, 4.599106)
-color = Color(0.8666667, 0.8666667, 0.8666667, 1)
 polygon = PackedVector2Array(3.8533392, -4.5991063, -0.2636686, -2.9883907, -4.599107, -3.8533382, -2.9883907, 0.2636684, -3.8533401, 4.5991054, 0.2636689, 2.9883907, 4.5991063, 3.8533392, 2.9883907, -0.26366854)
 peaks = 4
 peak_randomness = 0
@@ -366,7 +358,6 @@ star_scale = 0.15
 [node name="SettingsStar4" parent="Settings/OptionStars/OptionStarsRow" unique_id=313228891 instance=ExtResource("2_osspu")]
 z_index = 10
 position = Vector2(52.599106, 4.599106)
-color = Color(0.8666667, 0.8666667, 0.8666667, 1)
 polygon = PackedVector2Array(3.8533392, -4.5991063, -0.2636686, -2.9883907, -4.599107, -3.8533382, -2.9883907, 0.2636684, -3.8533401, 4.5991054, 0.2636689, 2.9883907, 4.5991063, 3.8533392, 2.9883907, -0.26366854)
 peaks = 4
 peak_randomness = 0
@@ -375,7 +366,7 @@ high_radius_randomness = 0.0
 star_scale = 0.15
 
 [node name="OptionStarsRow2" type="Node2D" parent="Settings/OptionStars" unique_id=1237048084]
-position = Vector2(-216, 128)
+position = Vector2(-216, 142)
 
 [node name="SettingsStar" parent="Settings/OptionStars/OptionStarsRow2" unique_id=86002971 instance=ExtResource("2_osspu")]
 z_index = 10
@@ -400,7 +391,6 @@ star_scale = 0.15
 [node name="SettingsStar3" parent="Settings/OptionStars/OptionStarsRow2" unique_id=132703640 instance=ExtResource("2_osspu")]
 z_index = 10
 position = Vector2(36.599106, 4.599106)
-color = Color(0.8666667, 0.8666667, 0.8666667, 1)
 polygon = PackedVector2Array(3.8533392, -4.5991063, -0.2636686, -2.9883907, -4.599107, -3.8533382, -2.9883907, 0.2636684, -3.8533401, 4.5991054, 0.2636689, 2.9883907, 4.5991063, 3.8533392, 2.9883907, -0.26366854)
 peaks = 4
 peak_randomness = 0
@@ -411,52 +401,6 @@ star_scale = 0.15
 [node name="SettingsStar4" parent="Settings/OptionStars/OptionStarsRow2" unique_id=73731925 instance=ExtResource("2_osspu")]
 z_index = 10
 position = Vector2(52.599106, 4.599106)
-color = Color(0.8666667, 0.8666667, 0.8666667, 1)
-polygon = PackedVector2Array(3.8533392, -4.5991063, -0.2636686, -2.9883907, -4.599107, -3.8533382, -2.9883907, 0.2636684, -3.8533401, 4.5991054, 0.2636689, 2.9883907, 4.5991063, 3.8533392, 2.9883907, -0.26366854)
-peaks = 4
-peak_randomness = 0
-low_radius_randomness = 0.0
-high_radius_randomness = 0.0
-star_scale = 0.15
-
-[node name="OptionStarsRow3" type="Node2D" parent="Settings/OptionStars" unique_id=719695054]
-position = Vector2(-216, 154)
-
-[node name="SettingsStar" parent="Settings/OptionStars/OptionStarsRow3" unique_id=232719746 instance=ExtResource("2_osspu")]
-z_index = 10
-position = Vector2(4.599106, 4.599106)
-polygon = PackedVector2Array(3.8533392, -4.5991063, -0.2636686, -2.9883907, -4.599107, -3.8533382, -2.9883907, 0.2636684, -3.8533401, 4.5991054, 0.2636689, 2.9883907, 4.5991063, 3.8533392, 2.9883907, -0.26366854)
-peaks = 4
-peak_randomness = 0
-low_radius_randomness = 0.0
-high_radius_randomness = 0.0
-star_scale = 0.15
-
-[node name="SettingsStar2" parent="Settings/OptionStars/OptionStarsRow3" unique_id=1470402111 instance=ExtResource("2_osspu")]
-z_index = 10
-position = Vector2(20.599106, 4.599106)
-polygon = PackedVector2Array(3.8533392, -4.5991063, -0.2636686, -2.9883907, -4.599107, -3.8533382, -2.9883907, 0.2636684, -3.8533401, 4.5991054, 0.2636689, 2.9883907, 4.5991063, 3.8533392, 2.9883907, -0.26366854)
-peaks = 4
-peak_randomness = 0
-low_radius_randomness = 0.0
-high_radius_randomness = 0.0
-star_scale = 0.15
-
-[node name="SettingsStar3" parent="Settings/OptionStars/OptionStarsRow3" unique_id=1047888799 instance=ExtResource("2_osspu")]
-z_index = 10
-position = Vector2(36.599106, 4.599106)
-color = Color(0.8666667, 0.8666667, 0.8666667, 1)
-polygon = PackedVector2Array(3.8533392, -4.5991063, -0.2636686, -2.9883907, -4.599107, -3.8533382, -2.9883907, 0.2636684, -3.8533401, 4.5991054, 0.2636689, 2.9883907, 4.5991063, 3.8533392, 2.9883907, -0.26366854)
-peaks = 4
-peak_randomness = 0
-low_radius_randomness = 0.0
-high_radius_randomness = 0.0
-star_scale = 0.15
-
-[node name="SettingsStar4" parent="Settings/OptionStars/OptionStarsRow3" unique_id=196593870 instance=ExtResource("2_osspu")]
-z_index = 10
-position = Vector2(52.599106, 4.599106)
-color = Color(0.8666667, 0.8666667, 0.8666667, 1)
 polygon = PackedVector2Array(3.8533392, -4.5991063, -0.2636686, -2.9883907, -4.599107, -3.8533382, -2.9883907, 0.2636684, -3.8533401, 4.5991054, 0.2636689, 2.9883907, 4.5991063, 3.8533392, 2.9883907, -0.26366854)
 peaks = 4
 peak_randomness = 0

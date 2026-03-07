@@ -22,6 +22,7 @@ Dynamics="*uid://coy2xkvb1j6fc"
 RoomManager="*uid://m1qtpa83ht7f"
 AudioManager="*uid://brg5fpoii7sj3"
 PaletteFilter="*uid://dcacxemdtpf06"
+SettingsManager="*uid://coese5a74585k"
 
 [display]
 

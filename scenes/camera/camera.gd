@@ -39,7 +39,7 @@ func shake(duration: float, magnitude: float):
 	shake_duration = duration
 	shake_magnitude = magnitude
 
-func impact(dir: int = 0):
+func impact(dir: float = 0):
 	if dir == 0:
 		rot_dynamics.set_value((1 if randf() > 0.5 else -1) * impact_rotation)
 	else:

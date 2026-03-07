@@ -4,6 +4,9 @@ enum MenuState { MAIN, SETTINGS }
 
 const shooting_star_scene = preload("res://scenes/particles/shooting-star/shooting_star.tscn")
 
+@export var enabled_color = Color.WHITE
+@export var disabled_color = Color("#dddddd")
+
 @onready var big_star: Star2D = $BigStar
 @onready var trailing_star: Star2D = $BigStar/TrailingStar
 @onready var selector_ping_timer: Timer = $SelectorPingTimer
@@ -27,10 +30,16 @@ var select_index = 0
 var selector_target_y = 0.0
 var original_selector_width
 var state = MenuState.MAIN
+var settings = []
 
 func _ready() -> void:
 	selector_target_y = option_selector.position.y
 	original_selector_width = option_selector.size.x
+	var loaded_settings = SettingsManager.load_settings()
+	settings = [loaded_settings["SFXVolume"], loaded_settings["MusicVolume"]]
+
+	change_settings_value(0, 0)
+	change_settings_value(1, 0)
 
 func _process(dt: float) -> void:
 	big_star.rotation_degrees = star_rot_dynamics.update(target_rot)
@@ -83,6 +92,10 @@ func settings_state(dt: float):
 		set_index(select_index + 1, -1)
 	if Input.is_action_just_pressed("up"):
 		set_index(select_index - 1, -1)
+	if Input.is_action_just_pressed("right"):
+			change_settings_value(select_index, 1)
+	if Input.is_action_just_pressed("left"):
+			change_settings_value(select_index, -1)
 	if Input.is_action_just_pressed("jump") and select_index == 3:
 		change_state(MenuState.MAIN)
 
@@ -93,6 +106,20 @@ func set_index(new_value: int, direction: int = 1):
 	selector_target_y = options.get_child(select_index).global_position.y + options.get_child(select_index).size.y - 21.0
 	target_rot += 45.0 * direction * sign(new_value - prev_index)
 	selector_ping_timer.start()
+
+func change_settings_value(index: int, delta: int):
+	if index <= 1:
+		RoomManager.current_room.camera.shake(0.1, 1.0)
+		RoomManager.current_room.camera.impact(-delta * 0.5)
+		settings[index] = clamp(settings[index] + delta, 0, 4)
+		SettingsManager.save_settings(settings[0], settings[1])
+		for star in settings_option_stars.get_child(index).get_children():
+			star.self_modulate = enabled_color if star.get_index() < settings[index] else disabled_color
+
+	match index:
+		0: print("Set sfx volume to ", delta)
+		1: print("Set set music volume to ", delta)
+		_: pass
 
 func _on_selector_ping_timer_timeout() -> void:
 	option_selector.scale.x = 1.05
