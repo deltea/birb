@@ -76,7 +76,7 @@ func main_state(dt: float):
 		set_index(select_index - 1)
 	if Input.is_action_just_pressed("jump"):
 		match select_index:
-			0: RoomManager.change_room("levels/test_level_2")
+			0: RoomManager.change_room("level-select/level_select")
 			1: change_state(MenuState.SETTINGS)
 			2: get_tree().quit()
 
@@ -115,11 +115,6 @@ func change_settings_value(index: int, delta: int):
 		SettingsManager.save_settings(settings[0], settings[1])
 		for star in settings_option_stars.get_child(index).get_children():
 			star.self_modulate = enabled_color if star.get_index() < settings[index] else disabled_color
-
-	match index:
-		0: print("Set sfx volume to ", delta)
-		1: print("Set set music volume to ", delta)
-		_: pass
 
 func _on_selector_ping_timer_timeout() -> void:
 	option_selector.scale.x = 1.05
