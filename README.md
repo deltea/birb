@@ -4,11 +4,11 @@
 
 - [ ] make level select
 - [ ] make color palette global
-- [ ] draw minecart for cave level
 - [ ] dash-collectables in secret areas
 - [ ] show stars in ui
 - [ ] juice up breakable walls
 - [ ] juice up stars
+- [x] draw minecart for cave level
 - [x] make settings menu
 - [x] make main menu
 - [x] add breakable stuff
