@@ -74,8 +74,8 @@ func settings_state(dt: float):
 	settings_option_selector.scale.x = lerp(settings_option_selector.scale.x, 1.0, 10.0 * dt)
 
 	for row in settings_option_stars.get_children():
-		for i in row.get_children():
-			i.rotation_degrees += 40.0 * dt
+		for star in row.get_children():
+			star.rotation_degrees = sin(Clock.time * 4.0) * 20.0 + 45.0
 
 	if Input.is_action_just_pressed("down"):
 		set_index(select_index + 1, -1)
