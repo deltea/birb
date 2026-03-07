@@ -2,7 +2,6 @@
 
 ## to-do
 
-- [ ] make settings menu
 - [ ] make level select
 - [ ] make color palette global
 - [ ] draw minecart for cave level
@@ -10,6 +9,7 @@
 - [ ] show stars in ui
 - [ ] juice up breakable walls
 - [ ] juice up stars
+- [x] make settings menu
 - [x] make main menu
 - [x] add breakable stuff
 - [x] add wall jump particles
