@@ -2,12 +2,12 @@
 
 ## to-do
 
-- [ ] add big arrows to levels
 - [ ] make color palette global
 - [ ] dash-collectables in secret areas
 - [ ] show stars in ui
 - [ ] juice up breakable walls
 - [ ] juice up stars
+- [x] add big arrows to levels
 - [x] make level select
 - [x] draw minecart for cave level
 - [x] make settings menu
