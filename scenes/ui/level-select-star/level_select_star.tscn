@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cg53g7kbmqe4s"]
+
+[ext_resource type="PackedScene" uid="uid://cl6b04m0wameb" path="res://scenes/star2d/star_2d.tscn" id="1_ni05h"]
+[ext_resource type="Script" uid="uid://dk8wkj3knwh70" path="res://scenes/ui/level-select-star/level_select_star.gd" id="2_yjswt"]
+
+[node name="LevelSelectStar" unique_id=856709757 instance=ExtResource("1_ni05h")]
+z_index = 10
+polygon = PackedVector2Array(-12.995321, -5.207843, -8.48408, 2.1407657, -8.96873, 10.749971, -0.58573574, 8.730372, 7.45234, 11.851693, 8.122076, 3.254901, 13.574529, -3.4252248, 5.6054554, -6.7187333, 0.93717825, -13.968596, -4.6577144, -7.407307)
+script = ExtResource("2_yjswt")
+level_name = ""
+level_path = ""
+palette = null
+peaks = 5
+peak_randomness = 0
+low_radius = 25.0
+low_radius_randomness = 0.0
+high_radius_randomness = 0.0
+star_scale = 0.35
+
+[node name="BackgroundStar" parent="." index="0" unique_id=38235723 instance=ExtResource("1_ni05h")]
+z_index = -1
+color = Color(0.26666668, 0.26666668, 0.26666668, 1)
+polygon = PackedVector2Array(-12.14382, -13.28637, -8.99093, -0.4039522, -13.286371, 12.143818, -0.40395504, 8.99093, 12.143821, 13.286369, 8.99093, 0.40395355, 13.28637, -12.14382, 0.40395257, -8.99093)
+peaks = 4
+peak_randomness = 0
+low_radius_randomness = 0.0
+high_radius_randomness = 0.0
+star_scale = 0.45
