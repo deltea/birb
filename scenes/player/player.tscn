@@ -82,6 +82,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gmlin"]
+radius = 13.0
 
 [node name="Player" type="CharacterBody2D" unique_id=249500363]
 process_mode = 3

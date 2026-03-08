@@ -15,7 +15,7 @@ func _ready() -> void:
 	set_index(0)
 
 func _process(dt: float) -> void:
-	camera_target.position = stars.get_child(select_index).position
+	camera_target.position = stars.get_child(select_index).position + Vector2(60, 0)
 	arrow_3d.rotation_degrees.z += dt * 100
 	arrow.position = arrow.position.lerp(arrow_target_pos + Vector2(sin(Clock.time * 4.0) * 2, 0), dt * 20)
 
@@ -26,15 +26,17 @@ func _process(dt: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		var star = stars.get_child(select_index) as LevelSelectStar
 		RoomManager.change_room("levels/" + star.level_path)
+	if Input.is_action_just_pressed("dash"):
+		RoomManager.change_room("main-menu/main_menu")
 
 func set_index(new_index: int) -> void:
 	select_index = clampi(new_index, 0, stars.get_child_count() - 1)
 	PaletteFilter.set_color_palette((stars.get_child(select_index) as LevelSelectStar).palette)
-	arrow_target_pos = stars.get_child(select_index).position + Vector2(40, -12)
+	arrow_target_pos = stars.get_child(select_index).position + Vector2(-60, -12)
 
 	for i in range(stars.get_child_count()):
 		var star = stars.get_child(i) as LevelSelectStar
-		star.is_selected = i == select_index
+		star.set_selected(i == select_index)
 
 func _on_shooting_star_timer_timeout() -> void:
 	var shooting_star = shooting_star_scene.instantiate() as ShootingStar

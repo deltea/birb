@@ -2,27 +2,141 @@
 
 [ext_resource type="PackedScene" uid="uid://cl6b04m0wameb" path="res://scenes/star2d/star_2d.tscn" id="1_ni05h"]
 [ext_resource type="Script" uid="uid://dk8wkj3knwh70" path="res://scenes/ui/level-select-star/level_select_star.gd" id="2_yjswt"]
+[ext_resource type="FontFile" uid="uid://ce3pxfpd38a3y" path="res://assets/fonts/monogram.ttf" id="3_rp2gm"]
+[ext_resource type="Texture2D" uid="uid://cm4r8dwe8vx7l" path="res://assets/ui/level-select-background.png" id="5_owgat"]
 
-[node name="LevelSelectStar" unique_id=856709757 instance=ExtResource("1_ni05h")]
+[sub_resource type="Animation" id="Animation_owgat"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(16, 18)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background/LevelNameLabel:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_iy8mu"]
+resource_name = "select"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background:size")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.29999995),
+"transitions": PackedFloat32Array(0.4352749, 0.4352749),
+"update": 0,
+"values": [Vector2(16, 18), Vector2(180, 18)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background/LevelNameLabel:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.29999995),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_owgat"]
+_data = {
+&"RESET": SubResource("Animation_owgat"),
+&"select": SubResource("Animation_iy8mu")
+}
+
+[node name="LevelSelectStar" type="Node2D" unique_id=1444065302]
+script = ExtResource("2_yjswt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=668775807]
+libraries/ = SubResource("AnimationLibrary_owgat")
+
+[node name="Star" type="Polygon2D" parent="." unique_id=856709757]
 z_index = 10
 polygon = PackedVector2Array(-12.995321, -5.207843, -8.48408, 2.1407657, -8.96873, 10.749971, -0.58573574, 8.730372, 7.45234, 11.851693, 8.122076, 3.254901, 13.574529, -3.4252248, 5.6054554, -6.7187333, 0.93717825, -13.968596, -4.6577144, -7.407307)
-script = ExtResource("2_yjswt")
-level_name = ""
-level_path = ""
-palette = null
-peaks = 5
-peak_randomness = 0
-low_radius = 25.0
-low_radius_randomness = 0.0
-high_radius_randomness = 0.0
-star_scale = 0.35
 
-[node name="BackgroundStar" parent="." index="0" unique_id=38235723 instance=ExtResource("1_ni05h")]
+[node name="BackgroundStar" parent="Star" unique_id=38235723 instance=ExtResource("1_ni05h")]
 z_index = -1
-color = Color(0.26666668, 0.26666668, 0.26666668, 1)
-polygon = PackedVector2Array(-12.14382, -13.28637, -8.99093, -0.4039522, -13.286371, 12.143818, -0.40395504, 8.99093, 12.143821, 13.286369, 8.99093, 0.40395355, 13.28637, -12.14382, 0.40395257, -8.99093)
-peaks = 4
+color = Color(0.33333334, 0.33333334, 0.33333334, 1)
+polygon = PackedVector2Array(12.0166235, -13.401521, 0.9222177, -8.952626, -9.032264, -15.569786, -8.229473, -3.6435945, -17.598867, 3.7788658, -6.008311, 6.700761, -1.8444339, 17.905252, 4.516131, 7.7848935, 16.458946, 7.2871876, 8.799435, -1.8894322)
+peaks = 5
 peak_randomness = 0
 low_radius_randomness = 0.0
 high_radius_randomness = 0.0
 star_scale = 0.45
+
+[node name="Background" type="NinePatchRect" parent="." unique_id=420149574]
+self_modulate = Color(0.26666668, 0.26666668, 0.26666668, 1)
+offset_top = -9.0
+offset_right = 16.0
+offset_bottom = 9.0
+scale = Vector2(1e-05, 1)
+texture = ExtResource("5_owgat")
+patch_margin_right = 16
+axis_stretch_horizontal = 1
+
+[node name="LevelNameLabel" type="RichTextLabel" parent="Background" unique_id=1564774327]
+z_index = 10
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("3_rp2gm")
+bbcode_enabled = true
+text = "level name"
+fit_content = true
+vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
