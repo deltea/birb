@@ -8,6 +8,7 @@ const countdown_rot = 10.0
 @onready var countdown_background: ColorRect = $CanvasLayer/Countdown/CountdownBackground
 @onready var countdown_scale_dynamics: DynamicsSolverVector = Dynamics.create_dynamics_vector(3.0, 0.15, 10.0)
 @onready var countdown_rot_dynamics: DynamicsSolver = Dynamics.create_dynamics(3.0, 0.5, 10.0)
+@onready var complete_palette_filter: ColorRect = $CompleteCanvas/SubViewportContainer/SubViewport/PaletteFilter
 
 var player: Player
 
@@ -17,6 +18,9 @@ var countdown_rot_target = 360.0
 var stars_collected = 0
 
 func _ready() -> void:
+	PaletteFilter.set_color_palette(palette)
+	complete_palette_filter.material.set_shader_parameter("palette_out", palette)
+
 	get_tree().paused = true
 	player.can_move = false
 

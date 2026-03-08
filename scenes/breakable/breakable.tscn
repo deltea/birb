@@ -14,6 +14,7 @@ script = ExtResource("1_o1hyk")
 shape = SubResource("RectangleShape2D_p6vfw")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=364809691]
+self_modulate = Color(0.73333335, 0.73333335, 0.73333335, 1)
 texture = ExtResource("1_krw3s")
 
 [node name="Quarters" type="Node2D" parent="." unique_id=1503144162]

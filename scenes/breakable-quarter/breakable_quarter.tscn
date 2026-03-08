@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://pmpji0ht1rws" path="res://scenes/breakable-quarter/breakable_quarter.gd" id="2_n0rdi"]
 
 [node name="BreakableQuarter" type="Sprite2D" unique_id=494971288]
+self_modulate = Color(0.33333334, 0.33333334, 0.33333334, 1)
+z_index = -10
 texture = ExtResource("1_e52rl")
 centered = false
 script = ExtResource("2_n0rdi")

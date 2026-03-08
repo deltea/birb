@@ -21,8 +21,11 @@ func set_color_palette(new_palette: Texture2D = null):
 	print("color palette changed to " + palette.resource_path)
 	$ColorRect.material.set_shader_parameter("palette_out", palette)
 
-func set_brightness(value: float):
-	target_brightness = value
+func set_brightness(value: float, smoothing: bool = true):
+	if smoothing:
+		target_brightness = value
+	else:
+		brightness = value
 
 func _process(dt: float) -> void:
 	brightness = lerp(brightness, target_brightness, dt * brightness_change_speed)

@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bkhrrt45shegv" path="res://rooms/level.tscn" id="1_fxm0c"]
 [ext_resource type="PackedScene" uid="uid://dv7cyw0jlnfe8" path="res://scenes/collectable/collectable.tscn" id="2_ldx6e"]
+[ext_resource type="Texture2D" uid="uid://dckj2gcfbempt" path="res://color-palettes/coffee.png" id="2_uvqya"]
 [ext_resource type="PackedScene" uid="uid://lvqju5v40hdm" path="res://scenes/bouncepad/bouncepad.tscn" id="2_wce6o"]
 [ext_resource type="PackedScene" uid="uid://bmyumpoi8liiq" path="res://scenes/secret-area/secret_area.tscn" id="3_3juqe"]
 [ext_resource type="PackedScene" uid="uid://b20u13j8p26iv" path="res://scenes/particles/environment-particles/environment_particles.tscn" id="5_pk6ao"]
@@ -203,6 +204,7 @@ animations = [{
 }]
 
 [node name="TestLevel2" unique_id=2129457560 instance=ExtResource("1_fxm0c")]
+palette = ExtResource("2_uvqya")
 
 [node name="Camera" parent="." index="2" unique_id=1304390175]
 limit_left = -105
