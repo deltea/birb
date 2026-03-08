@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://mm5kxmcu75s1" path="res://assets/breakable.png" id="1_krw3s"]
 [ext_resource type="Script" uid="uid://bmyneag3nlpq5" path="res://scenes/breakable/breakable.gd" id="1_o1hyk"]
+[ext_resource type="PackedScene" uid="uid://uo6v6bkvns50" path="res://scenes/breakable-quarter/breakable_quarter.tscn" id="3_psdui"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p6vfw"]
 size = Vector2(16, 16)
@@ -12,5 +13,23 @@ script = ExtResource("1_o1hyk")
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=815604144]
 shape = SubResource("RectangleShape2D_p6vfw")
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=583742144]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=364809691]
 texture = ExtResource("1_krw3s")
+
+[node name="Quarters" type="Node2D" parent="." unique_id=1503144162]
+visible = false
+
+[node name="BreakableQuarter" parent="Quarters" unique_id=494971288 instance=ExtResource("3_psdui")]
+position = Vector2(-8, -8)
+
+[node name="BreakableQuarter2" parent="Quarters" unique_id=1211077636 instance=ExtResource("3_psdui")]
+position = Vector2(8, -8)
+rotation = 1.5707964
+
+[node name="BreakableQuarter3" parent="Quarters" unique_id=337885238 instance=ExtResource("3_psdui")]
+position = Vector2(8, 8)
+rotation = 3.1415927
+
+[node name="BreakableQuarter4" parent="Quarters" unique_id=1687686663 instance=ExtResource("3_psdui")]
+position = Vector2(-8, 8)
+rotation = 4.712389
