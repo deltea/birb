@@ -37,6 +37,7 @@ var target_scale = Vector2.ONE;
 var target_rot = 0.0;
 var is_dashing = false
 var is_horizontal_dashing = false
+var can_dash = true
 var original_particles_x
 var wall_jump_lock_timer = 0.0
 var wall_jump_target_velocity_x = 0.0
@@ -69,6 +70,7 @@ func _physics_process(delta: float) -> void:
 
 	for i in get_slide_collision_count():
 		var collision := get_slide_collision(i)
+		can_dash = true
 		if is_dashing and not is_horizontal_dashing:
 			is_dashing = false
 			sprite.stop()
@@ -156,7 +158,8 @@ func movement(delta: float):
 		buffer_timer = 0.0
 
 	# dashing
-	if Input.is_action_just_pressed("dash") and not is_dashing:
+	if Input.is_action_just_pressed("dash") and not is_dashing and can_dash:
+		can_dash = false
 		if Input.is_action_pressed("down") and not is_on_floor():
 			dash_down()
 		elif x_input:

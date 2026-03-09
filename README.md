@@ -6,6 +6,7 @@
 - [ ] dash-collectables in secret areas
 - [ ] juice up breakable walls
 - [ ] juice up stars
+- [x] fix dash spamming
 - [x] make color palette global
 - [x] add big arrows to levels
 - [x] make level select
