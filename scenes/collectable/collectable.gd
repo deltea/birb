@@ -6,26 +6,36 @@ class_name Collectable extends Area2D
 @onready var collider: CollisionShape2D = $CollisionShape2D
 @onready var particles: CPUParticles2D = $Particles
 
-var rot_speed = 1.5
+var rot_speed = 50.0
 var target_scale = Vector2.ONE
+var target_rot = 0.0
+var target_pos: Vector2
+var is_collected = false
+
+func _ready() -> void:
+	target_pos = position
 
 func _process(dt: float) -> void:
-	sprite.rotation += dt * rot_speed
-	sprite.position.y = sin(Clock.time * 2.0) * 4.0
-	sprite.scale = scale_dynamics.update(target_scale)
-	# bug: make the particles scale with the star and not disappear
+	target_rot += dt * rot_speed
+	sprite.rotation_degrees = lerp(sprite.rotation_degrees, target_rot, dt * 4.0)
+	if not is_collected:
+		sprite.position.y = sin(Clock.time * 2.0) * 4.0
+		sprite.scale = scale_dynamics.update(target_scale)
 	particles.scale = sprite.scale
-	# sprite.scale = Vector2.ONE * (1.0 + sin(Clock.time * 2.0) * 0.08)
-
-	if sprite.scale <= Vector2.ZERO:
-		queue_free()
+	position = position.lerp(target_pos, dt * 4.0)
 
 func collect():
+	is_collected = true
 	collider.set_deferred("disabled", true)
-	rot_speed = 5.0
+	target_rot += 360.0
+	rot_speed = 160.0
 	scale_dynamics.set_value(Vector2.ONE * 1.5)
-	target_scale = Vector2.ZERO
-	RoomManager.current_room.stars_collected += 1
+	sprite.position.y = 0.0
+	sprite.scale = Vector2.ONE
+	z_index = 20
+	RoomManager.current_room.collect_star(self)
+	particles.emitting = false
+	await Clock.wait(0.75)
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:

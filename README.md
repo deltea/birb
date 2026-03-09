@@ -2,10 +2,10 @@
 
 ## to-do
 
-- [ ] show stars in ui
 - [ ] dash-collectables in secret areas
 - [ ] juice up breakable walls
 - [ ] juice up stars
+- [x] show stars in ui
 - [x] fix dash spamming
 - [x] make color palette global
 - [x] add big arrows to levels
@@ -27,3 +27,4 @@
 
 - bouncepads, dash down to bounce
 - breakable walls, dash into to break through
+- maybe one horizontal dash and one vertical dash until refill?

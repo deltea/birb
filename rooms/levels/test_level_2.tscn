@@ -2,21 +2,22 @@
 
 [ext_resource type="PackedScene" uid="uid://bkhrrt45shegv" path="res://rooms/level.tscn" id="1_fxm0c"]
 [ext_resource type="PackedScene" uid="uid://dv7cyw0jlnfe8" path="res://scenes/collectable/collectable.tscn" id="2_ldx6e"]
+[ext_resource type="PackedScene" uid="uid://cl6b04m0wameb" path="res://scenes/star2d/star_2d.tscn" id="2_uvqya"]
 [ext_resource type="PackedScene" uid="uid://lvqju5v40hdm" path="res://scenes/bouncepad/bouncepad.tscn" id="2_wce6o"]
 [ext_resource type="PackedScene" uid="uid://bmyumpoi8liiq" path="res://scenes/secret-area/secret_area.tscn" id="3_3juqe"]
 [ext_resource type="PackedScene" uid="uid://b20u13j8p26iv" path="res://scenes/particles/environment-particles/environment_particles.tscn" id="5_pk6ao"]
 [ext_resource type="PackedScene" uid="uid://ds6uisrlvq6nk" path="res://scenes/breakable/breakable.tscn" id="6_pywsr"]
 [ext_resource type="PackedScene" uid="uid://ve5v6jngqdc6" path="res://scenes/decoration/fly_decoration.tscn" id="7_2sy11"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2sy11"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvqya"]
 resource_local_to_scene = true
 size = Vector2(176, 72)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvqya"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5yrd"]
 resource_local_to_scene = true
 size = Vector2(160, 48)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5yrd"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_knea1"]
 resource_local_to_scene = true
 size = Vector2(48, 48)
 
@@ -204,6 +205,48 @@ animations = [{
 
 [node name="TestLevel2" unique_id=2129457560 instance=ExtResource("1_fxm0c")]
 
+[node name="TimeLabel" parent="CanvasLayer" parent_id_path=PackedInt32Array(585174658) index="0" unique_id=1122141412]
+offset_top = 8.0
+vertical_alignment = 0
+
+[node name="Stars" type="Node2D" parent="CanvasLayer" parent_id_path=PackedInt32Array(585174658) index="2" unique_id=1382010371]
+position = Vector2(192, 224)
+
+[node name="Star2D" parent="CanvasLayer/Stars" index="0" unique_id=856709757 instance=ExtResource("2_uvqya")]
+position = Vector2(-64, 0)
+color = Color(0.33333334, 0.33333334, 0.33333334, 1)
+polygon = PackedVector2Array(4.8, 0, 2.427051, -1.7633557, 1.4832815, -4.5650716, -0.92705107, -2.8531694, -3.883282, -2.821369, -3, 2.6226832e-07, -3.8832815, 2.82137, -0.9270513, 2.8531694, 1.4832822, 4.565071, 2.4270508, 1.763356)
+peaks = 5
+peak_randomness = 0
+max_start_angle = 0.0
+low_radius = 25.0
+low_radius_randomness = 0.0
+high_radius_randomness = 0.0
+star_scale = 0.12
+
+[node name="Star2D2" parent="CanvasLayer/Stars" index="1" unique_id=1629215352 instance=ExtResource("2_uvqya")]
+position = Vector2(-32, 0)
+color = Color(0.33333334, 0.33333334, 0.33333334, 1)
+polygon = PackedVector2Array(4.8, 0, 2.427051, -1.7633557, 1.4832815, -4.5650716, -0.92705107, -2.8531694, -3.883282, -2.821369, -3, 2.6226832e-07, -3.8832815, 2.82137, -0.9270513, 2.8531694, 1.4832822, 4.565071, 2.4270508, 1.763356)
+peaks = 5
+peak_randomness = 0
+max_start_angle = 0.0
+low_radius = 25.0
+low_radius_randomness = 0.0
+high_radius_randomness = 0.0
+star_scale = 0.12
+
+[node name="Star2D3" parent="CanvasLayer/Stars" index="2" unique_id=227123760 instance=ExtResource("2_uvqya")]
+color = Color(0.33333334, 0.33333334, 0.33333334, 1)
+polygon = PackedVector2Array(4.8, 0, 2.427051, -1.7633557, 1.4832815, -4.5650716, -0.92705107, -2.8531694, -3.883282, -2.821369, -3, 2.6226832e-07, -3.8832815, 2.82137, -0.9270513, 2.8531694, 1.4832822, 4.565071, 2.4270508, 1.763356)
+peaks = 5
+peak_randomness = 0
+max_start_angle = 0.0
+low_radius = 25.0
+low_radius_randomness = 0.0
+high_radius_randomness = 0.0
+star_scale = 0.12
+
 [node name="Camera" parent="." index="2" unique_id=1304390175]
 limit_left = -105
 limit_top = -84
@@ -248,37 +291,31 @@ position = Vector2(384, -32)
 [node name="Collectable3" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="2" unique_id=1375005835 instance=ExtResource("2_ldx6e")]
 position = Vector2(680, 216)
 
-[node name="Collectable4" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="3" unique_id=238920712 instance=ExtResource("2_ldx6e")]
-position = Vector2(936, 56)
-
-[node name="Goal" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="4" unique_id=1681194359]
+[node name="Goal" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="3" unique_id=1681194359]
 position = Vector2(1304, 48)
 
-[node name="Bouncepad" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="5" unique_id=389278605 instance=ExtResource("2_wce6o")]
+[node name="Bouncepad" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="4" unique_id=389278605 instance=ExtResource("2_wce6o")]
 position = Vector2(128, 240)
 
-[node name="Bouncepad3" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="6" unique_id=1767374089 instance=ExtResource("2_wce6o")]
+[node name="Bouncepad3" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="5" unique_id=1767374089 instance=ExtResource("2_wce6o")]
 position = Vector2(320, 240)
 
-[node name="Bouncepad2" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="7" unique_id=1097068377 instance=ExtResource("2_wce6o")]
+[node name="Bouncepad2" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="6" unique_id=1097068377 instance=ExtResource("2_wce6o")]
 position = Vector2(192, 160)
 
-[node name="Bouncepad4" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="8" unique_id=713963425 instance=ExtResource("2_wce6o")]
+[node name="Bouncepad4" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="7" unique_id=713963425 instance=ExtResource("2_wce6o")]
 position = Vector2(384, 80)
 
-[node name="Bouncepad5" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="9" unique_id=768422554 instance=ExtResource("2_wce6o")]
+[node name="Bouncepad5" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="8" unique_id=768422554 instance=ExtResource("2_wce6o")]
 position = Vector2(632, 144)
 
-[node name="Bouncepad6" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="10" unique_id=1169719033 instance=ExtResource("2_wce6o")]
+[node name="Bouncepad6" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="9" unique_id=1169719033 instance=ExtResource("2_wce6o")]
 position = Vector2(1176, 128)
 
-[node name="Bouncepad7" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="11" unique_id=1746766419 instance=ExtResource("2_wce6o")]
+[node name="Bouncepad7" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="10" unique_id=1746766419 instance=ExtResource("2_wce6o")]
 position = Vector2(1096, 208)
 
-[node name="Bouncepad8" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="12" unique_id=345171223 instance=ExtResource("2_wce6o")]
-position = Vector2(848, 240)
-
-[node name="SecretArea" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="13" unique_id=848559150 instance=ExtResource("3_3juqe")]
+[node name="SecretArea" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="11" unique_id=848559150 instance=ExtResource("3_3juqe")]
 visible = false
 position = Vector2(-16, 16)
 
@@ -287,9 +324,9 @@ tile_map_data = PackedByteArray("AAAHAAEAAAAAAAEAAAAHAAAAAAAAAAEAAAAHAP//AAAAAAE
 
 [node name="CollisionShape" parent="Elements/SecretArea" index="1" unique_id=687079757]
 position = Vector2(40, 4)
-shape = SubResource("RectangleShape2D_2sy11")
+shape = SubResource("RectangleShape2D_uvqya")
 
-[node name="SecretArea2" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="14" unique_id=1741221156 instance=ExtResource("3_3juqe")]
+[node name="SecretArea2" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="12" unique_id=1741221156 instance=ExtResource("3_3juqe")]
 visible = false
 position = Vector2(704, 208)
 
@@ -298,9 +335,9 @@ tile_map_data = PackedByteArray("AAAGAP7/AAAAAAEAAAD9////AAAAAAEAAAD9/wAAAAAAAAE
 
 [node name="CollisionShape" parent="Elements/SecretArea2" index="1" unique_id=687079757]
 position = Vector2(32, 8)
-shape = SubResource("RectangleShape2D_uvqya")
+shape = SubResource("RectangleShape2D_o5yrd")
 
-[node name="SecretArea3" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="15" unique_id=2067864927 instance=ExtResource("3_3juqe")]
+[node name="SecretArea3" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="13" unique_id=2067864927 instance=ExtResource("3_3juqe")]
 visible = false
 position = Vector2(960, 32)
 
@@ -309,39 +346,39 @@ tile_map_data = PackedByteArray("AAD///7/AAAAAAEAAAD9/wAAAAAAAAEAAAD9/wEAAAAAAAE
 
 [node name="CollisionShape" parent="Elements/SecretArea3" index="1" unique_id=687079757]
 position = Vector2(-24, 24)
-shape = SubResource("RectangleShape2D_o5yrd")
+shape = SubResource("RectangleShape2D_knea1")
 
-[node name="Breakable" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="16" unique_id=356732343 instance=ExtResource("6_pywsr")]
+[node name="Breakable" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="14" unique_id=356732343 instance=ExtResource("6_pywsr")]
 position = Vector2(824, 128)
 
-[node name="Breakable2" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="17" unique_id=1171673795 instance=ExtResource("6_pywsr")]
+[node name="Breakable2" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="15" unique_id=1171673795 instance=ExtResource("6_pywsr")]
 position = Vector2(840, 128)
 
-[node name="Breakable3" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="18" unique_id=333253660 instance=ExtResource("6_pywsr")]
+[node name="Breakable3" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="16" unique_id=333253660 instance=ExtResource("6_pywsr")]
 position = Vector2(856, 128)
 
-[node name="Breakable4" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="19" unique_id=2122638975 instance=ExtResource("6_pywsr")]
+[node name="Breakable4" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="17" unique_id=2122638975 instance=ExtResource("6_pywsr")]
 position = Vector2(872, 128)
 
-[node name="Breakable5" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="20" unique_id=441530333 instance=ExtResource("6_pywsr")]
+[node name="Breakable5" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="18" unique_id=441530333 instance=ExtResource("6_pywsr")]
 position = Vector2(384, 152)
 
-[node name="Breakable6" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="21" unique_id=342010223 instance=ExtResource("6_pywsr")]
+[node name="Breakable6" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="19" unique_id=342010223 instance=ExtResource("6_pywsr")]
 position = Vector2(384, 136)
 
-[node name="Breakable7" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="22" unique_id=1629494215 instance=ExtResource("6_pywsr")]
+[node name="Breakable7" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="20" unique_id=1629494215 instance=ExtResource("6_pywsr")]
 position = Vector2(760, 56)
 
-[node name="Breakable8" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="23" unique_id=1288421843 instance=ExtResource("6_pywsr")]
+[node name="Breakable8" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="21" unique_id=1288421843 instance=ExtResource("6_pywsr")]
 position = Vector2(760, 40)
 
-[node name="Breakable9" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="24" unique_id=841440647 instance=ExtResource("6_pywsr")]
+[node name="Breakable9" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="22" unique_id=841440647 instance=ExtResource("6_pywsr")]
 position = Vector2(760, 24)
 
-[node name="Breakable10" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="25" unique_id=272316200 instance=ExtResource("6_pywsr")]
+[node name="Breakable10" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="23" unique_id=272316200 instance=ExtResource("6_pywsr")]
 position = Vector2(760, 8)
 
-[node name="Breakable11" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="26" unique_id=1862686244 instance=ExtResource("6_pywsr")]
+[node name="Breakable11" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="24" unique_id=1862686244 instance=ExtResource("6_pywsr")]
 position = Vector2(760, -8)
 
 [node name="WindParticles" parent="Decoration" parent_id_path=PackedInt32Array(238951789) index="0" unique_id=1669324104 instance=ExtResource("5_pk6ao")]
@@ -352,6 +389,7 @@ density = 0.2
 
 [node name="Parallax2D" type="Parallax2D" parent="Decoration" parent_id_path=PackedInt32Array(238951789) index="1" unique_id=55135355]
 scroll_scale = Vector2(1.1, 1.1)
+scroll_offset = Vector2(-144, 80)
 
 [node name="WindParticles2" parent="Decoration/Parallax2D" index="0" unique_id=1408546445 instance=ExtResource("5_pk6ao")]
 position = Vector2(640, 120)
