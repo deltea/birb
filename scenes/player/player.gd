@@ -42,6 +42,7 @@ var can_dash = true
 var original_particles_x
 var wall_jump_lock_timer = 0.0
 var wall_jump_target_velocity_x = 0.0
+var just_dashed = false
 
 @onready var scale_dynamics: DynamicsSolverVector = Dynamics.create_dynamics_vector(2.0, 0.5, 2.0);
 @onready var rot_dynamics: DynamicsSolver = Dynamics.create_dynamics(10.0, 0.8, 10.0);
@@ -74,6 +75,7 @@ func _physics_process(delta: float) -> void:
 		can_dash = true
 		if is_dashing and not is_horizontal_dashing:
 			is_dashing = false
+			just_dashed = true
 			sprite.stop()
 			if collision.get_collider() is Bouncepad:
 				collision.get_collider().bounce()
@@ -87,6 +89,9 @@ func movement(delta: float):
 	buffer_timer += delta
 	if wall_jump_lock_timer > 0.0:
 		wall_jump_lock_timer = max(0.0, wall_jump_lock_timer - delta)
+
+	if just_dashed and velocity.y >= 0.0:
+		just_dashed = false
 
 	var x_input := Input.get_axis("left", "right")
 
@@ -150,8 +155,8 @@ func movement(delta: float):
 		rot_dynamics.set_value(sprite.rotation_degrees)
 		jumped = true
 
-	# variable jump heihgt
-	if Input.is_action_just_released("jump") and velocity.y < 0.0:
+	# variable jump height
+	if Input.is_action_just_released("jump") and velocity.y < 0.0 and not just_dashed:
 		velocity.y *= jump_cut_multiplier
 
 	# buffer jump
@@ -161,6 +166,8 @@ func movement(delta: float):
 	# dashing
 	if Input.is_action_just_pressed("dash") and not is_dashing and can_dash:
 		dash(x_input)
+
+	print(just_dashed)
 
 func dash(x_input: float):
 	can_dash = false

@@ -7,6 +7,7 @@
 - [ ] finish amethyst caves level
 - [ ] dash-collectables in secret areas
 - [ ] make screen shake work with complete canvas
+- [x] fix movement bug where trampoline doesn't work
 - [x] juice up breakable walls
 - [x] juice up stars
 - [x] show stars in ui
