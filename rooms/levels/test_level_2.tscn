@@ -206,6 +206,8 @@ animations = [{
 
 [node name="TimeLabel" parent="CanvasLayer" parent_id_path=PackedInt32Array(585174658) index="0" unique_id=1122141412]
 offset_top = 8.0
+bbcode_enabled = false
+text = "02:32"
 vertical_alignment = 0
 
 [node name="CompleteCanvas" parent="." index="1" unique_id=229946939]

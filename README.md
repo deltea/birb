@@ -4,10 +4,10 @@ speedy birb game go weee
 
 ## to-do
 
-- [ ] finish end screen
 - [ ] finish amethyst caves level
 - [ ] dash-collectables in secret areas
 - [ ] make screen shake work with complete canvas
+- [x] finish end screen
 - [x] make countdown use textures
 - [x] add alphabet scoring system
 - [x] fix movement bug where trampoline doesn't work

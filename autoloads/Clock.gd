@@ -17,3 +17,8 @@ func hitstop(duration: float):
 	Engine.time_scale = 0.0
 	await wait(duration)
 	Engine.time_scale = 1.0
+
+func format_time(time: float) -> String:
+	var minutes = int(time) / 60
+	var seconds = fmod(time, 60)
+	return "%d:%05.2f" % [minutes, seconds]

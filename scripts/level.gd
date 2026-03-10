@@ -52,7 +52,7 @@ func _process(dt: float) -> void:
 	countdown.scale = countdown_scale_dynamics.update(countdown_scale_target)
 	countdown_texture.rotation_degrees = countdown_rot_dynamics.update(countdown_rot_target)
 	countdown_background.rotation_degrees = Clock.time * 200.0
-	time_label.text = "[wave]%.2f[/wave]" % time
+	time_label.text = Clock.format_time(time)
 
 	for star in stars_hud.get_children():
 		star.rotation_degrees += dt * 40.0
@@ -108,8 +108,8 @@ func complete():
 	complete_canvas.visible = true
 	time_label.visible = false
 	stars_hud.visible = false
-	final_label.text = "[wave]%.2f\n%s\n%s/5" % [
-		time,
+	final_label.text = "%s\n%s\n%s/5" % [
+		Clock.format_time(time),
 		"found" if secret_found else "not found",
 		stars_collected
 	]
