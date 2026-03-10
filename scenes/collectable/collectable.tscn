@@ -18,13 +18,7 @@ script = ExtResource("1_h1g3x")
 shape = SubResource("CircleShape2D_la71a")
 
 [node name="Star2D" parent="." unique_id=856709757 instance=ExtResource("2_la71a")]
-color = Color(0.73333335, 0.73333335, 0.73333335, 1)
 polygon = PackedVector2Array(-7.661191, 2.3035088, -3.0275416, 3.9791946, -0.17667088, 7.998049, 2.8488777, 4.109002, 7.5520024, 2.639557, 4.7882442, -1.439693, 4.844065, -6.3667126, 0.110419735, -4.9987803, -4.558205, -6.5744023, -4.720001, -1.6497233)
-peaks = 5
-peak_randomness = 0
-low_radius = 25.0
-low_radius_randomness = 0.0
-high_radius_randomness = 0.0
 star_scale = 0.2
 
 [node name="Particles" type="CPUParticles2D" parent="." unique_id=248015605]

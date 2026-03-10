@@ -1,15 +1,18 @@
 extends Room
 
-const countdown_rot = 10.0
-
 @export var s_rank_texture: Texture2D
 @export var a_rank_texture: Texture2D
 @export var b_rank_texture: Texture2D
 @export var c_rank_texture: Texture2D
 
+@export var three_texture: Texture2D
+@export var two_texture: Texture2D
+@export var one_texture: Texture2D
+@export var go_texture: Texture2D
+
 @onready var time_label: RichTextLabel = $CanvasLayer/TimeLabel
 @onready var countdown: Control = $CanvasLayer/Countdown
-@onready var countdown_label: Label = $CanvasLayer/Countdown/CountdownLabel
+@onready var countdown_texture: TextureRect = $CanvasLayer/Countdown/Countdown
 @onready var countdown_background: ColorRect = $CanvasLayer/Countdown/CountdownBackground
 @onready var countdown_scale_dynamics: DynamicsSolverVector = Dynamics.create_dynamics_vector(3.0, 0.15, 10.0)
 @onready var countdown_rot_dynamics: DynamicsSolver = Dynamics.create_dynamics(3.0, 0.5, 10.0)
@@ -42,11 +45,12 @@ func _ready() -> void:
 	get_tree().paused = true
 	player.can_move = false
 
+	await Clock.wait(0.5)
 	show_countdown()
 
 func _process(dt: float) -> void:
 	countdown.scale = countdown_scale_dynamics.update(countdown_scale_target)
-	countdown_label.rotation_degrees = countdown_rot_dynamics.update(countdown_rot_target)
+	countdown_texture.rotation_degrees = countdown_rot_dynamics.update(countdown_rot_target)
 	countdown_background.rotation_degrees = Clock.time * 200.0
 	time_label.text = "[wave]%.2f[/wave]" % time
 
@@ -64,27 +68,27 @@ func _process(dt: float) -> void:
 
 func show_countdown():
 	countdown_scale_dynamics.set_value(Vector2.ONE * 0.2)
-	countdown_rot_dynamics.set_value(countdown_rot)
-	countdown_rot_target = 360.0 - countdown_rot
-	countdown_label.text = "3"
+	countdown_rot_dynamics.set_value(0)
+	countdown_rot_target = 360.0
+	countdown_texture.texture = three_texture
 
 	await Clock.wait(0.6)
 	countdown_scale_dynamics.set_value(Vector2.ONE * 0.2)
-	countdown_rot_dynamics.set_value(-countdown_rot)
-	countdown_rot_target = 360.0 + countdown_rot
-	countdown_label.text = "2"
+	countdown_rot_dynamics.set_value(0)
+	countdown_rot_target = 360.0
+	countdown_texture.texture = two_texture
 
 	await Clock.wait(0.6)
 	countdown_scale_dynamics.set_value(Vector2.ONE * 0.2)
-	countdown_rot_dynamics.set_value(countdown_rot)
-	countdown_rot_target = 360.0 - countdown_rot
-	countdown_label.text = "1"
+	countdown_rot_dynamics.set_value(0)
+	countdown_rot_target = 360.0
+	countdown_texture.texture = one_texture
 
 	await Clock.wait(0.6)
 	countdown_scale_dynamics.set_value(Vector2.ONE * 0.2)
-	countdown_rot_dynamics.set_value(-countdown_rot)
-	countdown_rot_target = 360.0 + countdown_rot
-	countdown_label.text = "GO!"
+	countdown_rot_dynamics.set_value(0)
+	countdown_rot_target = 360.0
+	countdown_texture.texture = go_texture
 
 	await Clock.wait(0.4)
 	get_tree().paused = false
