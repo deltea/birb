@@ -17,6 +17,7 @@ _ [ ] finish summit level
 - [ ] the peak stars cutscene
 - [ ] add sound effects
 - [ ] make music (dynamic blending)
+- [ ] add default palette to settings
 - [x] complete level finish flow
 - [x] fix camera bug in level select
 - [x] clean up remote tree (dynamics clutter)
@@ -53,8 +54,9 @@ _ [ ] finish summit level
 
 ## game mechanics ideas
 
+- [ ] dash refill, maybe small velocity boost
 - [ ] super bouncers (mushroom?)
 - [ ] puzzle elements like locks and doors (forest?)
-- [ ] maybe one horizontal dash and one vertical dash until refill?
+- [x] maybe one horizontal dash and one vertical dash until refill?
 - [x] bouncepads, dash down to bounce
 - [x] breakable walls, dash into to break through
