@@ -134,7 +134,7 @@ func movement(delta: float):
 		walk_particles.emitting = false
 
 	# normal jumping
-	if not jumped:
+	if not jumped and not just_dashed:
 		# buffer jump check
 		if Input.is_action_just_pressed("jump") or buffer_timer < buffer_time:
 			# coyote jump check
