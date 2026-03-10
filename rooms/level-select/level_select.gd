@@ -9,6 +9,8 @@ const shooting_star_scene = preload("res://scenes/particles/shooting-star/shooti
 @onready var arrow: SubViewportContainer = $Arrow
 @onready var stars_icon: Star2D = $CanvasLayer/StarsIcon
 @onready var level_num: TextureRect = $CanvasLayer/LevelNum
+@onready var level_time_label: RichTextLabel = $CanvasLayer/TimeLabel
+@onready var level_stars_label: RichTextLabel = $CanvasLayer/LevelStarsLabel
 
 var select_index = 0
 var arrow_target_pos = Vector2.ZERO
@@ -36,6 +38,7 @@ func set_index(new_index: int) -> void:
 	select_index = clampi(new_index, 0, stars.get_child_count() - 1)
 	PaletteManager.set_palette((stars.get_child(select_index) as LevelSelectStar).palette)
 	arrow_target_pos = stars.get_child(select_index).position + Vector2(-60, -12)
+
 	level_num.texture = Globals.number_textures[select_index + 1]
 
 	for i in range(stars.get_child_count()):
