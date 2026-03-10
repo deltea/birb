@@ -5,9 +5,18 @@ speedy birb game go weee
 ## to-do
 
 - [ ] save best time and other stats
+- [ ] improved camera system
 - [ ] finish amethyst caves level
-- [ ] find a good woods palette
+- [ ] add a falling animation start of level
+- [ ] locked levels
+- [ ] finish woods level
+- [ ] add cutscene/dialogue system
+- [ ] finish third level
+_ [ ] finish summit level
 - [ ] dash-collectables in secret areas
+- [ ] the peak stars cutscene
+- [ ] add sound effects
+- [ ] make music (dynamic blending)
 - [x] complete level finish flow
 - [x] fix camera bug in level select
 - [x] clean up remote tree (dynamics clutter)
@@ -32,17 +41,20 @@ speedy birb game go weee
 
 ## known bugs
 
-- [ ] stars are flashing when collected
+- [ ] stars teleport for a frame when collected
+- [ ] breakables not breaking at the same time
 
 ## levels (in-order)
 
 1. amethyst caves
 2. some kind of forest
-3. idk maybe mushroomville
+3. idk maybe mushroomville or the ocean or smth
 4. mountain
 
 ## game mechanics ideas
 
+- [ ] super bouncers (mushroom?)
+- [ ] puzzle elements like locks and doors (forest?)
 - [ ] maybe one horizontal dash and one vertical dash until refill?
 - [x] bouncepads, dash down to bounce
 - [x] breakable walls, dash into to break through
