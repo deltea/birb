@@ -1,7 +1,5 @@
 extends CanvasLayer
 
-signal change_palette(palette: Texture2D)
-
 const default_palette = preload("res://assets/palettes/purple.png")
 
 @onready var rect: ColorRect = $ColorRect
