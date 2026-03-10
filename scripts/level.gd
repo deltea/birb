@@ -18,12 +18,11 @@ extends Room
 @onready var countdown_rot_dynamics: DynamicsSolver = Dynamics.create_dynamics(3.0, 0.5, 10.0)
 @onready var stars_hud: Node2D = $CanvasLayer/Stars
 
-@onready var complete_palette_filter: ColorRect = $CompleteCanvas/SubViewportContainer/SubViewport/PaletteFilter
 @onready var complete_canvas: CanvasLayer = $CompleteCanvas
-@onready var complete_player: AnimationPlayer = $CompleteCanvas/SubViewportContainer/SubViewport/AnimationPlayer
-@onready var complete_star: Star2D = $CompleteCanvas/SubViewportContainer/SubViewport/Star2D
-@onready var rank_text: TextureRect = $CompleteCanvas/SubViewportContainer/SubViewport/RankText
-@onready var final_label: RichTextLabel = $CompleteCanvas/SubViewportContainer/SubViewport/FinalStatsValues
+@onready var complete_player: AnimationPlayer = $CompleteCanvas/AnimationPlayer
+@onready var complete_star: Star2D = $CompleteCanvas/Star2D
+@onready var rank_text: TextureRect = $CompleteCanvas/RankText
+@onready var final_label: RichTextLabel = $CompleteCanvas/FinalStatsValues
 
 @onready var star_scale_dynamics: DynamicsSolver = Dynamics.create_dynamics(4.0, 1, 2.0)
 
@@ -40,8 +39,6 @@ var secret_found = false
 
 func _ready() -> void:
 	super._ready()
-
-	complete_palette_filter.material.set_shader_parameter("palette_out", palette)
 
 	get_tree().paused = true
 	player.can_move = false
@@ -106,7 +103,7 @@ func complete():
 	is_completed = true
 	await Clock.wait(1.0)
 
-	PaletteFilter.set_brightness(0.25)
+	# PaletteManager.set_brightness(0.25)
 	complete_canvas.visible = true
 	time_label.visible = false
 	stars_hud.visible = false

@@ -4,9 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cksk5qojiqsdw" path="res://assets/palettes/purple.png" id="2_4r1re"]
 [ext_resource type="Texture2D" uid="uid://buvg1hds23jq1" path="res://assets/ui/ranks/a.png" id="3_3qwok"]
 [ext_resource type="FontFile" uid="uid://582abh2r0rhk" path="res://assets/fonts/m6x11.ttf" id="3_wrbck"]
-[ext_resource type="Shader" uid="uid://bqsviir6g074p" path="res://shaders/palette_filter.gdshader" id="4_3r5wm"]
 [ext_resource type="Texture2D" uid="uid://xs5cksp2glgy" path="res://assets/ui/ranks/b.png" id="4_15qan"]
-[ext_resource type="Texture2D" uid="uid://bm5w1x2hdngqi" path="res://assets/palette-in.png" id="5_3qwok"]
 [ext_resource type="Texture2D" uid="uid://d78rl4s72wpb" path="res://assets/ui/ranks/c.png" id="5_fei6a"]
 [ext_resource type="PackedScene" uid="uid://cl6b04m0wameb" path="res://scenes/star2d/star_2d.tscn" id="5_wrbck"]
 [ext_resource type="Texture2D" uid="uid://tsd6xgyuhsdj" path="res://assets/ui/ranks/s.png" id="6_4r1re"]
@@ -20,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://c8ke4gok4cnd0" path="res://assets/generic/square-big.png" id="10_xw2c8"]
 [ext_resource type="PackedScene" uid="uid://dtjbn58747xj5" path="res://scenes/goal/goal.tscn" id="12_t0xh4"]
 [ext_resource type="PackedScene" uid="uid://dv7cyw0jlnfe8" path="res://scenes/collectable/collectable.tscn" id="13_julpp"]
+[ext_resource type="Texture2D" uid="uid://cdnunui18bx10" path="res://assets/generic/pixel.png" id="14_dsxex"]
 
 [sub_resource type="Animation" id="Animation_ijbq7"]
 length = 0.001
@@ -155,6 +154,18 @@ tracks/10/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Darken:self_modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_lsceb"]
 resource_name = "complete"
@@ -258,7 +269,7 @@ tracks/7/keys = {
 tracks/8/type = "method"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("../../../Camera")
+tracks/8/path = NodePath("../Camera")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -305,6 +316,18 @@ tracks/11/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Darken:self_modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.74509805)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ijbq7"]
 _data = {
@@ -315,15 +338,6 @@ _data = {
 [sub_resource type="LabelSettings" id="LabelSettings_lsceb"]
 font = ExtResource("3_wrbck")
 font_size = 18
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8iemx"]
-shader = ExtResource("4_3r5wm")
-shader_parameter/num_colors = 8
-shader_parameter/palette_in = ExtResource("5_3qwok")
-shader_parameter/palette_out = ExtResource("2_4r1re")
-shader_parameter/precision = 0.1
-shader_parameter/brightness = 2.0
-shader_parameter/transparent_bg = true
 
 [node name="Level" type="Node2D" unique_id=2129457560]
 process_mode = 3
@@ -437,28 +451,24 @@ star_scale = 0.12
 layer = 20
 follow_viewport_enabled = true
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="CompleteCanvas" unique_id=1373178145]
-offset_right = 320.0
-offset_bottom = 240.0
-
-[node name="SubViewport" type="SubViewport" parent="CompleteCanvas/SubViewportContainer" unique_id=1480397239]
-transparent_bg = true
-handle_input_locally = false
-canvas_item_default_texture_filter = 0
-size = Vector2i(320, 240)
-render_target_update_mode = 4
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CompleteCanvas/SubViewportContainer/SubViewport" unique_id=542877002]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CompleteCanvas" unique_id=542877002]
 libraries/ = SubResource("AnimationLibrary_ijbq7")
 
-[node name="ColorStripeTop" type="Control" parent="CompleteCanvas/SubViewportContainer/SubViewport" unique_id=1173360837]
+[node name="Darken" type="TextureRect" parent="CompleteCanvas" unique_id=428367274]
+self_modulate = Color(0, 0, 0, 0)
+z_index = -1
+offset_right = 320.0
+offset_bottom = 240.0
+texture = ExtResource("14_dsxex")
+
+[node name="ColorStripeTop" type="Control" parent="CompleteCanvas" unique_id=1173360837]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 320.0
 offset_bottom = 240.0
 pivot_offset = Vector2(160, 120)
 
-[node name="Inner" type="ColorRect" parent="CompleteCanvas/SubViewportContainer/SubViewport/ColorStripeTop" unique_id=265641619]
+[node name="Inner" type="ColorRect" parent="CompleteCanvas/ColorStripeTop" unique_id=265641619]
 layout_mode = 0
 offset_left = -32.0
 offset_right = 208.0
@@ -466,7 +476,7 @@ rotation = -0.2617994
 pivot_offset = Vector2(32, 0)
 color = Color(0.13333334, 0.13333334, 0.13333334, 1)
 
-[node name="Label" type="Label" parent="CompleteCanvas/SubViewportContainer/SubViewport/ColorStripeTop/Inner" unique_id=960924771]
+[node name="Label" type="Label" parent="CompleteCanvas/ColorStripeTop/Inner" unique_id=960924771]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -484,7 +494,7 @@ label_settings = SubResource("LabelSettings_lsceb")
 vertical_alignment = 1
 clip_text = true
 
-[node name="Outer" type="ColorRect" parent="CompleteCanvas/SubViewportContainer/SubViewport/ColorStripeTop" unique_id=1592019829]
+[node name="Outer" type="ColorRect" parent="CompleteCanvas/ColorStripeTop" unique_id=1592019829]
 layout_mode = 0
 offset_left = -32.0
 offset_right = 208.0
@@ -492,7 +502,7 @@ rotation = -0.2617994
 pivot_offset = Vector2(32, 0)
 color = Color(0.06666667, 0.06666667, 0.06666667, 1)
 
-[node name="ColorStripeBottom" type="Control" parent="CompleteCanvas/SubViewportContainer/SubViewport" unique_id=550502544]
+[node name="ColorStripeBottom" type="Control" parent="CompleteCanvas" unique_id=550502544]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 320.0
@@ -500,7 +510,7 @@ offset_bottom = 240.0
 rotation = 3.1415927
 pivot_offset = Vector2(160, 120)
 
-[node name="Inner" type="ColorRect" parent="CompleteCanvas/SubViewportContainer/SubViewport/ColorStripeBottom" unique_id=537288168]
+[node name="Inner" type="ColorRect" parent="CompleteCanvas/ColorStripeBottom" unique_id=537288168]
 layout_mode = 0
 offset_left = -32.0
 offset_right = 208.0
@@ -508,7 +518,7 @@ rotation = -0.2617994
 pivot_offset = Vector2(32, 0)
 color = Color(0.13333334, 0.13333334, 0.13333334, 1)
 
-[node name="Label" type="Label" parent="CompleteCanvas/SubViewportContainer/SubViewport/ColorStripeBottom/Inner" unique_id=1286928084]
+[node name="Label" type="Label" parent="CompleteCanvas/ColorStripeBottom/Inner" unique_id=1286928084]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -524,7 +534,7 @@ label_settings = SubResource("LabelSettings_lsceb")
 vertical_alignment = 1
 clip_text = true
 
-[node name="Outer" type="ColorRect" parent="CompleteCanvas/SubViewportContainer/SubViewport/ColorStripeBottom" unique_id=131613741]
+[node name="Outer" type="ColorRect" parent="CompleteCanvas/ColorStripeBottom" unique_id=131613741]
 layout_mode = 0
 offset_left = -32.0
 offset_right = 208.0
@@ -532,21 +542,21 @@ rotation = -0.2617994
 pivot_offset = Vector2(32, 0)
 color = Color(0.06666667, 0.06666667, 0.06666667, 1)
 
-[node name="Star2D" parent="CompleteCanvas/SubViewportContainer/SubViewport" unique_id=959970739 instance=ExtResource("5_wrbck")]
+[node name="Star2D" parent="CompleteCanvas" unique_id=959970739 instance=ExtResource("5_wrbck")]
 position = Vector2(243.54103, 78.0634)
 scale = Vector2(1e-05, 1e-05)
 color = Color(0.33333334, 0.33333334, 0.33333334, 1)
 polygon = PackedVector2Array(60, 0, 30.338137, -22.041946, 18.541018, -57.063393, -11.588139, -35.66462, -48.541023, -35.267113, -37.5, 3.2783541e-06, -48.541016, 35.26712, -11.5881405, 35.66462, 18.541027, 57.06339, 30.338135, 22.041948)
 star_scale = 1.5
 
-[node name="RankText" type="TextureRect" parent="CompleteCanvas/SubViewportContainer/SubViewport" unique_id=1959523519]
+[node name="RankText" type="TextureRect" parent="CompleteCanvas" unique_id=1959523519]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 51.54103
+offset_left = 51.541016
 offset_top = -73.9366
 offset_right = 115.541016
 offset_bottom = -9.9366
@@ -556,7 +566,7 @@ scale = Vector2(4, 4)
 pivot_offset = Vector2(32, 32)
 texture = ExtResource("6_4r1re")
 
-[node name="FinalStats" type="RichTextLabel" parent="CompleteCanvas/SubViewportContainer/SubViewport" unique_id=206318158]
+[node name="FinalStats" type="RichTextLabel" parent="CompleteCanvas" unique_id=206318158]
 offset_left = 24.0
 offset_top = 96.0
 offset_right = 80.0
@@ -571,7 +581,7 @@ fit_content = true
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="FinalStatsValues" type="RichTextLabel" parent="CompleteCanvas/SubViewportContainer/SubViewport" unique_id=116265284]
+[node name="FinalStatsValues" type="RichTextLabel" parent="CompleteCanvas" unique_id=116265284]
 offset_left = 88.0
 offset_top = 96.0
 offset_right = 160.0
@@ -587,7 +597,7 @@ horizontal_alignment = 2
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="Instructions" type="RichTextLabel" parent="CompleteCanvas/SubViewportContainer/SubViewport" unique_id=1074156681]
+[node name="Instructions" type="RichTextLabel" parent="CompleteCanvas" unique_id=1074156681]
 visible = false
 offset_left = 32.0
 offset_top = 184.0
@@ -600,12 +610,7 @@ bbcode_enabled = true
 text = "[wave]press z to continue"
 fit_content = true
 
-[node name="PaletteFilter" type="ColorRect" parent="CompleteCanvas/SubViewportContainer/SubViewport" unique_id=1062036932]
-material = SubResource("ShaderMaterial_8iemx")
-offset_right = 320.0
-offset_bottom = 240.0
-
-[node name="StarPingTimer" type="Timer" parent="CompleteCanvas/SubViewportContainer/SubViewport" unique_id=42248697]
+[node name="StarPingTimer" type="Timer" parent="CompleteCanvas" unique_id=42248697]
 wait_time = 0.5
 autostart = true
 
@@ -688,4 +693,4 @@ position = Vector2(128, -112)
 
 [node name="Decoration" type="Node" parent="." unique_id=238951789]
 
-[connection signal="timeout" from="CompleteCanvas/SubViewportContainer/SubViewport/StarPingTimer" to="." method="_on_star_ping_timer_timeout"]
+[connection signal="timeout" from="CompleteCanvas/StarPingTimer" to="." method="_on_star_ping_timer_timeout"]

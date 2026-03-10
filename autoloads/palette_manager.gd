@@ -1,0 +1,24 @@
+extends CanvasLayer
+
+signal change_palette(palette: Texture2D)
+
+const default_palette = preload("res://assets/palettes/purple.png")
+
+@onready var rect: ColorRect = $ColorRect
+
+var palette: Texture2D
+
+func _ready() -> void:
+	set_palette(palette)
+
+func set_palette(new_palette: Texture2D = null):
+	if not default_palette:
+		print("default palette not set")
+		return
+
+	palette = default_palette
+	if new_palette:
+		palette = new_palette
+
+	print("color palette changed to " + palette.resource_path)
+	$ColorRect.material.set_shader_parameter("palette_out", palette)

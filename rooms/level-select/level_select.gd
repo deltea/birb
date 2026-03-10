@@ -31,7 +31,7 @@ func _process(dt: float) -> void:
 
 func set_index(new_index: int) -> void:
 	select_index = clampi(new_index, 0, stars.get_child_count() - 1)
-	PaletteFilter.set_color_palette((stars.get_child(select_index) as LevelSelectStar).palette)
+	PaletteManager.set_palette((stars.get_child(select_index) as LevelSelectStar).palette)
 	arrow_target_pos = stars.get_child(select_index).position + Vector2(-60, -12)
 
 	for i in range(stars.get_child_count()):
