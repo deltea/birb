@@ -36,10 +36,18 @@ func _process(dt: float) -> void:
 
 func set_index(new_index: int) -> void:
 	select_index = clampi(new_index, 0, stars.get_child_count() - 1)
-	PaletteManager.set_palette((stars.get_child(select_index) as LevelSelectStar).palette)
-	arrow_target_pos = stars.get_child(select_index).position + Vector2(-60, -12)
+	var current_star = stars.get_child(select_index) as LevelSelectStar
+	PaletteManager.set_palette(current_star.palette)
+	arrow_target_pos = current_star.position + Vector2(-60, -12)
 
 	level_num.texture = Globals.number_textures[select_index + 1]
+	var level_data = SaveManager.get_level_data(current_star.level_name)
+	if level_data != null:
+		level_time_label.text = Clock.format_time(level_data["time"])
+		level_stars_label.text = str(level_data["stars"]).split(".")[0] + "/5"
+	else:
+		level_time_label.text = "--:--.--"
+		level_stars_label.text = "0/5"
 
 	for i in range(stars.get_child_count()):
 		var star = stars.get_child(i) as LevelSelectStar

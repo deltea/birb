@@ -170,7 +170,7 @@ default_color = Color(0.33333334, 0.33333334, 0.33333334, 1)
 
 [node name="LevelSelectStar" parent="Stars" unique_id=901704959 instance=ExtResource("6_uqtpc")]
 position = Vector2(136, 160)
-level_name = "amethyst caves"
+level_name = "level"
 level_path = "test_level_2"
 palette = ExtResource("7_yky1i")
 

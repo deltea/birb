@@ -1,6 +1,9 @@
+@tool
 extends Node
 
 const SAVE_FILE_PATH = "user://save.json"
+
+@export_tool_button("Delete user data", "Remove") var delete_user_data_button = Callable(self, "delete_data")
 
 var data = {}
 
@@ -14,10 +17,10 @@ func get_level_data(level_name: String):
 		return null
 
 func save_level(level_name: String, stars_collected: int, time: float):
-	if time < data["levels"][level_name]["time"]:
-		data["levels"][level_name]["time"] = time
-	elif stars_collected > data["levels"][level_name]["stars"]:
-		data["levels"][level_name]["stars"] = stars_collected
+	var level_data = data["levels"].get(level_name, { "time": INF, "stars": 0 })
+	level_data["time"] = min(time, level_data["time"])
+	level_data["stars"] = max(stars_collected, level_data["stars"])
+	data["levels"][level_name] = level_data
 	save_game()
 
 func save_game():
@@ -35,6 +38,14 @@ func load_game():
 
 	var save_file = FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
 	var content = save_file.get_as_text()
+	data = JSON.parse_string(content)
 	print("save loaded")
 	print(JSON.parse_string(content))
 	return JSON.parse_string(content)
+
+func delete_data():
+	if FileAccess.file_exists(SAVE_FILE_PATH):
+		DirAccess.remove_absolute(SAVE_FILE_PATH)
+		print("save deleted")
+	else:
+		print("no save file to delete")
