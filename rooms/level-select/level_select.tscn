@@ -26,6 +26,22 @@ ambient_light_color = Color(1, 1, 1, 1)
 [sub_resource type="World3D" id="World3D_68y80"]
 environment = SubResource("Environment_68y80")
 
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_iakt0"]
+_data = PackedByteArray("AAADAAUAAAABAAAAEAAAABAAAABkAAAAUklGRlwAAABXRUJQVlA4TFAAAAAvD8ADEBcgEEjyZ9ptDYFAkj/TbgsEkvyZdnv+A/4VMKptW8n5H5h7CdLo1zk9iOJa0zJE9D+oIugKUAo2D717SjZ/o9Q9aMX4+F9dQBy+AA==")
+size_override = Vector2(16, 16)
+
+[sub_resource type="Curve2D" id="Curve2D_iakt0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 136, 160, -28, 24, 28, -24, 160, 32, 0, 0, 0, 0, 184, 64, 28, 24, -28, -24, 160, -64, 0, 0, 0, 0, 136, -32, -28, 24, 28, -24, 160, -160, 0, 0, 0, 0, 184, -128)
+}
+point_count = 7
+
+[sub_resource type="Curve2D" id="Curve2D_7odr3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 136, 160, 0, 0, 0, 0, 184, 64, 0, 0, 0, 0, 136, -32, 0, 0, 0, 0, 184, -128)
+}
+point_count = 4
+
 [node name="LevelSelect" type="Node2D" unique_id=1042414605]
 script = ExtResource("1_8r5c2")
 metadata/_edit_horizontal_guides_ = [120.0, 240.0, -248.0]
@@ -170,7 +186,7 @@ default_color = Color(0.33333334, 0.33333334, 0.33333334, 1)
 
 [node name="LevelSelectStar" parent="Stars" unique_id=901704959 instance=ExtResource("6_uqtpc")]
 position = Vector2(136, 160)
-level_name = "level"
+level_name = "test level"
 level_path = "test_level_2"
 palette = ExtResource("7_yky1i")
 
@@ -215,5 +231,45 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.19
 projection = 1
 current = true
 size = 2.5
+
+[node name="BirdFollow" type="PathFollow2D" parent="." unique_id=732308305]
+position = Vector2(136, 160)
+rotates = false
+
+[node name="Bird" type="Sprite2D" parent="BirdFollow" unique_id=183140165]
+z_index = 10
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_iakt0")
+offset = Vector2(0, -8)
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": false,
+"pending_changes": {},
+"slice_section": false
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://assets/player.ase",
+"source_uid": 2513588182964405636
+}
+metadata/_aseprite_wizard_source_file_hash_ = "87f82eebd3dfc9dc5e5eda3a3575b52e"
+
+[node name="JumpPath" type="Path2D" parent="." unique_id=1756201638]
+curve = SubResource("Curve2D_iakt0")
+
+[node name="SmoothPath" type="Path2D" parent="." unique_id=823741232]
+curve = SubResource("Curve2D_7odr3")
 
 [connection signal="timeout" from="ShootingStarTimer" to="." method="_on_shooting_star_timer_timeout"]

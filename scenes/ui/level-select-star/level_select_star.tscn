@@ -98,16 +98,13 @@ libraries/ = SubResource("AnimationLibrary_owgat")
 
 [node name="Star" type="Polygon2D" parent="." unique_id=856709757]
 z_index = 10
+color = Color(0.8666667, 0.8666667, 0.8666667, 1)
 polygon = PackedVector2Array(-12.995321, -5.207843, -8.48408, 2.1407657, -8.96873, 10.749971, -0.58573574, 8.730372, 7.45234, 11.851693, 8.122076, 3.254901, 13.574529, -3.4252248, 5.6054554, -6.7187333, 0.93717825, -13.968596, -4.6577144, -7.407307)
 
 [node name="BackgroundStar" parent="Star" unique_id=38235723 instance=ExtResource("1_ni05h")]
 z_index = -1
 color = Color(0.33333334, 0.33333334, 0.33333334, 1)
 polygon = PackedVector2Array(12.0166235, -13.401521, 0.9222177, -8.952626, -9.032264, -15.569786, -8.229473, -3.6435945, -17.598867, 3.7788658, -6.008311, 6.700761, -1.8444339, 17.905252, 4.516131, 7.7848935, 16.458946, 7.2871876, 8.799435, -1.8894322)
-peaks = 5
-peak_randomness = 0
-low_radius_randomness = 0.0
-high_radius_randomness = 0.0
 star_scale = 0.45
 
 [node name="Background" type="NinePatchRect" parent="." unique_id=420149574]

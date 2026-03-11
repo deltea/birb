@@ -11,11 +11,21 @@ const shooting_star_scene = preload("res://scenes/particles/shooting-star/shooti
 @onready var level_num: TextureRect = $CanvasLayer/LevelNum
 @onready var level_time_label: RichTextLabel = $CanvasLayer/TimeLabel
 @onready var level_stars_label: RichTextLabel = $CanvasLayer/LevelStarsLabel
+@onready var bird_follow: PathFollow2D = $BirdFollow
+@onready var bird_jump_path: Path2D = $JumpPath
+@onready var bird_smooth_path: Path2D = $SmoothPath
+@onready var bird: Sprite2D = $BirdFollow/Bird
+
+@onready var bird_dynamics: DynamicsSolverVector = Dynamics.create_dynamics_vector(2.0, 0.5, 2.0);
 
 var select_index = 0
 var arrow_target_pos = Vector2.ZERO
+var bird_path_progress_target = 0.0
+var tween: Tween
+var target_bird_scale = Vector2.ONE
 
 func _ready() -> void:
+	bird_follow.reparent(bird_jump_path)
 	set_index(0)
 
 func _process(dt: float) -> void:
@@ -23,6 +33,7 @@ func _process(dt: float) -> void:
 	arrow_3d.rotation_degrees.z += dt * 100
 	arrow.position = arrow.position.lerp(arrow_target_pos + Vector2(sin(Clock.time * 4.0) * 2, 0), dt * 20)
 	stars_icon.rotation_degrees += dt * 40.0
+	bird.scale = bird_dynamics.update(target_bird_scale);
 
 	if Input.is_action_just_pressed("up"):
 		set_index(select_index + 1)
@@ -35,12 +46,28 @@ func _process(dt: float) -> void:
 		RoomManager.change_room("main-menu/main_menu")
 
 func set_index(new_index: int) -> void:
+	var prev_index = select_index
 	select_index = clampi(new_index, 0, stars.get_child_count() - 1)
 	var current_star = stars.get_child(select_index) as LevelSelectStar
 	PaletteManager.set_palette(current_star.palette)
 	arrow_target_pos = current_star.position + Vector2(-60, -12)
-
 	level_num.texture = Globals.number_textures[select_index + 1]
+
+	var dir = sign(select_index - prev_index)
+	if dir != 0:
+		if tween: tween.kill()
+		tween = get_tree().create_tween().set_parallel(true)
+		bird.flip_h = bird.global_position.x > current_star.global_position.x
+		if dir > 0:
+			bird_follow.reparent(bird_jump_path)
+			tween.tween_callback(func(): bird_dynamics.set_value(Vector2.ONE + Vector2(-0.4, 0.4)))
+			tween.tween_property(bird_follow, "progress_ratio", select_index / 3.0, 0.75).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+			tween.tween_callback(func(): bird_dynamics.set_value(Vector2.ONE + Vector2(0.6, -0.6))).set_delay(0.4)
+		if dir < 0:
+			bird_follow.reparent(bird_smooth_path)
+			bird_follow.progress_ratio = (select_index + 1) / 3.0
+			tween.tween_property(bird_follow, "progress_ratio", select_index / 3.0, 0.3).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
 	var level_data = SaveManager.get_level_data(current_star.level_name)
 	if level_data != null:
 		level_time_label.text = Clock.format_time(level_data["time"])

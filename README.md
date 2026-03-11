@@ -4,6 +4,7 @@ speedy birb game go weee
 
 ## to-do
 
+- [ ] fall into the level
 - [ ] improved camera system
 - [ ] finish amethyst caves level
 - [ ] add a falling animation start of level
@@ -18,6 +19,8 @@ speedy birb game go weee
 - [ ] make music (dynamic blending)
 - [ ] add default palette to settings
 - [ ] click to focus when starting
+- [ ] level select level end animation
+- [x] add birb animations to level select
 - [x] save best time and other stats
 - [x] complete level finish flow
 - [x] fix camera bug in level select
