@@ -14,7 +14,8 @@ const shooting_star_scene = preload("res://scenes/particles/shooting-star/shooti
 @onready var bird_follow: PathFollow2D = $BirdFollow
 @onready var bird_jump_path: Path2D = $JumpPath
 @onready var bird_smooth_path: Path2D = $SmoothPath
-@onready var bird: Sprite2D = $BirdFollow/Bird
+@onready var bird_anchor: Node2D = $BirdFollow/BirdAnchor
+@onready var bird: Sprite2D = $BirdFollow/BirdAnchor/Bird
 
 @onready var bird_dynamics: DynamicsSolverVector = Dynamics.create_dynamics_vector(2.0, 0.5, 2.0);
 
@@ -23,6 +24,7 @@ var arrow_target_pos = Vector2.ZERO
 var bird_path_progress_target = 0.0
 var tween: Tween
 var target_bird_scale = Vector2.ONE
+var can_move = true
 
 func _ready() -> void:
 	bird_follow.reparent(bird_jump_path)
@@ -35,11 +37,24 @@ func _process(dt: float) -> void:
 	stars_icon.rotation_degrees += dt * 40.0
 	bird.scale = bird_dynamics.update(target_bird_scale);
 
+	if not can_move:
+		return
+
 	if Input.is_action_just_pressed("up"):
 		set_index(select_index + 1)
 	if Input.is_action_just_pressed("down"):
 		set_index(select_index - 1)
 	if Input.is_action_just_pressed("jump"):
+		can_move = false
+		if tween: tween.kill()
+		target_bird_scale = Vector2.ONE
+		tween = get_tree().create_tween().set_parallel(true)
+		tween.tween_property(bird_anchor, "rotation_degrees", 400.0, 0.5).set_trans(Tween.TRANS_LINEAR)
+		tween.tween_property(bird_anchor, "position:y", bird.position.y - 40, 0.4).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+		tween.tween_property(bird_anchor, "position:y", bird.position.y + 20, 0.45).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN).set_delay(0.15)
+		tween.tween_property(bird_anchor, "scale", Vector2.ZERO, 0.15).set_delay(0.42).set_trans(Tween.TRANS_SINE)
+
+		await Clock.wait(0.4)
 		var star = stars.get_child(select_index) as LevelSelectStar
 		RoomManager.change_room("levels/" + star.level_path)
 	if Input.is_action_just_pressed("dash"):

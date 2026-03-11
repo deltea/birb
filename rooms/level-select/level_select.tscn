@@ -233,12 +233,16 @@ current = true
 size = 2.5
 
 [node name="BirdFollow" type="PathFollow2D" parent="." unique_id=732308305]
+z_index = 10
 position = Vector2(136, 160)
 rotates = false
 
-[node name="Bird" type="Sprite2D" parent="BirdFollow" unique_id=183140165]
-z_index = 10
+[node name="BirdAnchor" type="Node2D" parent="BirdFollow" unique_id=465998221]
+position = Vector2(0, -8)
+
+[node name="Bird" type="Sprite2D" parent="BirdFollow/BirdAnchor" unique_id=183140165]
 texture_filter = 1
+position = Vector2(0, 8)
 texture = SubResource("PortableCompressedTexture2D_iakt0")
 offset = Vector2(0, -8)
 metadata/_aseprite_wizard_interface_config_ = {
