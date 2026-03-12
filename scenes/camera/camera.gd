@@ -28,9 +28,8 @@ func _process(dt: float) -> void:
 
 	if follow:
 		target_pos = follow.global_position
-		# global_position = target_pos
 
-	target_pos = bounds.get_constrained_point(target_pos - bounds.global_position) + bounds.global_position
+	target_pos = constrain_camera(target_pos)
 	global_position = global_position.lerp(target_pos, 10.0 * dt)
 
 	if shake_duration > 0:
@@ -49,3 +48,63 @@ func impact(dir: float = 0):
 		rot_dynamics.set_value((1 if randf() > 0.5 else -1) * impact_rotation)
 	else:
 		rot_dynamics.set_value(impact_rotation * dir)
+
+func get_half_view_size() -> Vector2:
+	var viewport_size := get_viewport_rect().size
+	return (viewport_size * 0.5) * zoom
+
+func all_corners_inside(center_world: Vector2) -> bool:
+	if not bounds:
+		return true
+
+	var half_size := get_half_view_size()
+	var corners := [
+		center_world + Vector2(-half_size.x, -half_size.y),
+		center_world + Vector2(half_size.x, -half_size.y),
+		center_world + Vector2(half_size.x, half_size.y),
+		center_world + Vector2(-half_size.x, half_size.y),
+	]
+
+	for corner_world in corners:
+		var corner_local: Vector2 = corner_world - bounds.global_position
+		if not Geometry2D.is_point_in_polygon(corner_local, bounds.polygon):
+			return false
+
+	return true
+
+func constrain_camera(desired_center_world: Vector2) -> Vector2:
+	if not bounds:
+		return desired_center_world
+
+	if all_corners_inside(desired_center_world):
+		return desired_center_world
+
+	var corrected := desired_center_world
+	var half_size := get_half_view_size()
+	var corner_offsets := [
+		Vector2(-half_size.x, -half_size.y),
+		Vector2(half_size.x, -half_size.y),
+		Vector2(half_size.x, half_size.y),
+		Vector2(-half_size.x, half_size.y),
+	]
+
+	for _i in range(10):
+		var correction := Vector2.ZERO
+		var outside_count := 0
+
+		for corner_offset in corner_offsets:
+			var corner_world: Vector2 = corrected + corner_offset
+			var corner_local: Vector2 = corner_world - bounds.global_position
+			if Geometry2D.is_point_in_polygon(corner_local, bounds.polygon):
+				continue
+
+			var closest_local: Vector2 = bounds.closest_point_on_polygon(corner_local, bounds.polygon)
+			correction += (closest_local - corner_local)
+			outside_count += 1
+
+		if outside_count == 0:
+			break
+
+		corrected += correction / float(outside_count)
+
+	return corrected

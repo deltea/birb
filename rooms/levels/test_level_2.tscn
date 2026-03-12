@@ -224,7 +224,7 @@ position_smoothing_enabled = false
 bounds = NodePath("../CameraBounds")
 
 [node name="CameraBounds" parent="." index="3" unique_id=509460024]
-polygon = PackedVector2Array(-112, 0, -112, 176, 1408, 176, 1408, 0)
+polygon = PackedVector2Array(-112, -88, -112, 280, 1408, 280, 1408, -88)
 
 [node name="Player" parent="." index="4" unique_id=249500363]
 position = Vector2(0, 232)
