@@ -5,6 +5,7 @@ class_name Camera extends Camera2D
 @export var rotation_speed = 5.0
 @export var impact_rotation = 5.0
 @export var shake_damping_speed = 2.0
+@export var is_constrained = true
 
 @onready var rot_dynamics: DynamicsSolver = Dynamics.create_dynamics(rotation_speed, 0.8, 10.0)
 
@@ -13,7 +14,6 @@ var shake_magnitude = 0;
 var original_pos = Vector2.ZERO;
 var target_zoom = Vector2.ONE
 var target_pos
-var is_constrained = true
 
 func _enter_tree() -> void:
 	RoomManager.current_room.camera = self
