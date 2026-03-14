@@ -77,8 +77,8 @@ func set_index(new_index: int) -> void:
 			bird_follow.reparent(bird_jump_path)
 			bird_follow.progress_ratio = (select_index - 1) / 3.0
 			tween.tween_callback(func(): bird_dynamics.set_value(Vector2.ONE + Vector2(-0.4, 0.4)))
-			tween.tween_property(bird_follow, "progress_ratio", select_index / 3.0 - 0.0001, 0.75).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
-			tween.tween_callback(func(): bird_dynamics.set_value(Vector2.ONE + Vector2(0.6, -0.6))).set_delay(0.4)
+			tween.tween_property(bird_follow, "progress_ratio", select_index / 3.0 - 0.0001, 0.65).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+			tween.tween_callback(func(): bird_dynamics.set_value(Vector2.ONE + Vector2(0.6, -0.6))).set_delay(0.3)
 		if dir < 0:
 			bird_follow.reparent(bird_smooth_path)
 			bird_follow.progress_ratio = (select_index + 1) / 3.0
