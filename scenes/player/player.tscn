@@ -87,6 +87,7 @@ radius = 13.0
 [node name="Player" type="CharacterBody2D" unique_id=249500363]
 process_mode = 3
 z_index = 10
+safe_margin = 0.1
 script = ExtResource("1_8afob")
 bounce_velocity = 440.0
 

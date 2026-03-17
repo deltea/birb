@@ -77,7 +77,7 @@ func _physics_process(dt: float) -> void:
 	for i in get_slide_collision_count():
 		var collision := get_slide_collision(i)
 		can_dash = true
-		if is_dashing and not is_horizontal_dashing:
+		if (is_dashing and not is_horizontal_dashing) and is_on_floor():
 			is_dashing = false
 			just_dashed = true
 			sprite.stop()
@@ -159,6 +159,9 @@ func movement(dt: float):
 		scale_dynamics.set_value(Vector2.ONE + Vector2(-stretch, stretch))
 		rot_dynamics.set_value(sprite.rotation_degrees)
 		jumped = true
+		is_dashing = false
+		just_dashed = true
+		sprite.stop()
 
 	# variable jump height
 	if Input.is_action_just_released("jump") and velocity.y < 0.0 and not just_dashed:

@@ -335,12 +335,6 @@ _data = {
 font = ExtResource("3_wrbck")
 font_size = 18
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_4r1re"]
-resource_local_to_scene = true
-vertices = PackedVector2Array(1950, 574, -1134, 574, -1134, -1110, 1950, -1110)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-1144, -1120, -1144, 584, 1960, 584, 1960, -1120)])
-
 [node name="Level" type="Node2D" unique_id=2129457560]
 process_mode = 3
 script = ExtResource("1_wrbck")
@@ -623,10 +617,6 @@ collision_layer = 4
 collision_mask = 4
 player = NodePath("../Player")
 follow_speed = 20.0
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1923494395]
-visible = false
-navigation_polygon = SubResource("NavigationPolygon_4r1re")
 
 [node name="CameraConstraints" parent="." unique_id=1596452924 instance=ExtResource("9_4r1re")]
 
