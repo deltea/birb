@@ -625,7 +625,7 @@ position = Vector2(0, 24)
 
 [node name="ParallaxBackground" type="Parallax2D" parent="." unique_id=1864692733]
 z_index = -20
-scroll_scale = Vector2(0.7, 0.7)
+scroll_scale = Vector2(0.8, 0.8)
 repeat_size = Vector2(32, 32)
 repeat_times = 12
 
@@ -636,7 +636,7 @@ texture = ExtResource("10_xw2c8")
 
 [node name="ParallaxMidground" type="Parallax2D" parent="." unique_id=1976364911]
 z_index = -10
-scroll_scale = Vector2(0.8, 0.8)
+scroll_scale = Vector2(0.9, 0.9)
 
 [node name="TileMapMidground" type="TileMapLayer" parent="ParallaxMidground" unique_id=1438112172]
 self_modulate = Color(0.13333334, 0.13333334, 0.13333334, 1)

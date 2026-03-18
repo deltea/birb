@@ -17,6 +17,7 @@ speedy birb game go weee
 - [ ] make music (dynamic blending)
 - [ ] add default palette to settings
 - [ ] click to focus when starting
+- [ ] add pause menu
 - [ ] level select level end animation
 - [x] add dash cooldown
 - [x] physics based camera system

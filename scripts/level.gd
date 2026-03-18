@@ -133,7 +133,7 @@ func get_rank(final_time: float, stars: int) -> String:
 	elif final_time < 90.0:
 		score += 1
 
-	score += ceil(stars * 0.5)
+	score += ceil(stars * 0.3)
 
 	if score >= 5:
 		return "S"
