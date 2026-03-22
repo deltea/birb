@@ -4,21 +4,21 @@ speedy birb game go weee
 
 ## to-do
 
-- [ ] finish amethyst caves level
 - [ ] add a falling animation start of level
+- [ ] finish amethyst caves level
+- [ ] add cutscene/dialogue system
 - [ ] locked levels
 - [ ] finish woods level
-- [ ] add cutscene/dialogue system
 - [ ] finish third level
 - [ ] finish summit level
 - [ ] dash-collectables in secret areas
 - [ ] the peak stars cutscene
 - [ ] add sound effects
 - [ ] make music (dynamic blending)
-- [ ] add default palette to settings
 - [ ] click to focus when starting
 - [ ] level select level end animation
 - [ ] make the itch page look pretty
+- [x] add default palette to settings
 - [x] add pause menu
 - [x] add dash cooldown
 - [x] physics based camera system
