@@ -4,7 +4,7 @@ speedy birb game go weee
 
 ## to-do
 
-- [ ] add a falling animation start of level
+- [x] add a falling animation start of level
 - [ ] finish amethyst caves level
 - [ ] add cutscene/dialogue system
 - [ ] locked levels

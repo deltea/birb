@@ -46,6 +46,7 @@ func _ready() -> void:
 	countdown_canvas.visible = true
 	pause_canvas.visible = false
 	time_label.visible = false
+	RoomManager.current_room.camera.freeze = true
 
 	show_countdown()
 
@@ -54,7 +55,6 @@ func _process(dt: float) -> void:
 	countdown_texture.rotation_degrees = countdown_rot_dynamics.update(countdown_rot_target)
 	countdown_background.rotation_degrees = Clock.time * 200.0
 	time_label.text = Clock.format_time(time)
-	print(pause_options.get_child(pause_selection_index).position)
 	pause_option_selector.position.y = lerp(pause_option_selector.position.y, pause_options.get_child(pause_selection_index).position.y - 3, dt * 35.0)
 
 	for star in stars_hud.get_children():
@@ -127,6 +127,7 @@ func show_countdown():
 	countdown.visible = false
 	time_label.visible = true
 	is_started = true
+	RoomManager.current_room.camera.freeze = false
 
 func complete():
 	is_completed = true

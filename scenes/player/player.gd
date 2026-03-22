@@ -2,6 +2,7 @@ class_name Player extends CharacterBody2D
 
 const win_star_scene = preload("res://scenes/win-star/win_star.tscn")
 const jump_particles_scene = preload("res://scenes/particles/jump_particles.tscn")
+const fall_particles_scene = preload("res://scenes/particles/fall_particles.tscn")
 
 @export_category("Movement")
 @export var max_speed = 150.0
@@ -47,6 +48,8 @@ var wall_jump_target_velocity_x = 0.0
 var just_dashed = false
 var dir = 1
 var can_dash_cooldown = true
+var level_start_landed = false
+var level_start_fall_done = false
 
 @onready var scale_dynamics: DynamicsSolverVector = Dynamics.create_dynamics_vector(2.0, 0.5, 2.0);
 @onready var rot_dynamics: DynamicsSolver = Dynamics.create_dynamics(10.0, 0.8, 10.0);
@@ -57,22 +60,43 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	original_particles_x = walk_particles.position.x
 
-func _process(_dt: float) -> void:
+func _process(dt: float) -> void:
 	sprite.scale = scale_dynamics.update(target_scale);
 	sprite.rotation_degrees = rot_dynamics.update(target_rot)
 	dash_particles.emitting = is_dashing
 
+	if not RoomManager.current_room.is_started and not level_start_landed:
+		rotation_degrees += 800.0 * dt
+
 func _physics_process(dt: float) -> void:
-	if can_move: movement(dt)
+	var x_input := Input.get_axis("left", "right")
+	if can_move: movement(dt, x_input)
+
+	# level start animation
+	if not RoomManager.current_room.is_started and not level_start_landed:
+		velocity.y = 250.0
+
+	if not is_on_floor() and not is_dashing:
+		if velocity.y > 0:
+			if is_on_wall() and x_input:
+				velocity.y = wall_fall_velocity
+			else:
+				velocity.y += fall_gravity * dt
+		else:
+			velocity.y += gravity * dt
 
 	var was_on_floor = is_on_floor()
 	move_and_slide()
 
-	if not was_on_floor and is_on_floor():
-		scale_dynamics.set_value(Vector2.ONE + Vector2(squash, -squash))
-		jumped = false
-	elif was_on_floor and not is_on_floor() and not jumped:
-		coyote_timer = 0.0
+	if not RoomManager.current_room.is_started:
+		if not was_on_floor and is_on_floor() and level_start_fall_done:
+			scale_dynamics.set_value(Vector2.ONE + Vector2(squash, -squash))
+	else:
+		if not was_on_floor and is_on_floor():
+			scale_dynamics.set_value(Vector2.ONE + Vector2(squash, -squash))
+			jumped = false
+		elif was_on_floor and not is_on_floor() and not jumped:
+			coyote_timer = 0.0
 
 	for i in get_slide_collision_count():
 		var collision := get_slide_collision(i)
@@ -87,8 +111,24 @@ func _physics_process(dt: float) -> void:
 				RoomManager.current_room.camera.impact()
 			# else:
 			# 	velocity.y = -100.0
+		if not RoomManager.current_room.is_started and not level_start_landed:
+			level_start_landed = true
+			velocity = Vector2.ZERO
+			rotation_degrees = 90.0
+			RoomManager.current_room.camera.shake(0.25, 2.0)
+			RoomManager.current_room.camera.impact()
+			var particles = fall_particles_scene.instantiate() as CPUParticles2D
+			particles.position = global_position + Vector2(0, 8)
+			RoomManager.current_room.add_child(particles)
+			particles.emitting = true
+			particles.finished.connect(particles.queue_free)
+			# scale_dynamics.set_value(Vector2.ONE + Vector2(-stretch, stretch))
+			await Clock.wait(0.35)
+			level_start_fall_done = true
+			velocity.y = -250.0
+			rotation_degrees = 0
 
-func movement(dt: float):
+func movement(dt: float, x_input: float):
 	coyote_timer += dt
 	buffer_timer += dt
 	if wall_jump_lock_timer > 0.0:
@@ -97,16 +137,14 @@ func movement(dt: float):
 	if just_dashed and velocity.y >= 0.0:
 		just_dashed = false
 
-	var x_input := Input.get_axis("left", "right")
-
-	if not is_on_floor() and not is_dashing:
-		if velocity.y > 0:
-			if is_on_wall() and x_input:
-				velocity.y = wall_fall_velocity
-			else:
-				velocity.y += fall_gravity * dt
-		else:
-			velocity.y += gravity * dt
+	# if not is_on_floor() and not is_dashing:
+	# 	if velocity.y > 0:
+	# 		if is_on_wall() and x_input:
+	# 			velocity.y = wall_fall_velocity
+	# 		else:
+	# 			velocity.y += fall_gravity * dt
+	# 	else:
+	# 		velocity.y += gravity * dt
 
 	if not is_dashing:
 		if x_input:
