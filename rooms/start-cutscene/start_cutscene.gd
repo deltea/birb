@@ -19,6 +19,8 @@ func _process(dt: float) -> void:
 func next_line():
 	line_index += 1
 	if line_index >= lines.size():
+		SaveManager.data["has_seen_cutscene"] = true
+		SaveManager.save_game()
 		RoomManager.change_room("level-select/level_select")
 		return
 

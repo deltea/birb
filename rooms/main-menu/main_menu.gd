@@ -76,7 +76,11 @@ func main_state(dt: float):
 		set_index(select_index - 1)
 	if Input.is_action_just_pressed("jump"):
 		match select_index:
-			0: RoomManager.change_room("level-select/level_select")
+			0:
+				if SaveManager.data["has_seen_cutscene"]:
+					RoomManager.change_room("level-select/level_select")
+				else:
+					RoomManager.change_room("start-cutscene/start_cutscene")
 			1: change_state(MenuState.SETTINGS)
 			2: get_tree().quit()
 

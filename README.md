@@ -4,7 +4,6 @@ speedy birb game go weee
 
 ## to-do
 
-- [ ] add cutscene/dialogue system
 - [ ] finish amethyst caves level
 - [ ] locked levels
 - [ ] finish woods level
@@ -17,6 +16,7 @@ speedy birb game go weee
 - [ ] click to focus when starting
 - [ ] level select level end animation
 - [ ] make the itch page look pretty
+- [x] add cutscene/dialogue system
 - [x] add a falling animation start of level
 - [x] add default palette to settings
 - [x] add pause menu
