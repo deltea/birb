@@ -8,6 +8,7 @@ var original_pos = Vector2.ZERO
 
 func _ready() -> void:
 	original_pos = position
+	noise.noise.seed = randi()
 	play()
 
 func _process(dt: float) -> void:

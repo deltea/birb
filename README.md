@@ -4,8 +4,7 @@ speedy birb game go weee
 
 ## to-do
 
-- [ ] finish amethyst caves level
-- [ ] locked levels
+- [ ] unlocking levels
 - [ ] finish woods level
 - [ ] finish third level
 - [ ] finish summit level
@@ -16,6 +15,7 @@ speedy birb game go weee
 - [ ] click to focus when starting
 - [ ] level select level end animation
 - [ ] make the itch page look pretty
+- [x] finish amethyst caves level
 - [x] add cutscene/dialogue system
 - [x] add a falling animation start of level
 - [x] add default palette to settings

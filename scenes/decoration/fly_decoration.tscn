@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bnbqvnpk0tqht" path="res://scenes/decoration/fly_decoration.gd" id="1_q6dcw"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_q6dcw"]
-_data = PackedByteArray("AAADAAUAAAABAAAAEAAAAAUAAAAyAAAAUklGRioAAABXRUJQVlA4TB0AAAAvDwABEA8wVVM1VfMf8CAIBBkstuUGWyOi/7G0DgA=")
+_data = PackedByteArray("AAADAAUAAAABAAAAEAAAAAUAAAAyAAAAUklGRioAAABXRUJQVlA4TB0AAAAvDwABEA8wu7M7u/Mf8CAIBBkstuUGWyOi/7G0DgA=")
 size_override = Vector2(16, 5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mlnpe"]
@@ -29,11 +29,13 @@ animations = [{
 }]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_q6dcw"]
+resource_local_to_scene = true
 noise_type = 3
 frequency = 0.001
 fractal_octaves = 1
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q6dcw"]
+resource_local_to_scene = true
 noise = SubResource("FastNoiseLite_q6dcw")
 
 [node name="FlyDecoration" type="AnimatedSprite2D" unique_id=493458872]
@@ -58,4 +60,4 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://assets/fly.ase",
 "source_uid": 7227660658151337430
 }
-metadata/_aseprite_wizard_source_file_hash_ = "d24ad3f58cb817b4de78b391a0d89322"
+metadata/_aseprite_wizard_source_file_hash_ = "e3110a21384a8f7355be116e76dcf820"
