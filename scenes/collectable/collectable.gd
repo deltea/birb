@@ -22,7 +22,7 @@ func _process(dt: float) -> void:
 		sprite.position.y = sin(Clock.time * 2.0) * 4.0
 		sprite.scale = scale_dynamics.update(target_scale)
 	particles.scale = sprite.scale
-	position = position.lerp(target_pos, dt * 4.0)
+	global_position = global_position.lerp(target_pos, dt * 4.0)
 
 func collect():
 	is_collected = true

@@ -29,10 +29,10 @@ lifetime = 0.7
 randomness = 0.5
 spread = 180.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 15.0
-initial_velocity_max = 18.0
+initial_velocity_min = 18.0
+initial_velocity_max = 22.0
 scale_amount_min = 0.5
-scale_amount_max = 0.6
+scale_amount_max = 0.65
 scale_amount_curve = SubResource("Curve_xdwhw")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

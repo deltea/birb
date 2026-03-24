@@ -3,7 +3,7 @@ extends Room
 @export var level_name = "level"
 
 @onready var time_label: RichTextLabel = $CanvasLayer/TimeLabel
-@onready var countdown_canvas: CanvasLayer = $CanvasLayer
+@onready var canvas: CanvasLayer = $CanvasLayer
 @onready var countdown: Control = $CanvasLayer/Countdown
 @onready var countdown_texture: TextureRect = $CanvasLayer/Countdown/Countdown
 @onready var countdown_background: ColorRect = $CanvasLayer/Countdown/CountdownBackground
@@ -43,7 +43,7 @@ func _ready() -> void:
 	player.can_move = false
 
 	complete_canvas.visible = false
-	countdown_canvas.visible = true
+	canvas.visible = true
 	pause_canvas.visible = false
 	time_label.visible = false
 	RoomManager.current_room.camera.freeze = true
@@ -178,9 +178,10 @@ func get_rank(final_time: float, stars: int) -> String:
 
 func collect_star(star: Collectable) -> void:
 	stars_collected += 1
-	star.call_deferred("reparent", stars_hud)
-	star.position = get_node_screen_position(star)
-	star.target_pos = stars_hud.get_child(stars_collected - 1).position
+	star.top_level = true
+	star.call_deferred("reparent", stars_hud, false)
+	star.global_position = get_node_screen_position(star)
+	star.target_pos = stars_hud.get_child(stars_collected - 1).global_position
 
 func _on_star_ping_timer_timeout() -> void:
 	star_scale_dynamics.set_value(1.1)

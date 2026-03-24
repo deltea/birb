@@ -12,8 +12,8 @@ speedy birb game go weee
 - [ ] the peak stars cutscene
 - [ ] add sound effects
 - [ ] make music (dynamic blending)
-- [ ] level select level end animation
 - [ ] make the itch page look pretty
+- [x] level select level end animation
 - [x] click to focus when starting
 - [x] finish amethyst caves level
 - [x] add cutscene/dialogue system
@@ -50,8 +50,8 @@ speedy birb game go weee
 
 ## known bugs
 
-- [ ] stars teleport for a frame when collected
 - [ ] breakables not breaking at the same time
+- [x] stars teleport for a frame when collected
 - [x] weird behavior with camera bounds in new levels
 
 ## levels (in-order)

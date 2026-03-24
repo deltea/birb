@@ -19,6 +19,11 @@
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5038023, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
+[sub_resource type="Gradient" id="Gradient_iakt0"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.49031007)
+colors = PackedColorArray(1, 1, 1, 0, 0.33333334, 0.33333334, 0.33333334, 1)
+
 [sub_resource type="Environment" id="Environment_68y80"]
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
@@ -179,6 +184,7 @@ color = Color(0.26666668, 0.26666668, 0.26666668, 1)
 [node name="Line2D" type="Line2D" parent="." unique_id=1081692768]
 points = PackedVector2Array(184, -128, 136, -32, 184, 64, 136, 160)
 default_color = Color(0.33333334, 0.33333334, 0.33333334, 1)
+gradient = SubResource("Gradient_iakt0")
 
 [node name="Stars" type="Node2D" parent="." unique_id=1545143595]
 

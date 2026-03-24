@@ -50,6 +50,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_knea1"]
+resource_local_to_scene = true
+noise_type = 3
+frequency = 0.001
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_e5jj7"]
+resource_local_to_scene = true
+noise = SubResource("FastNoiseLite_knea1")
+
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_isc3i"]
 _data = PackedByteArray("AAADAAUAAAABAAAAEAAAAAUAAAAyAAAAUklGRioAAABXRUJQVlA4TB0AAAAvDwABEA8wVVM1VfMf8CAIBBkstuUGWyOi/7G0DgA=")
 size_override = Vector2(16, 5)
@@ -75,6 +85,16 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_isc3i"]
+resource_local_to_scene = true
+noise_type = 3
+frequency = 0.001
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_43afx"]
+resource_local_to_scene = true
+noise = SubResource("FastNoiseLite_isc3i")
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_e5jj7"]
 _data = PackedByteArray("AAADAAUAAAABAAAAEAAAAAUAAAAyAAAAUklGRioAAABXRUJQVlA4TB0AAAAvDwABEA8wVVM1VfMf8CAIBBkstuUGWyOi/7G0DgA=")
@@ -102,6 +122,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7k77j"]
+resource_local_to_scene = true
+noise_type = 3
+frequency = 0.001
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o5dpo"]
+resource_local_to_scene = true
+noise = SubResource("FastNoiseLite_7k77j")
+
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_o5yrd"]
 _data = PackedByteArray("AAADAAUAAAABAAAAEAAAAAUAAAAyAAAAUklGRioAAABXRUJQVlA4TB0AAAAvDwABEA8wVVM1VfMf8CAIBBkstuUGWyOi/7G0DgA=")
 size_override = Vector2(16, 5)
@@ -127,6 +157,16 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_v40ww"]
+resource_local_to_scene = true
+noise_type = 3
+frequency = 0.001
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ttxhb"]
+resource_local_to_scene = true
+noise = SubResource("FastNoiseLite_v40ww")
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_uvqya"]
 _data = PackedByteArray("AAADAAUAAAABAAAAEAAAAAUAAAAyAAAAUklGRioAAABXRUJQVlA4TB0AAAAvDwABEA8wVVM1VfMf8CAIBBkstuUGWyOi/7G0DgA=")
@@ -154,6 +194,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_w0ta1"]
+resource_local_to_scene = true
+noise_type = 3
+frequency = 0.001
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_k7fx6"]
+resource_local_to_scene = true
+noise = SubResource("FastNoiseLite_w0ta1")
+
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_2sy11"]
 _data = PackedByteArray("AAADAAUAAAABAAAAEAAAAAUAAAAyAAAAUklGRioAAABXRUJQVlA4TB0AAAAvDwABEA8wVVM1VfMf8CAIBBkstuUGWyOi/7G0DgA=")
 size_override = Vector2(16, 5)
@@ -179,6 +229,16 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mio0b"]
+resource_local_to_scene = true
+noise_type = 3
+frequency = 0.001
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ft6ec"]
+resource_local_to_scene = true
+noise = SubResource("FastNoiseLite_mio0b")
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_knea1"]
 _data = PackedByteArray("AAADAAUAAAABAAAAEAAAAAUAAAAyAAAAUklGRioAAABXRUJQVlA4TB0AAAAvDwABEA8wVVM1VfMf8CAIBBkstuUGWyOi/7G0DgA=")
@@ -206,14 +266,45 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2ilw3"]
+resource_local_to_scene = true
+noise_type = 3
+frequency = 0.001
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jylgl"]
+resource_local_to_scene = true
+noise = SubResource("FastNoiseLite_2ilw3")
+
 [node name="TestLevel2" unique_id=2129457560 instance=ExtResource("1_fxm0c")]
 level_name = "test level"
 
-[node name="TimeLabel" parent="CanvasLayer" parent_id_path=PackedInt32Array(585174658) index="0" unique_id=1122141412]
+[node name="CanvasLayer" parent="." index="0" unique_id=585174658]
+visible = true
+
+[node name="TimeLabel" parent="CanvasLayer" index="0" unique_id=1122141412]
 offset_top = 8.0
 bbcode_enabled = false
 text = "02:32"
 vertical_alignment = 0
+
+[node name="Stars" parent="CanvasLayer" index="2" unique_id=571456195]
+position = Vector2(160, 224)
+
+[node name="Star2D" parent="CanvasLayer/Stars" index="0" unique_id=856709757]
+position = Vector2(-48, 0)
+
+[node name="Star2D2" parent="CanvasLayer/Stars" index="1" unique_id=1638797238]
+position = Vector2(-24, 0)
+
+[node name="Star2D3" parent="CanvasLayer/Stars" index="2" unique_id=2032388953]
+position = Vector2(0, 0)
+
+[node name="Star2D4" parent="CanvasLayer/Stars" index="3" unique_id=1411954113]
+position = Vector2(24, 0)
+
+[node name="Star2D5" parent="CanvasLayer/Stars" index="4" unique_id=902981042]
+position = Vector2(48, 0)
 
 [node name="Camera" parent="." index="3" unique_id=1304390175]
 position = Vector2(0, 169)
@@ -372,30 +463,37 @@ density = 0.2
 [node name="FlyDecoration" parent="Decoration/Parallax2D" index="1" unique_id=493458872 instance=ExtResource("7_2sy11")]
 position = Vector2(88, 168)
 sprite_frames = SubResource("SpriteFrames_2ilw3")
+noise = SubResource("NoiseTexture2D_e5jj7")
 
 [node name="FlyDecoration2" parent="Decoration/Parallax2D" index="2" unique_id=1399902547 instance=ExtResource("7_2sy11")]
 position = Vector2(160, 40)
 sprite_frames = SubResource("SpriteFrames_mio0b")
+noise = SubResource("NoiseTexture2D_43afx")
 
 [node name="FlyDecoration3" parent="Decoration/Parallax2D" index="3" unique_id=27884149 instance=ExtResource("7_2sy11")]
 position = Vector2(352, 24)
 sprite_frames = SubResource("SpriteFrames_w0ta1")
+noise = SubResource("NoiseTexture2D_o5dpo")
 
 [node name="FlyDecoration4" parent="Decoration/Parallax2D" index="4" unique_id=969027534 instance=ExtResource("7_2sy11")]
 position = Vector2(304, 184)
 sprite_frames = SubResource("SpriteFrames_v40ww")
+noise = SubResource("NoiseTexture2D_ttxhb")
 
 [node name="FlyDecoration5" parent="Decoration/Parallax2D" index="5" unique_id=1061922203 instance=ExtResource("7_2sy11")]
 position = Vector2(648, 88)
 sprite_frames = SubResource("SpriteFrames_7k77j")
+noise = SubResource("NoiseTexture2D_k7fx6")
 
 [node name="FlyDecoration6" parent="Decoration/Parallax2D" index="6" unique_id=35007909 instance=ExtResource("7_2sy11")]
 position = Vector2(1016, 56)
 sprite_frames = SubResource("SpriteFrames_knea1")
+noise = SubResource("NoiseTexture2D_ft6ec")
 
 [node name="FlyDecoration7" parent="Decoration/Parallax2D" index="7" unique_id=354367901 instance=ExtResource("7_2sy11")]
 position = Vector2(1200, 200)
 sprite_frames = SubResource("SpriteFrames_43afx")
+noise = SubResource("NoiseTexture2D_jylgl")
 
 [editable path="CameraConstraints"]
 [editable path="Elements/SecretArea"]
