@@ -134,6 +134,8 @@ func complete():
 	await Clock.wait(1.0)
 
 	SaveManager.save_level(level_name, stars_collected, time)
+	SaveManager.data["just_beat_level"] = true
+	SaveManager.save_game()
 
 	complete_canvas.visible = true
 	time_label.visible = false
@@ -158,11 +160,11 @@ func get_node_screen_position(node: Node2D) -> Vector2:
 
 func get_rank(final_time: float, stars: int) -> String:
 	var score = 0
-	if final_time < 30.0:
+	if final_time < 40.0:
 		score += 3
-	elif final_time < 60.0:
+	elif final_time < 80.0:
 		score += 2
-	elif final_time < 90.0:
+	elif final_time < 120.0:
 		score += 1
 
 	score += ceil(stars * 0.3)
@@ -179,9 +181,16 @@ func get_rank(final_time: float, stars: int) -> String:
 func collect_star(star: Collectable) -> void:
 	stars_collected += 1
 	star.top_level = true
-	star.call_deferred("reparent", stars_hud, false)
+	star.call_deferred("reparent", stars_hud)
+
+	var index = star.get_index()
+
+	var placeholder = Node.new()
+	star.get_parent().add_child(placeholder)
+	star.get_parent().move_child(placeholder, star.get_index())
+
 	star.global_position = get_node_screen_position(star)
-	star.target_pos = stars_hud.get_child(stars_collected - 1).global_position
+	star.target_pos = stars_hud.get_child(index).global_position
 
 func _on_star_ping_timer_timeout() -> void:
 	star_scale_dynamics.set_value(1.1)

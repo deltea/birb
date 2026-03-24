@@ -11,11 +11,13 @@ const shooting_star_scene = preload("res://scenes/particles/shooting-star/shooti
 @onready var level_num: TextureRect = $CanvasLayer/LevelNum
 @onready var level_time_label: RichTextLabel = $CanvasLayer/TimeLabel
 @onready var level_stars_label: RichTextLabel = $CanvasLayer/LevelStarsLabel
+@onready var stars_label: RichTextLabel = $CanvasLayer/StarsLabel
 @onready var bird_follow: PathFollow2D = $BirdFollow
 @onready var bird_jump_path: Path2D = $JumpPath
 @onready var bird_smooth_path: Path2D = $SmoothPath
 @onready var bird_anchor: Node2D = $BirdFollow/BirdAnchor
 @onready var bird: Sprite2D = $BirdFollow/BirdAnchor/Bird
+@onready var star_path_line: Line2D = $Line2D
 
 @onready var bird_dynamics: DynamicsSolverVector = Dynamics.create_dynamics_vector(2.0, 0.5, 2.0);
 
@@ -28,7 +30,8 @@ var can_move = true
 
 func _ready() -> void:
 	bird_follow.reparent(bird_jump_path)
-	set_index(0)
+	set_index(SaveManager.data["current_level"])
+	stars_label.text = str(int(SaveManager.data["total_stars"]))
 
 func _process(dt: float) -> void:
 	camera_target.position = stars.get_child(select_index).position + Vector2(60, 0)
@@ -46,6 +49,9 @@ func _process(dt: float) -> void:
 		set_index(select_index - 1)
 	if Input.is_action_just_pressed("jump"):
 		can_move = false
+		SaveManager.data["current_level"] = select_index
+		SaveManager.save_game()
+
 		if tween: tween.kill()
 		target_bird_scale = Vector2.ONE
 		tween = get_tree().create_tween().set_parallel(true)

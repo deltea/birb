@@ -7,7 +7,7 @@ const SAVE_FILE_PATH = "user://save.json"
 
 var data = {}
 
-func _ready() -> void:
+func _enter_tree() -> void:
 	data = load_game()
 
 func get_level_data(level_name: String):
@@ -21,7 +21,12 @@ func save_level(level_name: String, stars_collected: int, time: float):
 	level_data["time"] = min(time, level_data["time"])
 	level_data["stars"] = max(stars_collected, level_data["stars"])
 	data["levels"][level_name] = level_data
-	save_game()
+
+	# count total stars
+	var total_stars = 0
+	for level in data["levels"]:
+		total_stars += data["levels"][level]["stars"]
+	data["total_stars"] = total_stars
 
 func save_game():
 	var save_file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
@@ -30,10 +35,13 @@ func save_game():
 
 func load_game():
 	if not FileAccess.file_exists(SAVE_FILE_PATH):
-		printerr("save file not found")
+		print("save file not found, creating new save")
 		return {
 			"levels": {},
-			"has_seen_cutscene": false
+			"has_seen_cutscene": false,
+			"just_beat_level": false,
+			"current_level": 0,
+			"total_stars": 0,
 		}
 
 	var save_file = FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)

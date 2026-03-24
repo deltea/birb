@@ -710,7 +710,9 @@ tile_set = ExtResource("9_6b5hc")
 
 [node name="Elements" type="Node" parent="." unique_id=75181523]
 
-[node name="Collectable" parent="Elements" unique_id=1876672225 instance=ExtResource("13_julpp")]
+[node name="Stars" type="Node" parent="Elements" unique_id=692880368]
+
+[node name="Collectable" parent="Elements/Stars" unique_id=1876672225 instance=ExtResource("13_julpp")]
 position = Vector2(-8, -200)
 
 [node name="Goal" parent="Elements" unique_id=1681194359 instance=ExtResource("12_t0xh4")]
