@@ -654,9 +654,9 @@ horizontal_alignment = 1
 [node name="Camera" parent="." unique_id=1304390175 node_paths=PackedStringArray("follow") instance=ExtResource("6_15qan")]
 limit_enabled = true
 limit_left = -160
-limit_top = -120
+limit_top = -248
 limit_right = 160
-limit_bottom = 120
+limit_bottom = 64
 limit_smoothed = true
 follow = NodePath("../Player")
 

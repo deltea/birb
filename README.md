@@ -4,6 +4,7 @@ speedy birb game go weee
 
 ## to-do
 
+- [ ] add keys and doors
 - [ ] finish woods level
 - [ ] finish third level
 - [ ] finish summit level

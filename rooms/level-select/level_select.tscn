@@ -10,10 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://cg53g7kbmqe4s" path="res://scenes/ui/level-select-star/level_select_star.tscn" id="6_uqtpc"]
 [ext_resource type="Texture2D" uid="uid://be60persy52uw" path="res://assets/ui/clock.png" id="7_iakt0"]
 [ext_resource type="Texture2D" uid="uid://cksk5qojiqsdw" path="res://assets/palettes/purple.png" id="7_yky1i"]
-[ext_resource type="Texture2D" uid="uid://b0lisw2c0es6a" path="res://assets/palettes/purplemorning.png" id="8_qi2am"]
 [ext_resource type="Texture2D" uid="uid://rewyjfctxt7t" path="res://assets/palettes/cherry.png" id="9_68y80"]
 [ext_resource type="Texture2D" uid="uid://dk47hjt3kytwp" path="res://assets/palettes/splashy.png" id="10_a6m5p"]
 [ext_resource type="PackedScene" uid="uid://b7y8xkuhw62kf" path="res://assets/models/arrow.blend" id="11_a6m5p"]
+[ext_resource type="Texture2D" uid="uid://c0ctja20ge0di" path="res://assets/palettes/pinkgreen.png" id="11_iakt0"]
 
 [sub_resource type="Curve" id="Curve_uqtpc"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5038023, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -190,9 +190,9 @@ palette = ExtResource("7_yky1i")
 
 [node name="LevelSelectStar2" parent="Stars" unique_id=1696641362 instance=ExtResource("6_uqtpc")]
 position = Vector2(184, 64)
-level_name = "the woods"
-level_path = "test_level_2"
-palette = ExtResource("8_qi2am")
+level_name = "misty woods"
+level_path = "misty_woods"
+palette = ExtResource("11_iakt0")
 
 [node name="LevelSelectStar3" parent="Stars" unique_id=1612753083 instance=ExtResource("6_uqtpc")]
 position = Vector2(136, -32)
