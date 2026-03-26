@@ -32,7 +32,6 @@ func _ready() -> void:
 	bird_follow.reparent(bird_jump_path)
 	set_index(SaveManager.data["current_level"])
 	stars_label.text = str(int(SaveManager.data["total_stars"]))
-
 	for i in range(stars.get_child_count()):
 		var star = stars.get_child(i) as LevelSelectStar
 		star.set_locked(i > SaveManager.data["next_level"])

@@ -128,6 +128,7 @@ func show_countdown():
 	time_label.visible = true
 	is_started = true
 	RoomManager.current_room.camera.freeze = false
+	RoomManager.current_room.player.process_mode = ProcessMode.PROCESS_MODE_PAUSABLE
 
 func complete():
 	is_completed = true

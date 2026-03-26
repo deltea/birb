@@ -52,9 +52,9 @@ speedy birb game go weee
 
 ## known bugs
 
-- [ ] player not freezing when game paused
 - [ ] weird movement bug when dashing, jumping, then dashing again
 - [ ] breakables not breaking at the same time
+- [x] player not freezing when game paused
 - [x] stars teleport for a frame when collected
 - [x] weird behavior with camera bounds in new levels
 
