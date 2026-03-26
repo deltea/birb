@@ -52,6 +52,8 @@ speedy birb game go weee
 
 ## known bugs
 
+- [ ] player not freezing when game paused
+- [ ] weird movement bug when dashing, jumping, then dashing again
 - [ ] breakables not breaking at the same time
 - [x] stars teleport for a frame when collected
 - [x] weird behavior with camera bounds in new levels
@@ -67,8 +69,8 @@ speedy birb game go weee
 
 - [ ] velocity booster, area that gives directional velocity
 - [ ] dash refill, maybe small velocity boost
-- [ ] super bouncers (mushroom?)
 - [ ] puzzle elements like locks and doors (forest?)
+- [x] super bouncers (mushroom?)
 - [x] maybe one horizontal dash and one vertical dash until refill?
 - [x] bouncepads, dash down to bounce
 - [x] breakable walls, dash into to break through
