@@ -16,7 +16,7 @@ const fall_particles_scene = preload("res://scenes/particles/fall_particles.tscn
 @export var buffer_time = 0.15
 @export var jump_cut_multiplier = 0.5
 @export var bounce_velocity = 400.0
-@export var mushroom_velocity_add = 40.0
+@export var mushroom_velocity_add = 80.0
 @export var dash_velocity = 400.0
 @export var down_dash_velocity = 420.0
 @export var wall_jump_x_multiplier = 1.2
@@ -108,7 +108,6 @@ func _physics_process(dt: float) -> void:
 			just_dashed = true
 			sprite.stop()
 			if collision.get_collider() is Mushroom:
-				print("bounce on mushroom")
 				collision.get_collider().bounce()
 				# v^2 = 2 * g * h
 				velocity.y = -sqrt(2 * gravity * abs(global_position.y - start_dash_y)) - mushroom_velocity_add
@@ -117,8 +116,6 @@ func _physics_process(dt: float) -> void:
 				collision.get_collider().bounce()
 				velocity.y = -bounce_velocity
 				RoomManager.current_room.camera.impact()
-			# else:
-			# 	velocity.y = -100.0
 		if not RoomManager.current_room.is_started and not level_start_landed:
 			level_start_landed = true
 			velocity = Vector2.ZERO
