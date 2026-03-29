@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://75a4mf5rlao0"]
+
+[ext_resource type="Texture2D" uid="uid://0pt16vecw6qh" path="res://assets/door.png" id="1_bu3y2"]
+[ext_resource type="Script" uid="uid://640kmcgkplty" path="res://scenes/door/door.gd" id="1_odsy8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bu3y2"]
+size = Vector2(9, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_odsy8"]
+radius = 120.0
+
+[node name="Door" type="StaticBody2D" unique_id=150525441]
+collision_mask = 0
+script = ExtResource("1_odsy8")
+
+[node name="SpriteTop" type="Sprite2D" parent="." unique_id=1795510772]
+self_modulate = Color(0.8666667, 0.8666667, 0.8666667, 1)
+texture_repeat = 2
+position = Vector2(0, -16)
+texture = ExtResource("1_bu3y2")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 32)
+
+[node name="SpriteBottom" type="Sprite2D" parent="." unique_id=354820312]
+self_modulate = Color(0.8666667, 0.8666667, 0.8666667, 1)
+texture_repeat = 2
+position = Vector2(0, 16)
+texture = ExtResource("1_bu3y2")
+region_enabled = true
+region_rect = Rect2(0, 32, 16, 32)
+
+[node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=192818871]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_bu3y2")
+
+[node name="UnlockArea" type="Area2D" parent="." unique_id=2087213129]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="UnlockArea" unique_id=1074958050]
+shape = SubResource("CircleShape2D_odsy8")
+
+[connection signal="area_entered" from="UnlockArea" to="." method="_on_unlock_area_area_entered"]

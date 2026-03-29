@@ -5,13 +5,13 @@ speedy birb game go weee
 ## to-do
 
 - [ ] finish mushroom level
-- [ ] add keys and doors
 - [ ] finish woods level
 - [ ] finish summit level
 - [ ] the peak stars cutscene
 - [ ] add sound effects
 - [ ] make music (dynamic blending)
 - [ ] make the itch page look pretty
+- [x] add keys and doors
 - [x] dash-collectables in secret areas
 - [x] add mushrooms
 - [x] unlocking levels
