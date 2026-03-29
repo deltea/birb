@@ -74,7 +74,7 @@ position = Vector2(608, -592)
 position = Vector2(256, -288)
 
 [node name="Key" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="11" unique_id=476683576 instance=ExtResource("6_jxa4h")]
-position = Vector2(56, -152)
+position = Vector2(608, -640)
 
 [node name="Door" parent="Elements" parent_id_path=PackedInt32Array(75181523) index="12" unique_id=1513790288 instance=ExtResource("7_ekqd5")]
 position = Vector2(-248, -384)
